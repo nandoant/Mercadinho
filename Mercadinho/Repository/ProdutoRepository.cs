@@ -28,8 +28,7 @@ namespace Mercadinho.Repository
                 "Descricao TEXT," +
                 "Marca VARCHAR(50)," +
                 "Modelo VARCHAR(50)," +
-                "Quantidade INT DEFAULT 0," +
-                "Subtotal DECIMAL(10,2) DEFAULT 0.00" +
+                "Quantidade INT DEFAULT 0" +
                 ");";
             using (var connection = new MySqlConnection(connectionString))
             {
@@ -44,8 +43,8 @@ namespace Mercadinho.Repository
 
         public void Adicionar(Produto produto)
         {
-            string query = "INSERT INTO Produto (Nome, Preco, Descricao, Marca, Modelo, Quantidade, Subtotal) " +
-                          "VALUES (@Nome, @Preco, @Descricao, @Marca, @Modelo, @Quantidade, @Subtotal);";
+            string query = "INSERT INTO Produto (Nome, Preco, Descricao, Marca, Modelo, Quantidade) " +
+                        "VALUES (@Nome, @Preco, @Descricao, @Marca, @Modelo, @Quantidade);";
             using (var connection = new MySqlConnection(connectionString))
             {
                 using (var command = new MySqlCommand(query, connection))
@@ -55,8 +54,7 @@ namespace Mercadinho.Repository
                     command.Parameters.AddWithValue("@Descricao", produto.Descricao);
                     command.Parameters.AddWithValue("@Marca", produto.Marca);
                     command.Parameters.AddWithValue("@Modelo", produto.Modelo);
-                    command.Parameters.AddWithValue("@Quantidade", produto.Quantidade);
-                    command.Parameters.AddWithValue("@Subtotal", produto.Subtotal);
+                    command.Parameters.AddWithValue("@Quantidade", produto.QuantidadeEmEstoque);
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -68,7 +66,7 @@ namespace Mercadinho.Repository
         public void Atualizar(Produto produto)
         {
             string query = "UPDATE Produto SET Nome = @Nome, Preco = @Preco, Descricao = @Descricao, " +
-                          "Marca = @Marca, Modelo = @Modelo, Quantidade = @Quantidade, Subtotal = @Subtotal " +
+                          "Marca = @Marca, Modelo = @Modelo, Quantidade = @Quantidade " +
                           "WHERE Id = @Id;";
             using (var connection = new MySqlConnection(connectionString))
             {
@@ -80,8 +78,7 @@ namespace Mercadinho.Repository
                     command.Parameters.AddWithValue("@Descricao", produto.Descricao);
                     command.Parameters.AddWithValue("@Marca", produto.Marca);
                     command.Parameters.AddWithValue("@Modelo", produto.Modelo);
-                    command.Parameters.AddWithValue("@Quantidade", produto.Quantidade);
-                    command.Parameters.AddWithValue("@Subtotal", produto.Subtotal);
+                    command.Parameters.AddWithValue("@Quantidade", produto.QuantidadeEmEstoque);
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -92,7 +89,7 @@ namespace Mercadinho.Repository
 
         public IEnumerable<Produto> Listar()
         {
-            string query = "SELECT Id, Nome, Preco, Descricao, Marca, Modelo, Quantidade, Subtotal FROM Produto;";
+            string query = "SELECT Id, Nome, Preco, Descricao, Marca, Modelo, Quantidade FROM Produto;";
             var produtos = new List<Produto>();
 
             using (var connection = new MySqlConnection(connectionString))
@@ -112,8 +109,7 @@ namespace Mercadinho.Repository
                                 Descricao = reader.GetString("Descricao"),
                                 Marca = reader.GetString("Marca"),
                                 Modelo = reader.GetString("Modelo"),
-                                Quantidade = reader.GetInt32("Quantidade"),
-                                Subtotal = reader.GetDecimal("Subtotal")
+                                QuantidadeEmEstoque = reader.GetInt32("Quantidade")
                             };
                             produtos.Add(produto);
                         }
@@ -131,12 +127,12 @@ namespace Mercadinho.Repository
 
             if (isId)
             {
-                query = @"SELECT Id, Nome, Preco, Descricao, Marca, Modelo, Quantidade, Subtotal 
+                query = @"SELECT Id, Nome, Preco, Descricao, Marca, Modelo, Quantidade 
                          FROM Produto WHERE Id = @Valor";
             }
             else
             {
-                query = @"SELECT Id, Nome, Preco, Descricao, Marca, Modelo, Quantidade, Subtotal 
+                query = @"SELECT Id, Nome, Preco, Descricao, Marca, Modelo, Quantidade 
                          FROM Produto WHERE Nome LIKE @Valor";
                 valor = "%" + valor + "%";
             }
@@ -160,8 +156,7 @@ namespace Mercadinho.Repository
                                 Descricao = reader.GetString("Descricao"),
                                 Marca = reader.GetString("Marca"),
                                 Modelo = reader.GetString("Modelo"),
-                                Quantidade = reader.GetInt32("Quantidade"),
-                                Subtotal = reader.GetDecimal("Subtotal")
+                                QuantidadeEmEstoque = reader.GetInt32("Quantidade")
                             };
                             produtos.Add(produto);
                         }

@@ -25,7 +25,7 @@ namespace Mercadinho.Model
 
         private decimal getValorTotal()
         {
-            return Produtos.Sum(produto => produto.Subtotal);
+            return Produtos.Sum(p => (decimal)(p.PrecoUnitario * p.QuantidadeEmEstoque));
         }
     }
 }

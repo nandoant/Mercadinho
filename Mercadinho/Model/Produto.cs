@@ -14,8 +14,7 @@ namespace Mercadinho.Model
         public string Descricao { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }
-        public int Quantidade { get; set; }
-        public decimal Subtotal { get; set; }
+        public int QuantidadeEmEstoque { get; set; }
 
         public Produto() { }
 
@@ -37,8 +36,7 @@ namespace Mercadinho.Model
             Descricao = descricao;
             Marca = marca;
             Modelo = modelo;
-            Quantidade = quantidade;
-            Subtotal = (decimal)preco * quantidade;
+            QuantidadeEmEstoque = quantidade;
         }
 
 

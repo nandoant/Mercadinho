@@ -89,9 +89,8 @@ namespace Mercadinho.Repository
                             {
                                 command.Parameters.AddWithValue("@VendaId", vendaId);
                                 command.Parameters.AddWithValue("@ProdutoId", produto.Id);
-                                command.Parameters.AddWithValue("@Quantidade", produto.Quantidade);
+                                command.Parameters.AddWithValue("@Quantidade", produto.QuantidadeEmEstoque);
                                 command.Parameters.AddWithValue("@PrecoUnitario", produto.PrecoUnitario);
-                                command.Parameters.AddWithValue("@Subtotal", produto.Subtotal);
                                 command.ExecuteNonQuery();
                             }
                         }
