@@ -148,6 +148,7 @@
     <Compile Include="Repository\ClienteRepository.cs" />
     <Compile Include="Repository\IClienteRepository.cs" />
     <Compile Include="Repository\IProdutoRepository.cs" />
+    <Compile Include="Repository\IVendaRepository.cs" />
     <Compile Include="Repository\ProdutoRepository.cs" />
     <Compile Include="Repository\VendaRepository.cs" />
     <Compile Include="View\ClienteView.cs">
