@@ -160,7 +160,7 @@ namespace Mercadinho.View
                 _instance = new ClienteView();
                 _instance.MdiParent = parentContainer;
                 _instance.FormBorderStyle = FormBorderStyle.None;
-                _instance.Dock = DockStyle.Right;
+                _instance.Dock = DockStyle.Fill;
             }
             else
             {

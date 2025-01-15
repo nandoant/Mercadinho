@@ -130,7 +130,7 @@ namespace Mercadinho.View
             txtBoxID.textBox.Text = "0";
             txtBoxID.Enabled = false;
             txtBoxNome.textBox.Text = "";
-            txtBoxIdade.textBox.Text = "";
+            txtBoxPreco.textBox.Text = "";
             txtBoxDescricao.Text = "";
             txtBoxMarca.textBox.Text = "";
             txtBoxModelo.textBox.Text = "";
@@ -141,7 +141,7 @@ namespace Mercadinho.View
             txtBoxID.Enabled = false;
             txtBoxID.textBox.Text = produto.Id.ToString();
             txtBoxNome.textBox.Text = produto.Nome;
-            txtBoxIdade.textBox.Text = produto.Preco.ToString();
+            txtBoxPreco.textBox.Text = produto.PrecoUnitario.ToString();
             txtBoxDescricao.Text = produto.Descricao;
             txtBoxMarca.textBox.Text = produto.Marca;
             txtBoxModelo.textBox.Text = produto.Modelo;
@@ -149,12 +149,12 @@ namespace Mercadinho.View
 
         public Produto ObterProdutoDoFormulario()
         {
-            double preco = ConverterPrecoEmDouble(txtBoxIdade.textBox.Text.Trim());
+            double preco = ConverterPrecoEmDouble(txtBoxPreco.textBox.Text.Trim());
             return new Produto
             {
                 Id = string.IsNullOrEmpty(txtBoxID.textBox.Text) ? 0 : int.Parse(txtBoxID.textBox.Text),
                 Nome = txtBoxNome.textBox.Text,
-                Preco = preco,
+                PrecoUnitario = preco,
                 Descricao = txtBoxDescricao.Text,
                 Marca = txtBoxMarca.textBox.Text,
                 Modelo = txtBoxModelo.textBox.Text
@@ -191,7 +191,7 @@ namespace Mercadinho.View
                 _instance = new ProdutoView();
                 _instance.MdiParent = parentContainer;
                 _instance.FormBorderStyle = FormBorderStyle.None;
-                _instance.Dock = DockStyle.Right;
+                _instance.Dock = DockStyle.Fill;
             }
             else
             {

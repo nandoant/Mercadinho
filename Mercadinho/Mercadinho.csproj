@@ -138,6 +138,7 @@
     </Compile>
     <Compile Include="Model\Cliente.cs" />
     <Compile Include="Model\Produto.cs" />
+    <Compile Include="Model\Venda.cs" />
     <Compile Include="Presenter\ClientePresenter.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
     <Compile Include="Presenter\ProdutoPresenter.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Repository\IClienteRepository.cs" />
     <Compile Include="Repository\IProdutoRepository.cs" />
     <Compile Include="Repository\ProdutoRepository.cs" />
+    <Compile Include="Repository\VendaRepository.cs" />
     <Compile Include="View\ClienteView.cs">
       <SubType>Form</SubType>
     </Compile>

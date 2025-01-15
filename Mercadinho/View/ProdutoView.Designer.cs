@@ -57,7 +57,7 @@
             this.btnSalvar = new ReaLTaiizor.Controls.Button();
             this.txtBoxID = new ReaLTaiizor.Controls.CyberTextBox();
             this.txtBoxNome = new ReaLTaiizor.Controls.CyberTextBox();
-            this.txtBoxIdade = new ReaLTaiizor.Controls.CyberTextBox();
+            this.txtBoxPreco = new ReaLTaiizor.Controls.CyberTextBox();
             this.txtBoxModelo = new ReaLTaiizor.Controls.CyberTextBox();
             this.txtBoxMarca = new ReaLTaiizor.Controls.CyberTextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -69,6 +69,9 @@
             // tabControlProdutos
             // 
             this.tabControlProdutos.Alignment = System.Windows.Forms.TabAlignment.Bottom;
+            this.tabControlProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlProdutos.Controls.Add(this.tabListaProdutos);
             this.tabControlProdutos.Controls.Add(this.tabDetalhesProduto);
             this.tabControlProdutos.Location = new System.Drawing.Point(0, 0);
@@ -107,7 +110,7 @@
             // btnPaginas
             // 
             this.btnPaginas.Location = new System.Drawing.Point(59, 9);
-            this.btnPaginas.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPaginas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPaginas.Name = "btnPaginas";
             this.btnPaginas.Size = new System.Drawing.Size(39, 39);
             this.btnPaginas.TabIndex = 32;
@@ -127,7 +130,7 @@
             this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVoltar.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.btnVoltar.Location = new System.Drawing.Point(12, 9);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnVoltar.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
@@ -149,7 +152,7 @@
             this.btnAvancar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAvancar.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.btnAvancar.Location = new System.Drawing.Point(105, 9);
-            this.btnAvancar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAvancar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAvancar.Name = "btnAvancar";
             this.btnAvancar.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnAvancar.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
@@ -259,7 +262,7 @@
             this.cyberTextBox3.Lighting = false;
             this.cyberTextBox3.LinearGradientPen = false;
             this.cyberTextBox3.Location = new System.Drawing.Point(11, 55);
-            this.cyberTextBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.cyberTextBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cyberTextBox3.Name = "cyberTextBox3";
             this.cyberTextBox3.PenWidth = 15;
             this.cyberTextBox3.RGB = false;
@@ -290,7 +293,7 @@
             this.txtBoxPesquisa.Lighting = false;
             this.txtBoxPesquisa.LinearGradientPen = false;
             this.txtBoxPesquisa.Location = new System.Drawing.Point(151, 7);
-            this.txtBoxPesquisa.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBoxPesquisa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxPesquisa.Name = "txtBoxPesquisa";
             this.txtBoxPesquisa.PenWidth = 15;
             this.txtBoxPesquisa.RGB = false;
@@ -307,7 +310,7 @@
             // btnPesquisar
             // 
             this.btnPesquisar.Location = new System.Drawing.Point(837, 7);
-            this.btnPesquisar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPesquisar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(113, 41);
             this.btnPesquisar.TabIndex = 10;
@@ -326,7 +329,7 @@
             this.btnNovoProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNovoProduto.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.btnNovoProduto.Location = new System.Drawing.Point(957, 9);
-            this.btnNovoProduto.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNovoProduto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNovoProduto.Name = "btnNovoProduto";
             this.btnNovoProduto.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnNovoProduto.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
@@ -349,7 +352,7 @@
             this.tabDetalhesProduto.Controls.Add(this.btnSalvar);
             this.tabDetalhesProduto.Controls.Add(this.txtBoxID);
             this.tabDetalhesProduto.Controls.Add(this.txtBoxNome);
-            this.tabDetalhesProduto.Controls.Add(this.txtBoxIdade);
+            this.tabDetalhesProduto.Controls.Add(this.txtBoxPreco);
             this.tabDetalhesProduto.Controls.Add(this.txtBoxModelo);
             this.tabDetalhesProduto.Controls.Add(this.txtBoxMarca);
             this.tabDetalhesProduto.Location = new System.Drawing.Point(4, 4);
@@ -386,9 +389,9 @@
             this.label10.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(221, 174);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(57, 23);
+            this.label10.Size = new System.Drawing.Size(53, 23);
             this.label10.TabIndex = 24;
-            this.label10.Text = "Idade:";
+            this.label10.Text = "Preço";
             // 
             // label9
             // 
@@ -445,7 +448,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(589, 561);
+            this.btnCancelar.Location = new System.Drawing.Point(589, 567);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(155, 42);
@@ -464,7 +467,7 @@
             this.btnSalvar.Image = null;
             this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalvar.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.btnSalvar.Location = new System.Drawing.Point(749, 562);
+            this.btnSalvar.Location = new System.Drawing.Point(749, 568);
             this.btnSalvar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
@@ -491,7 +494,7 @@
             this.txtBoxID.Lighting = false;
             this.txtBoxID.LinearGradientPen = false;
             this.txtBoxID.Location = new System.Drawing.Point(227, 41);
-            this.txtBoxID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBoxID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxID.Name = "txtBoxID";
             this.txtBoxID.PenWidth = 15;
             this.txtBoxID.RGB = false;
@@ -522,7 +525,7 @@
             this.txtBoxNome.Lighting = false;
             this.txtBoxNome.LinearGradientPen = false;
             this.txtBoxNome.Location = new System.Drawing.Point(227, 121);
-            this.txtBoxNome.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBoxNome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxNome.Name = "txtBoxNome";
             this.txtBoxNome.PenWidth = 15;
             this.txtBoxNome.RGB = false;
@@ -536,36 +539,36 @@
             this.txtBoxNome.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.txtBoxNome.Timer_RGB = 300;
             // 
-            // txtBoxIdade
+            // txtBoxPreco
             // 
-            this.txtBoxIdade.Alpha = 20;
-            this.txtBoxIdade.BackColor = System.Drawing.Color.Transparent;
-            this.txtBoxIdade.Background_WidthPen = 1F;
-            this.txtBoxIdade.BackgroundPen = true;
-            this.txtBoxIdade.ColorBackground = System.Drawing.Color.White;
-            this.txtBoxIdade.ColorBackground_Pen = System.Drawing.Color.LightGray;
-            this.txtBoxIdade.ColorLighting = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(200)))), ((int)(((byte)(238)))));
-            this.txtBoxIdade.ColorPen_1 = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(200)))), ((int)(((byte)(238)))));
-            this.txtBoxIdade.ColorPen_2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
-            this.txtBoxIdade.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            this.txtBoxIdade.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.txtBoxIdade.ForeColor = System.Drawing.Color.Black;
-            this.txtBoxIdade.Lighting = false;
-            this.txtBoxIdade.LinearGradientPen = false;
-            this.txtBoxIdade.Location = new System.Drawing.Point(227, 201);
-            this.txtBoxIdade.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBoxIdade.Name = "txtBoxIdade";
-            this.txtBoxIdade.PenWidth = 15;
-            this.txtBoxIdade.RGB = false;
-            this.txtBoxIdade.Rounding = true;
-            this.txtBoxIdade.RoundingInt = 17;
-            this.txtBoxIdade.Size = new System.Drawing.Size(677, 39);
-            this.txtBoxIdade.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.txtBoxIdade.TabIndex = 15;
-            this.txtBoxIdade.Tag = "Cyber";
-            this.txtBoxIdade.TextButton = "Preço";
-            this.txtBoxIdade.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.txtBoxIdade.Timer_RGB = 300;
+            this.txtBoxPreco.Alpha = 20;
+            this.txtBoxPreco.BackColor = System.Drawing.Color.Transparent;
+            this.txtBoxPreco.Background_WidthPen = 1F;
+            this.txtBoxPreco.BackgroundPen = true;
+            this.txtBoxPreco.ColorBackground = System.Drawing.Color.White;
+            this.txtBoxPreco.ColorBackground_Pen = System.Drawing.Color.LightGray;
+            this.txtBoxPreco.ColorLighting = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(200)))), ((int)(((byte)(238)))));
+            this.txtBoxPreco.ColorPen_1 = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(200)))), ((int)(((byte)(238)))));
+            this.txtBoxPreco.ColorPen_2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
+            this.txtBoxPreco.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            this.txtBoxPreco.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.txtBoxPreco.ForeColor = System.Drawing.Color.Black;
+            this.txtBoxPreco.Lighting = false;
+            this.txtBoxPreco.LinearGradientPen = false;
+            this.txtBoxPreco.Location = new System.Drawing.Point(227, 201);
+            this.txtBoxPreco.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBoxPreco.Name = "txtBoxPreco";
+            this.txtBoxPreco.PenWidth = 15;
+            this.txtBoxPreco.RGB = false;
+            this.txtBoxPreco.Rounding = true;
+            this.txtBoxPreco.RoundingInt = 17;
+            this.txtBoxPreco.Size = new System.Drawing.Size(677, 39);
+            this.txtBoxPreco.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.txtBoxPreco.TabIndex = 15;
+            this.txtBoxPreco.Tag = "Cyber";
+            this.txtBoxPreco.TextButton = "Preço";
+            this.txtBoxPreco.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.txtBoxPreco.Timer_RGB = 300;
             // 
             // txtBoxModelo
             // 
@@ -584,7 +587,7 @@
             this.txtBoxModelo.Lighting = false;
             this.txtBoxModelo.LinearGradientPen = false;
             this.txtBoxModelo.Location = new System.Drawing.Point(227, 361);
-            this.txtBoxModelo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBoxModelo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxModelo.Name = "txtBoxModelo";
             this.txtBoxModelo.PenWidth = 15;
             this.txtBoxModelo.RGB = false;
@@ -616,7 +619,7 @@
             this.txtBoxMarca.Lighting = false;
             this.txtBoxMarca.LinearGradientPen = false;
             this.txtBoxMarca.Location = new System.Drawing.Point(227, 281);
-            this.txtBoxMarca.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBoxMarca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxMarca.Name = "txtBoxMarca";
             this.txtBoxMarca.PenWidth = 15;
             this.txtBoxMarca.RGB = false;
@@ -635,7 +638,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1133, 625);
+            this.ClientSize = new System.Drawing.Size(1133, 657);
             this.Controls.Add(this.tabControlProdutos);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ProdutoView";
@@ -673,7 +676,7 @@
         private ReaLTaiizor.Controls.Button btnSalvar;
         private ReaLTaiizor.Controls.CyberTextBox txtBoxID;
         private ReaLTaiizor.Controls.CyberTextBox txtBoxNome;
-        private ReaLTaiizor.Controls.CyberTextBox txtBoxIdade;
+        private ReaLTaiizor.Controls.CyberTextBox txtBoxPreco;
         private ReaLTaiizor.Controls.CyberTextBox txtBoxMarca;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;

@@ -139,12 +139,12 @@ namespace Mercadinho.Presenter
                 throw new Exception("Nome do produto é obrigatório");
             }
 
-            if (double.TryParse(produto.Preco.ToString(), out double preco) == false)
+            if (double.TryParse(produto.PrecoUnitario.ToString(), out double preco) == false)
             {
                 throw new Exception("Preço do produto deve ser um número");
             }
 
-            if (produto.Preco <= 0)
+            if (produto.PrecoUnitario <= 0)
             {
                 throw new Exception("Preço do produto deve ser maior que zero");
             }

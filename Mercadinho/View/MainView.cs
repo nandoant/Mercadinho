@@ -20,12 +20,14 @@ namespace Mercadinho.View
         {
             InitializeComponent();
             btnClientes.Click += delegate 
-            { 
+            {
+                //selecao.Location = new Point(4, 200);
                 FecharViewsAbertas();
                 MostrarClientes(this, EventArgs.Empty); 
             };
             btnProdutos.Click += delegate 
-            { 
+            {
+                //selecao.Location = new Point(4, 246);
                 FecharViewsAbertas();
                 MostrarProdutos(this, EventArgs.Empty); 
             };
@@ -36,7 +38,7 @@ namespace Mercadinho.View
         {
             foreach (Form form in MdiChildren)
             {
-                form.Close();
+                form.Dispose();
             }
         }
 

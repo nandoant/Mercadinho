@@ -27,7 +27,7 @@ namespace Mercadinho.GRIDs
             Id = produto.Id;
             Nome = produto.Nome;
             Descricao = produto.Descricao;
-            Preco = produto.Preco;
+            Preco = produto.PrecoUnitario;
             Marca = produto.Marca;
             Modelo = produto.Modelo;
 

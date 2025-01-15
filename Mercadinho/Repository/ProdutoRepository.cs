@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Mercadinho.Model;
 using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI;
 
 namespace Mercadinho.Repository
 {
@@ -28,28 +27,36 @@ namespace Mercadinho.Repository
                 "Preco DOUBLE NOT NULL," +
                 "Descricao TEXT," +
                 "Marca VARCHAR(50)," +
-                "Modelo VARCHAR(50)" +
+                "Modelo VARCHAR(50)," +
+                "Quantidade INT DEFAULT 0," +
+                "Subtotal DECIMAL(10,2) DEFAULT 0.00" +
                 ");";
-            var connection = new MySqlConnection(connectionString);
-            var command = new MySqlCommand(query, connection);
-            connection.Open();
-            command.ExecuteNonQuery();
-            connection.Close();
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
         }
 
         public void Adicionar(Produto produto)
         {
-            string query = "INSERT INTO Produto (Nome, Preco, Descricao, Marca, Modelo) " +
-                           "VALUES (@Nome, @Preco, @Descricao, @Marca, @Modelo);";
+            string query = "INSERT INTO Produto (Nome, Preco, Descricao, Marca, Modelo, Quantidade, Subtotal) " +
+                          "VALUES (@Nome, @Preco, @Descricao, @Marca, @Modelo, @Quantidade, @Subtotal);";
             using (var connection = new MySqlConnection(connectionString))
             {
                 using (var command = new MySqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Nome", produto.Nome);
-                    command.Parameters.AddWithValue("@Preco", produto.Preco);
+                    command.Parameters.AddWithValue("@Preco", produto.PrecoUnitario);
                     command.Parameters.AddWithValue("@Descricao", produto.Descricao);
                     command.Parameters.AddWithValue("@Marca", produto.Marca);
                     command.Parameters.AddWithValue("@Modelo", produto.Modelo);
+                    command.Parameters.AddWithValue("@Quantidade", produto.Quantidade);
+                    command.Parameters.AddWithValue("@Subtotal", produto.Subtotal);
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -60,17 +67,21 @@ namespace Mercadinho.Repository
 
         public void Atualizar(Produto produto)
         {
-            string query = "UPDATE Produto SET Nome = @Nome, Preco = @Preco, Descricao = @Descricao, Marca = @Marca, Modelo = @Modelo WHERE Id = @Id;";
+            string query = "UPDATE Produto SET Nome = @Nome, Preco = @Preco, Descricao = @Descricao, " +
+                          "Marca = @Marca, Modelo = @Modelo, Quantidade = @Quantidade, Subtotal = @Subtotal " +
+                          "WHERE Id = @Id;";
             using (var connection = new MySqlConnection(connectionString))
             {
                 using (var command = new MySqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Id", produto.Id);
                     command.Parameters.AddWithValue("@Nome", produto.Nome);
-                    command.Parameters.AddWithValue("@Preco", produto.Preco);
+                    command.Parameters.AddWithValue("@Preco", produto.PrecoUnitario);
                     command.Parameters.AddWithValue("@Descricao", produto.Descricao);
                     command.Parameters.AddWithValue("@Marca", produto.Marca);
                     command.Parameters.AddWithValue("@Modelo", produto.Modelo);
+                    command.Parameters.AddWithValue("@Quantidade", produto.Quantidade);
+                    command.Parameters.AddWithValue("@Subtotal", produto.Subtotal);
 
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -81,7 +92,7 @@ namespace Mercadinho.Repository
 
         public IEnumerable<Produto> Listar()
         {
-            string query = "SELECT Id, Nome, Preco, Descricao, Marca, Modelo FROM Produto;";
+            string query = "SELECT Id, Nome, Preco, Descricao, Marca, Modelo, Quantidade, Subtotal FROM Produto;";
             var produtos = new List<Produto>();
 
             using (var connection = new MySqlConnection(connectionString))
@@ -97,10 +108,12 @@ namespace Mercadinho.Repository
                             {
                                 Id = reader.GetInt32("Id"),
                                 Nome = reader.GetString("Nome"),
-                                Preco = reader.GetDouble("Preco"),
+                                PrecoUnitario = reader.GetDouble("Preco"),
                                 Descricao = reader.GetString("Descricao"),
                                 Marca = reader.GetString("Marca"),
-                                Modelo = reader.GetString("Modelo")
+                                Modelo = reader.GetString("Modelo"),
+                                Quantidade = reader.GetInt32("Quantidade"),
+                                Subtotal = reader.GetDecimal("Subtotal")
                             };
                             produtos.Add(produto);
                         }
@@ -114,39 +127,48 @@ namespace Mercadinho.Repository
         public IEnumerable<Produto> ObterPorvalor(string valor)
         {
             string query;
-            int id;
-            bool isId = int.TryParse(valor, out id);
+            bool isId = int.TryParse(valor, out int id);
 
             if (isId)
             {
-                query = @"SELECT Id, Nome, Preco, Descricao, Marca, Modelo FROM Produto WHERE Id = @Valor";
+                query = @"SELECT Id, Nome, Preco, Descricao, Marca, Modelo, Quantidade, Subtotal 
+                         FROM Produto WHERE Id = @Valor";
             }
             else
             {
-                query = @"SELECT Id, Nome, Preco, Descricao, Marca, Modelo FROM Produto WHERE Nome LIKE @Valor";
+                query = @"SELECT Id, Nome, Preco, Descricao, Marca, Modelo, Quantidade, Subtotal 
+                         FROM Produto WHERE Nome LIKE @Valor";
                 valor = "%" + valor + "%";
             }
 
-            var connection = new MySqlConnection(this.connectionString);
-            var command = new MySqlCommand(query, connection);
-            connection.Open();
-            command.Parameters.AddWithValue("@Valor", valor);
-            var reader = command.ExecuteReader();
             var produtos = new List<Produto>();
-            while (reader.Read())
+            using (var connection = new MySqlConnection(connectionString))
             {
-                var produto = new Produto
+                using (var command = new MySqlCommand(query, connection))
                 {
-                    Id = reader.GetInt32("Id"),
-                    Nome = reader.GetString("Nome"),
-                    Preco = reader.GetDouble("Preco"),
-                    Descricao = reader.GetString("Descricao"),
-                    Marca = reader.GetString("Marca"),
-                    Modelo = reader.GetString("Modelo")
-                };
-                produtos.Add(produto);
+                    command.Parameters.AddWithValue("@Valor", valor);
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var produto = new Produto
+                            {
+                                Id = reader.GetInt32("Id"),
+                                Nome = reader.GetString("Nome"),
+                                PrecoUnitario = reader.GetDouble("Preco"),
+                                Descricao = reader.GetString("Descricao"),
+                                Marca = reader.GetString("Marca"),
+                                Modelo = reader.GetString("Modelo"),
+                                Quantidade = reader.GetInt32("Quantidade"),
+                                Subtotal = reader.GetDecimal("Subtotal")
+                            };
+                            produtos.Add(produto);
+                        }
+                    }
+                    connection.Close();
+                }
             }
-            connection.Close();
             return produtos;
         }
 
@@ -158,7 +180,6 @@ namespace Mercadinho.Repository
                 using (var command = new MySqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Id", id);
-
                     connection.Open();
                     command.ExecuteNonQuery();
                     connection.Close();
