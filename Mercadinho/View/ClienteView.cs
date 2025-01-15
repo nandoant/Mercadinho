@@ -170,5 +170,10 @@ namespace Mercadinho.View
             }
             return _instance;
         }
+
+        private void ClienteView_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

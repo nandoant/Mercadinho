@@ -122,8 +122,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GRIDs\ILstCliente.cs" />
-    <Compile Include="GRIDs\ILstProduto.cs" />
+    <Compile Include="GRIDs\Interfaces\ILstCliente.cs" />
+    <Compile Include="GRIDs\Interfaces\ILstProduto.cs" />
+    <Compile Include="GRIDs\Interfaces\ILstVenda.cs" />
     <Compile Include="GRIDs\LstCliente.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -135,6 +136,12 @@
     </Compile>
     <Compile Include="GRIDs\LstProduto.Designer.cs">
       <DependentUpon>LstProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GRIDs\LstVenda.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GRIDs\LstVenda.Designer.cs">
+      <DependentUpon>LstVenda.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Cliente.cs" />
     <Compile Include="Model\Produto.cs" />
@@ -172,11 +179,20 @@
     <Compile Include="View\ProdutoView.Designer.cs">
       <DependentUpon>ProdutoView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\VendaView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\VendaView.Designer.cs">
+      <DependentUpon>VendaView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="GRIDs\LstCliente.resx">
       <DependentUpon>LstCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GRIDs\LstProduto.resx">
       <DependentUpon>LstProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GRIDs\LstVenda.resx">
+      <DependentUpon>LstVenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -196,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ProdutoView.resx">
       <DependentUpon>ProdutoView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\VendaView.resx">
+      <DependentUpon>VendaView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -240,6 +259,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-buy-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-search-24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
