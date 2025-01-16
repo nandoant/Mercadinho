@@ -30,10 +30,12 @@ namespace Mercadinho.GRIDs
             Preco = produto.PrecoUnitario;
             Marca = produto.Marca;
             Modelo = produto.Modelo;
+            QuantidadeDisponivel = produto.QuantidadeEmEstoque;
 
             btnDelete.Click += deletarItem;
             btnDelete.Click += (sender, e) => Excluir?.Invoke(this, e);
             btnEdit.Click += (sender, e) => Editar?.Invoke(this, e);
+            labelQtdCliente.Dispose();
         }
         public int Id
         {
@@ -95,6 +97,26 @@ namespace Mercadinho.GRIDs
             {
                 labelModelo.Text = value.Length > 9 ? value.Substring(0, 6) + "..." : value;
                 dropDownText.SetToolTip(labelModelo, value);
+            }
+        }
+
+        public int QuantidadeCliente
+        {
+            get { return int.Parse(labelQtdCliente.Text); }
+            set 
+            { 
+                labelQtdCliente.Text = value.ToString();
+                dropDownText.SetToolTip(labelQtdCliente, value.ToString());
+            }
+        }
+
+        public int QuantidadeDisponivel
+        {
+            get { return int.Parse(labelQtdDispo.Text); }
+            set 
+            { 
+                labelQtdDispo.Text = value.ToString();
+                dropDownText.SetToolTip(labelQtdDispo, value.ToString());
             }
         }
 
