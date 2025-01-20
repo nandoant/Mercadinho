@@ -148,9 +148,11 @@
     <Compile Include="Model\Venda.cs" />
     <Compile Include="Model\VendaProduto.cs" />
     <Compile Include="Presenter\ClientePresenter.cs" />
+    <Compile Include="Presenter\ClienteSelecaoPresenter.cs" />
     <Compile Include="Presenter\MainPresenter.cs" />
     <Compile Include="Presenter\ProdutoPresenter.cs" />
     <Compile Include="Presenter\VendaListPresenter.cs" />
+    <Compile Include="Presenter\VendaMainPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BaseRepository.cs" />

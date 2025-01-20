@@ -364,7 +364,7 @@
             this.tabDetalhesClientes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabDetalhesClientes.Name = "tabDetalhesClientes";
             this.tabDetalhesClientes.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabDetalhesClientes.Size = new System.Drawing.Size(1125, 621);
+            this.tabDetalhesClientes.Size = new System.Drawing.Size(1131, 649);
             this.tabDetalhesClientes.TabIndex = 1;
             this.tabDetalhesClientes.Text = "Escolher Cliente";
             // 
@@ -587,7 +587,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(1125, 621);
+            this.tabPage1.Size = new System.Drawing.Size(1131, 649);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Escolher Produtos";
             this.tabPage1.UseVisualStyleBackColor = true;

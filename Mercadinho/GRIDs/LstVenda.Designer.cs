@@ -49,12 +49,12 @@
             this.btnProdutos.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnProdutos.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.btnProdutos.InactiveColor = System.Drawing.Color.White;
-            this.btnProdutos.Location = new System.Drawing.Point(630, 5);
-            this.btnProdutos.Margin = new System.Windows.Forms.Padding(2);
+            this.btnProdutos.Location = new System.Drawing.Point(840, 6);
+            this.btnProdutos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnProdutos.Name = "btnProdutos";
             this.btnProdutos.PressedBorderColor = System.Drawing.Color.MidnightBlue;
             this.btnProdutos.PressedColor = System.Drawing.Color.MidnightBlue;
-            this.btnProdutos.Size = new System.Drawing.Size(43, 31);
+            this.btnProdutos.Size = new System.Drawing.Size(57, 38);
             this.btnProdutos.TabIndex = 53;
             this.btnProdutos.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
@@ -70,12 +70,12 @@
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnDelete.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.btnDelete.InactiveColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(779, 5);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDelete.Location = new System.Drawing.Point(1039, 6);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.PressedBorderColor = System.Drawing.Color.DarkRed;
             this.btnDelete.PressedColor = System.Drawing.Color.DarkRed;
-            this.btnDelete.Size = new System.Drawing.Size(43, 31);
+            this.btnDelete.Size = new System.Drawing.Size(57, 38);
             this.btnDelete.TabIndex = 52;
             this.btnDelete.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
@@ -85,10 +85,9 @@
             this.labelData.BackColor = System.Drawing.Color.White;
             this.labelData.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelData.ForeColor = System.Drawing.Color.Black;
-            this.labelData.Location = new System.Drawing.Point(512, 11);
-            this.labelData.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelData.Location = new System.Drawing.Point(683, 14);
             this.labelData.Name = "labelData";
-            this.labelData.Size = new System.Drawing.Size(110, 19);
+            this.labelData.Size = new System.Drawing.Size(136, 23);
             this.labelData.TabIndex = 51;
             this.labelData.Text = "Data da Compra";
             // 
@@ -98,10 +97,9 @@
             this.labelTotal.BackColor = System.Drawing.Color.White;
             this.labelTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTotal.ForeColor = System.Drawing.Color.Black;
-            this.labelTotal.Location = new System.Drawing.Point(685, 11);
-            this.labelTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelTotal.Location = new System.Drawing.Point(913, 14);
             this.labelTotal.Name = "labelTotal";
-            this.labelTotal.Size = new System.Drawing.Size(93, 19);
+            this.labelTotal.Size = new System.Drawing.Size(107, 23);
             this.labelTotal.TabIndex = 50;
             this.labelTotal.Text = "R$ 151555,90";
             // 
@@ -111,10 +109,9 @@
             this.labelNome.BackColor = System.Drawing.Color.White;
             this.labelNome.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNome.ForeColor = System.Drawing.Color.Black;
-            this.labelNome.Location = new System.Drawing.Point(103, 11);
-            this.labelNome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelNome.Location = new System.Drawing.Point(137, 14);
             this.labelNome.Name = "labelNome";
-            this.labelNome.Size = new System.Drawing.Size(115, 19);
+            this.labelNome.Size = new System.Drawing.Size(140, 23);
             this.labelNome.TabIndex = 49;
             this.labelNome.Text = "Nome do Cliente";
             // 
@@ -124,10 +121,9 @@
             this.labelID.BackColor = System.Drawing.Color.White;
             this.labelID.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelID.ForeColor = System.Drawing.Color.Black;
-            this.labelID.Location = new System.Drawing.Point(10, 11);
-            this.labelID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelID.Location = new System.Drawing.Point(13, 14);
             this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(23, 19);
+            this.labelID.Size = new System.Drawing.Size(26, 23);
             this.labelID.TabIndex = 48;
             this.labelID.Text = "01";
             // 
@@ -144,7 +140,7 @@
             this.Panel.ColorPen_2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
             this.Panel.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             this.Panel.Enabled = false;
-            this.Panel.Font = new System.Drawing.Font("Segoe UI Symbol", 10F);
+            this.Panel.Font = new System.Drawing.Font("Segoe UI Symbol", 12F);
             this.Panel.ForeColor = System.Drawing.Color.Brown;
             this.Panel.Lighting = false;
             this.Panel.LinearGradientPen = false;
@@ -155,7 +151,7 @@
             this.Panel.RGB = false;
             this.Panel.Rounding = true;
             this.Panel.RoundingInt = 10;
-            this.Panel.Size = new System.Drawing.Size(829, 41);
+            this.Panel.Size = new System.Drawing.Size(1105, 50);
             this.Panel.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.Panel.TabIndex = 47;
             this.Panel.Tag = "Cyber";
@@ -165,7 +161,7 @@
             // 
             // LstVenda
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnProdutos);
             this.Controls.Add(this.btnDelete);
@@ -174,9 +170,9 @@
             this.Controls.Add(this.labelNome);
             this.Controls.Add(this.labelID);
             this.Controls.Add(this.Panel);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "LstVenda";
-            this.Size = new System.Drawing.Size(829, 41);
+            this.Size = new System.Drawing.Size(1105, 50);
             this.ResumeLayout(false);
             this.PerformLayout();
 

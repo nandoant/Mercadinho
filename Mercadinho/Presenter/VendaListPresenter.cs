@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Mercadinho.GRIDs;
 using Mercadinho.Model;
@@ -22,6 +20,8 @@ namespace Mercadinho.Presenter
         private readonly IListaVendaView view;
         private List<Venda> vendas;
         private const int ItensPorPagina = 10;
+        public event EventHandler NovaVendaClick;
+
 
         public VendaListPresenter(IListaVendaView view, IVendaRepository vendaRepo, IClienteRepository clienteRepo)
         {
@@ -47,40 +47,47 @@ namespace Mercadinho.Presenter
             view.VerProdutos += HandleVerProdutos;
         }
 
+        private void HandleNovaVenda(object sender, EventArgs e)
+        {
+            NovaVendaClick?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void CarregarProdutosECalcularTotal(List<Venda> vendas)
+        {
+            foreach (var venda in vendas)
+            {
+                venda.Produtos = new List<Produto>();
+                var vendaProdutos = vendaProdutoRepo.ObterPorVenda(venda.Id).ToList();
+                
+                foreach (var vendaProduto in vendaProdutos)
+                {
+                    var produto = produtoRepo.ObterPorvalor(vendaProduto.ProdutoId.ToString()).FirstOrDefault();
+                    if (produto != null)
+                    {
+                        var produtoVenda = new Produto
+                        {
+                            Id = produto.Id,
+                            Nome = produto.Nome,
+                            PrecoUnitario = vendaProduto.PrecoUnitario,
+                            Descricao = produto.Descricao,
+                            Marca = produto.Marca,
+                            Modelo = produto.Modelo,
+                            QuantidadeEmEstoque = vendaProduto.Quantidade
+                        };
+                        venda.Produtos.Add(produtoVenda);
+                    }
+                }
+                
+                venda.ValorTotal = vendaProdutos.Sum(vp => vp.CalcularSubtotal());
+            }
+        }
+
         private void CarregarVendas()
         {
             try
             {
                 vendas = vendaRepo.ListarVendas().ToList();
-                foreach (var venda in vendas)
-                {
-                    venda.Produtos = new List<Produto>();
-                    var vendaProdutos = vendaProdutoRepo.ObterPorVenda(venda.Id).ToList();
-                    
-                    foreach (var vendaProduto in vendaProdutos)
-                    {
-                        var produto = produtoRepo.ObterPorvalor(vendaProduto.ProdutoId.ToString()).FirstOrDefault();
-                        if (produto != null)
-                        {
-                            // Clone o produto para manter a quantidade correta
-                            var produtoVenda = new Produto
-                            {
-                                Id = produto.Id,
-                                Nome = produto.Nome,
-                                PrecoUnitario = vendaProduto.PrecoUnitario,
-                                Descricao = produto.Descricao,
-                                Marca = produto.Marca,
-                                Modelo = produto.Modelo,
-                                QuantidadeEmEstoque = vendaProduto.Quantidade
-                            };
-                            venda.Produtos.Add(produtoVenda);
-                        }
-                    }
-                    
-                    // Calcula o valor total da venda
-                    venda.ValorTotal = vendaProdutos.Sum(vp => vp.CalcularSubtotal());
-                }
-
+                CarregarProdutosECalcularTotal(vendas);
                 AtualizarPaginacao();
             }
             catch (Exception ex)
@@ -135,6 +142,7 @@ namespace Mercadinho.Presenter
                         .ToList();
                 }
 
+                CarregarProdutosECalcularTotal(vendas);
                 view.PaginaAtual = 1;
                 AtualizarPaginacao();
             }
@@ -186,13 +194,6 @@ namespace Mercadinho.Presenter
                 view.PaginaAtual--;
                 AtualizarPaginacao();
             }
-        }
-
-        private void HandleNovaVenda(object sender, EventArgs e)
-        {
-            // TODO: Implementar lógica para criar nova venda
-            MessageBox.Show("Funcionalidade em desenvolvimento", "Aviso",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void HandleVerProdutos(object sender, EventArgs e)

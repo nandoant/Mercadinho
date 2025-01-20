@@ -8,7 +8,13 @@ using Mercadinho.Model;
 namespace Mercadinho.View.Interfaces
 {
 
-
+    public interface IVendaMainView
+    {
+        void MostrarListaVendas();
+        void MostrarSelecaoCliente();
+        void MostrarProdutos();
+        Cliente ClienteSelecionado { get; set; }
+    }
 
 
     public interface ISelecaoClienteView
@@ -19,8 +25,9 @@ namespace Mercadinho.View.Interfaces
         event EventHandler Pesquisar;
         event EventHandler ProximaPagina;
         event EventHandler PaginaAnterior;
-        event EventHandler<Cliente> ClienteSelecionado;
+        event EventHandler<Cliente> OnClienteSelecionado;
 
+        void AtualizarPaginacaoClientes(bool temProxima, bool temAnterior);
         void ExibirClientes(List<Cliente> clientes);
         void AtualizarPaginacao(bool temProxima, bool temAnterior);
     }
