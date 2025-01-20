@@ -9,8 +9,9 @@ namespace Mercadinho.Repository
 {
     public interface IVendaRepository
     {
-        void Adicionar(Venda venda);
-        IEnumerable<Venda> Listar();
+        int Inserir(Venda venda);
+        Venda ObterVendaPorId(int id);
+        IEnumerable<Venda> ListarVendas();
         IEnumerable<Venda> ObterPorCliente(int idCliente);
         IEnumerable<Venda> ObterPorPeriodo(DateTime inicio, DateTime fim);
         void Remover(int id);

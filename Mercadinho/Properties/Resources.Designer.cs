@@ -63,6 +63,26 @@ namespace Mercadinho.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_arrow_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_arrow_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_buy_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-buy-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_buy_24 {
             get {
                 object obj = ResourceManager.GetObject("icons8-buy-24", resourceCulture);
@@ -116,6 +136,16 @@ namespace Mercadinho.Properties {
         internal static System.Drawing.Bitmap icons8_products_24__1_ {
             get {
                 object obj = ResourceManager.GetObject("icons8-products-24 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_search_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-search-100", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

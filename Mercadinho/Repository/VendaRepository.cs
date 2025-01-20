@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using Mercadinho.Model;
 using MySql.Data.MySqlClient;
 
@@ -9,15 +8,12 @@ namespace Mercadinho.Repository
 {
     public class VendaRepository : BaseRepository, IVendaRepository
     {
-        private readonly ProdutoRepository ProdutoRepository;
-
         public VendaRepository()
         {
             this.connectionString = ConfigurationManager
                 .ConnectionStrings["MySQL"]
                 .ConnectionString;
-            ProdutoRepository = new ProdutoRepository();
-            this.CriarTabelas();
+            CriarTabelas();
         }
 
         private void CriarTabelas()
@@ -25,20 +21,7 @@ namespace Mercadinho.Repository
             string queryVenda = @"CREATE TABLE IF NOT EXISTS Venda (
                 Id INT PRIMARY KEY AUTO_INCREMENT,
                 IdCliente INT NOT NULL,
-                DataCompra DATETIME NOT NULL,
-                ValorTotal DECIMAL(10,2) NOT NULL,
-                FOREIGN KEY (IdCliente) REFERENCES Cliente(Id)
-            );";
-
-            string queryVendaProduto = @"CREATE TABLE IF NOT EXISTS VendaProduto (
-                VendaId INT,
-                ProdutoId INT,
-                Quantidade INT NOT NULL,
-                PrecoUnitario DOUBLE NOT NULL,
-                Subtotal DECIMAL(10,2) NOT NULL,
-                FOREIGN KEY (VendaId) REFERENCES Venda(Id),
-                FOREIGN KEY (ProdutoId) REFERENCES Produto(Id),
-                PRIMARY KEY (VendaId, ProdutoId)
+                DataCompra DATETIME NOT NULL
             );";
 
             using (var connection = new MySqlConnection(connectionString))
@@ -48,119 +31,72 @@ namespace Mercadinho.Repository
                 {
                     command.ExecuteNonQuery();
                 }
-                using (var command = new MySqlCommand(queryVendaProduto, connection))
-                {
-                    command.ExecuteNonQuery();
-                }
             }
         }
 
-        public void Adicionar(Venda venda)
+        public int Inserir(Venda venda)
         {
             using (var connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                using (var transaction = connection.BeginTransaction())
+                string query = @"INSERT INTO Venda (IdCliente, DataCompra) 
+                               VALUES (@IdCliente, @DataCompra);
+                               SELECT LAST_INSERT_ID();";
+
+                using (var command = new MySqlCommand(query, connection))
                 {
-                    try
+                    command.Parameters.AddWithValue("@IdCliente", venda.IdCliente);
+                    command.Parameters.AddWithValue("@DataCompra", venda.DataCompra);
+                    return Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+        }
+
+        public Venda ObterVendaPorId(int id)
+        {
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT Id, IdCliente, DataCompra FROM Venda WHERE Id = @Id";
+
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+                    using (var reader = command.ExecuteReader())
                     {
-                        // Inserir em Venda
-                        string queryVenda = @"INSERT INTO Venda (IdCliente, DataCompra, ValorTotal) 
-                                           VALUES (@IdCliente, @DataCompra, @ValorTotal);
-                                           SELECT LAST_INSERT_ID();";
+                        if (!reader.Read())
+                            return null;
 
-                        int vendaId;
-                        using (var command = new MySqlCommand(queryVenda, connection, transaction))
-                        {
-                            command.Parameters.AddWithValue("@IdCliente", venda.IdCliente);
-                            command.Parameters.AddWithValue("@DataCompra", venda.DataCompra);
-                            command.Parameters.AddWithValue("@ValorTotal", venda.ValorTotal);
-                            vendaId = Convert.ToInt32(command.ExecuteScalar());
-                        }
-
-                        // Inserir em VendaProduto
-                        string queryVendaProduto = @"INSERT INTO VendaProduto 
-                                                  (VendaId, ProdutoId, Quantidade, PrecoUnitario, Subtotal) 
-                                                  VALUES (@VendaId, @ProdutoId, @Quantidade, @PrecoUnitario, @Subtotal)";
-
-                        foreach (var produto in venda.Produtos)
-                        {
-                            using (var command = new MySqlCommand(queryVendaProduto, connection, transaction))
-                            {
-                                command.Parameters.AddWithValue("@VendaId", vendaId);
-                                command.Parameters.AddWithValue("@ProdutoId", produto.Id);
-                                command.Parameters.AddWithValue("@Quantidade", produto.QuantidadeEmEstoque);
-                                command.Parameters.AddWithValue("@PrecoUnitario", produto.PrecoUnitario);
-                                command.ExecuteNonQuery();
-                            }
-                        }
-
-                        transaction.Commit();
-                    }
-                    catch (Exception)
-                    {
-                        transaction.Rollback();
-                        throw;
+                        return new Venda(
+                            reader.GetInt32("Id"),
+                            reader.GetInt32("IdCliente"),
+                            reader.GetDateTime("DataCompra")
+                        );
                     }
                 }
             }
         }
 
-        public IEnumerable<Venda> Listar()
+        public IEnumerable<Venda> ObterPorCliente(int idCliente)
         {
             var vendas = new List<Venda>();
             using (var connection = new MySqlConnection(connectionString))
             {
                 connection.Open();
-                string query = @"SELECT v.Id, v.IdCliente, v.DataCompra, v.ValorTotal,
-                               p.Id as ProdutoId, p.Nome, p.Preco, p.Descricao, p.Marca, p.Modelo,
-                               vp.Quantidade, vp.Subtotal
-                               FROM Venda v
-                               JOIN VendaProduto vp ON v.Id = vp.VendaId
-                               JOIN Produto p ON vp.ProdutoId = p.Id
-                               ORDER BY v.Id";
+                string query = "SELECT Id, IdCliente, DataCompra FROM Venda WHERE IdCliente = @IdCliente";
 
                 using (var command = new MySqlCommand(query, connection))
                 {
+                    command.Parameters.AddWithValue("@IdCliente", idCliente);
                     using (var reader = command.ExecuteReader())
                     {
-                        int currentVendaId = -1;
-                        Venda currentVenda = null;
-                        List<Produto> produtos = null;
-
                         while (reader.Read())
                         {
-                            int vendaId = reader.GetInt32("Id");
-                            if (vendaId != currentVendaId)
-                            {
-                                if (currentVenda != null)
-                                {
-                                    vendas.Add(currentVenda);
-                                }
-                                produtos = new List<Produto>();
-                                currentVendaId = vendaId;
-                                currentVenda = new Venda(
-                                    vendaId,
-                                    reader.GetInt32("IdCliente"),
-                                    produtos,
-                                    reader.GetDateTime("DataCompra")
-                                );
-                            }
-
-                            produtos.Add(new Produto(
-                                reader.GetInt32("ProdutoId"),
-                                reader.GetString("Nome"),
-                                reader.GetDouble("Preco"),
-                                reader.GetString("Descricao"),
-                                reader.GetString("Marca"),
-                                reader.GetString("Modelo"),
-                                reader.GetInt32("Quantidade")
+                            vendas.Add(new Venda(
+                                reader.GetInt32("Id"),
+                                reader.GetInt32("IdCliente"), 
+                                reader.GetDateTime("DataCompra")
                             ));
-                        }
-
-                        if (currentVenda != null)
-                        {
-                            vendas.Add(currentVenda);
                         }
                     }
                 }
@@ -168,14 +104,58 @@ namespace Mercadinho.Repository
             return vendas;
         }
 
-        public IEnumerable<Venda> ObterPorCliente(int idCliente)
-        {
-            return Listar().Where(v => v.IdCliente == idCliente);
-        }
-
         public IEnumerable<Venda> ObterPorPeriodo(DateTime inicio, DateTime fim)
         {
-            return Listar().Where(v => v.DataCompra >= inicio && v.DataCompra <= fim);
+            var vendas = new List<Venda>();
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = @"SELECT Id, IdCliente, DataCompra 
+                                FROM Venda 
+                                WHERE DataCompra BETWEEN @Inicio AND @Fim";
+
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Inicio", inicio);
+                    command.Parameters.AddWithValue("@Fim", fim);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            vendas.Add(new Venda(
+                                reader.GetInt32("Id"),
+                                reader.GetInt32("IdCliente"),
+                                reader.GetDateTime("DataCompra")
+                            ));
+                        }
+                    }
+                }
+            }
+            return vendas;
+        }
+
+        public IEnumerable<Venda> ListarVendas()
+        {
+            var vendas = new List<Venda>();
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT Id, IdCliente, DataCompra FROM Venda";
+
+                using (var command = new MySqlCommand(query, connection))
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        vendas.Add(new Venda(
+                            reader.GetInt32("Id"),
+                            reader.GetInt32("IdCliente"),
+                            reader.GetDateTime("DataCompra")
+                        ));
+                    }
+                }
+            }
+            return vendas;
         }
 
         public void Remover(int id)
@@ -187,7 +167,6 @@ namespace Mercadinho.Repository
                 {
                     try
                     {
-                        // Deletar de VendaProduto primeiro
                         string queryDeleteVendaProduto = "DELETE FROM VendaProduto WHERE VendaId = @Id";
                         using (var command = new MySqlCommand(queryDeleteVendaProduto, connection, transaction))
                         {
@@ -195,7 +174,6 @@ namespace Mercadinho.Repository
                             command.ExecuteNonQuery();
                         }
 
-                        // Depois deletar de Venda
                         string queryDeleteVenda = "DELETE FROM Venda WHERE Id = @Id";
                         using (var command = new MySqlCommand(queryDeleteVenda, connection, transaction))
                         {
@@ -205,7 +183,7 @@ namespace Mercadinho.Repository
 
                         transaction.Commit();
                     }
-                    catch (Exception)
+                    catch
                     {
                         transaction.Rollback();
                         throw;

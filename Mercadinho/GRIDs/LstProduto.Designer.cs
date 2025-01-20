@@ -40,7 +40,7 @@
             this.btnDelete = new ReaLTaiizor.Controls.Button();
             this.dropDownText = new System.Windows.Forms.ToolTip(this.components);
             this.labelQtdDispo = new System.Windows.Forms.Label();
-            this.labelQtdCliente = new System.Windows.Forms.Label();
+            this.txtBoxQtdCleinte = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // labelDescricao
@@ -217,26 +217,19 @@
             this.labelQtdDispo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.dropDownText.SetToolTip(this.labelQtdDispo, "Isso é um teste");
             // 
-            // labelQtdCliente
+            // txtBoxQtdCleinte
             // 
-            this.labelQtdCliente.BackColor = System.Drawing.Color.White;
-            this.labelQtdCliente.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.labelQtdCliente.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelQtdCliente.ForeColor = System.Drawing.Color.Black;
-            this.labelQtdCliente.Location = new System.Drawing.Point(707, 11);
-            this.labelQtdCliente.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelQtdCliente.Name = "labelQtdCliente";
-            this.labelQtdCliente.Size = new System.Drawing.Size(68, 19);
-            this.labelQtdCliente.TabIndex = 84;
-            this.labelQtdCliente.Text = "Quantidade";
-            this.labelQtdCliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.dropDownText.SetToolTip(this.labelQtdCliente, "Isso é um teste");
+            this.txtBoxQtdCleinte.Location = new System.Drawing.Point(708, 11);
+            this.txtBoxQtdCleinte.Mask = "00000000000";
+            this.txtBoxQtdCleinte.Name = "txtBoxQtdCleinte";
+            this.txtBoxQtdCleinte.Size = new System.Drawing.Size(59, 20);
+            this.txtBoxQtdCleinte.TabIndex = 86;
             // 
             // LstProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.labelQtdCliente);
+            this.Controls.Add(this.txtBoxQtdCleinte);
             this.Controls.Add(this.labelQtdDispo);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnDelete);
@@ -269,6 +262,6 @@
         private ReaLTaiizor.Controls.CyberTextBox Panel;
         private System.Windows.Forms.ToolTip dropDownText;
         private System.Windows.Forms.Label labelQtdDispo;
-        private System.Windows.Forms.Label labelQtdCliente;
+        private System.Windows.Forms.MaskedTextBox txtBoxQtdCleinte;
     }
 }

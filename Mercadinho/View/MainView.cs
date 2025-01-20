@@ -31,7 +31,11 @@ namespace Mercadinho.View
                 FecharViewsAbertas();
                 MostrarProdutos(this, EventArgs.Empty); 
             };
-            btnVendas.Click += delegate { MostrarVendas(this, EventArgs.Empty); };
+            btnVendas.Click += delegate 
+            { 
+                FecharViewsAbertas();
+                MostrarVendas(this, EventArgs.Empty); 
+            };
         }
 
         public void FecharViewsAbertas()

@@ -64,5 +64,20 @@ namespace Mercadinho.GRIDs
             };
             btnEdit.Click += (sender, e) => Editar?.Invoke(this, e);
         }
+
+        public LstCliente(Cliente cliente, Boolean isVenda)
+        {
+            InitializeComponent();
+            Id = cliente.Id;
+            Nome = cliente.Nome;
+            Idade = cliente.Idade;
+            Cpf = cliente.Cpf;
+            btnDelete.Image = Properties.Resources.icons8_arrow_24;
+            btnDelete.Click += delegate
+            {
+                Excluir?.Invoke(this, EventArgs.Empty);
+            };
+            btnEdit.Dispose();
+        }
     }
 }

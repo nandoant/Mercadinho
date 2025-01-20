@@ -18,7 +18,7 @@ namespace Mercadinho.Presenter
             this.view = view;
             view.MostrarClientes += delegate { MostrarViewClientes(); };
             view.MostrarProdutos += delegate { MostrarViewProdutos(); };
-            //view.MostrarVendas += delegate { MostrarViewVendas(); };
+            view.MostrarVendas += delegate { MostrarViewVendas(); };
         }
 
         private void MostrarViewClientes()
@@ -35,11 +35,12 @@ namespace Mercadinho.Presenter
             new ProdutoPresenter(produtoRepository, produtoView);
         }
 
-        /*private void MostrarViewVendas()
+        private void MostrarViewVendas()
         {
-            IVendaView vendaView = VendaView.GetInstance((Form)view);
-            IVendaRepository vendaRepository = new VendaRepository();
-            new VendaPresenter(vendaRepository, vendaView);
-        }*/
+            var vendaView = VendaView.GetInstance((Form)view);
+            var vendaRepository = new VendaRepository();
+            var clienteRepository = new ClienteRepository();
+            new VendaListPresenter(vendaView, vendaRepository, clienteRepository);
+        }
     }
 }

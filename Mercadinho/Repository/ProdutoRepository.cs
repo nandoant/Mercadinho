@@ -30,15 +30,11 @@ namespace Mercadinho.Repository
                 "Modelo VARCHAR(50)," +
                 "Quantidade INT DEFAULT 0" +
                 ");";
-            using (var connection = new MySqlConnection(connectionString))
-            {
-                using (var command = new MySqlCommand(query, connection))
-                {
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                }
-            }
+            var connection = new MySqlConnection(connectionString);
+            var command = new MySqlCommand(query, connection);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
         }
 
         public void Adicionar(Produto produto)

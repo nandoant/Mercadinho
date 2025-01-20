@@ -1,11 +1,12 @@
 ﻿using Mercadinho.Model;
+using Mercadinho.Repository.Interfaces;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.Configuration;
 
 namespace Mercadinho.Repository
 {
-    public class VendaProdutoRepository : BaseRepository
+    public class VendaProdutoRepository : BaseRepository, IVendaProdutoRepository
     {
         public VendaProdutoRepository()
         {

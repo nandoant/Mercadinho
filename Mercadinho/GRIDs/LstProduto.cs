@@ -35,8 +35,26 @@ namespace Mercadinho.GRIDs
             btnDelete.Click += deletarItem;
             btnDelete.Click += (sender, e) => Excluir?.Invoke(this, e);
             btnEdit.Click += (sender, e) => Editar?.Invoke(this, e);
-            labelQtdCliente.Dispose();
+            txtBoxQtdCleinte.Dispose();
         }
+
+        public LstProduto(Produto produto, Boolean isVenda)
+        {
+            InitializeComponent();
+            Id = produto.Id;
+            Nome = produto.Nome;
+            Descricao = produto.Descricao;
+            Preco = produto.PrecoUnitario;
+            Marca = produto.Marca;
+            Modelo = produto.Modelo;
+            QuantidadeDisponivel = produto.QuantidadeEmEstoque;
+
+            btnEdit.Dispose();
+            btnDelete.Image = Properties.Resources.icons8_arrow_24;
+            btnDelete.Click += deletarItem;
+            btnDelete.Click += (sender, e) => Excluir?.Invoke(this, e);
+        }
+
         public int Id
         {
             get { return int.Parse(labelID.Text); }
@@ -61,7 +79,7 @@ namespace Mercadinho.GRIDs
             get { return labelDescricao.Text; }
             set
             {
-                labelDescricao.Text = value.Length > 23 ? value.Substring(0, 20) + "..." : value;
+                labelDescricao.Text = value.Length > 20 ? value.Substring(0, 17) + "..." : value;
                 dropDownText.SetToolTip(labelDescricao, value);
             }
         }
@@ -102,11 +120,11 @@ namespace Mercadinho.GRIDs
 
         public int QuantidadeCliente
         {
-            get { return int.Parse(labelQtdCliente.Text); }
+            get { return int.Parse(txtBoxQtdCleinte.Text); }
             set 
-            { 
-                labelQtdCliente.Text = value.ToString();
-                dropDownText.SetToolTip(labelQtdCliente, value.ToString());
+            {
+                txtBoxQtdCleinte.Text = value.ToString();
+                dropDownText.SetToolTip(txtBoxQtdCleinte, value.ToString());
             }
         }
 

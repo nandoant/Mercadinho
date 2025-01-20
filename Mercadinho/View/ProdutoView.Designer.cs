@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tabControlProdutos = new System.Windows.Forms.TabControl();
             this.tabListaProdutos = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
             this.btnPaginas = new System.Windows.Forms.Button();
             this.btnVoltar = new ReaLTaiizor.Controls.Button();
             this.btnAvancar = new ReaLTaiizor.Controls.Button();
@@ -61,16 +62,6 @@
             this.txtBoxModelo = new ReaLTaiizor.Controls.CyberTextBox();
             this.txtBoxMarca = new ReaLTaiizor.Controls.CyberTextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnEdit = new ReaLTaiizor.Controls.Button();
-            this.btnDelete = new ReaLTaiizor.Controls.Button();
-            this.labelDescricao = new System.Windows.Forms.Label();
-            this.labelPreco = new System.Windows.Forms.Label();
-            this.labelModelo = new System.Windows.Forms.Label();
-            this.labelMarca = new System.Windows.Forms.Label();
-            this.labelNome = new System.Windows.Forms.Label();
-            this.labelID = new System.Windows.Forms.Label();
-            this.Panel = new ReaLTaiizor.Controls.CyberTextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.tabControlProdutos.SuspendLayout();
             this.tabListaProdutos.SuspendLayout();
             this.tabDetalhesProduto.SuspendLayout();
@@ -85,7 +76,7 @@
             this.tabControlProdutos.Controls.Add(this.tabListaProdutos);
             this.tabControlProdutos.Controls.Add(this.tabDetalhesProduto);
             this.tabControlProdutos.Location = new System.Drawing.Point(0, 0);
-            this.tabControlProdutos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControlProdutos.Margin = new System.Windows.Forms.Padding(2);
             this.tabControlProdutos.Name = "tabControlProdutos";
             this.tabControlProdutos.SelectedIndex = 0;
             this.tabControlProdutos.Size = new System.Drawing.Size(850, 528);
@@ -95,15 +86,6 @@
             // 
             this.tabListaProdutos.BackColor = System.Drawing.Color.White;
             this.tabListaProdutos.Controls.Add(this.label13);
-            this.tabListaProdutos.Controls.Add(this.btnEdit);
-            this.tabListaProdutos.Controls.Add(this.btnDelete);
-            this.tabListaProdutos.Controls.Add(this.labelDescricao);
-            this.tabListaProdutos.Controls.Add(this.labelPreco);
-            this.tabListaProdutos.Controls.Add(this.labelModelo);
-            this.tabListaProdutos.Controls.Add(this.labelMarca);
-            this.tabListaProdutos.Controls.Add(this.labelNome);
-            this.tabListaProdutos.Controls.Add(this.labelID);
-            this.tabListaProdutos.Controls.Add(this.Panel);
             this.tabListaProdutos.Controls.Add(this.btnPaginas);
             this.tabListaProdutos.Controls.Add(this.btnVoltar);
             this.tabListaProdutos.Controls.Add(this.btnAvancar);
@@ -119,13 +101,26 @@
             this.tabListaProdutos.Controls.Add(this.btnPesquisar);
             this.tabListaProdutos.Controls.Add(this.btnNovoProduto);
             this.tabListaProdutos.Location = new System.Drawing.Point(4, 4);
-            this.tabListaProdutos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabListaProdutos.Margin = new System.Windows.Forms.Padding(2);
             this.tabListaProdutos.Name = "tabListaProdutos";
-            this.tabListaProdutos.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabListaProdutos.Padding = new System.Windows.Forms.Padding(2);
             this.tabListaProdutos.Size = new System.Drawing.Size(842, 502);
             this.tabListaProdutos.TabIndex = 0;
             this.tabListaProdutos.Text = "Lista de Produtos";
             this.tabListaProdutos.Click += new System.EventHandler(this.tabListaProdutos_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(628, 52);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(103, 19);
+            this.label13.TabIndex = 80;
+            this.label13.Text = "Qtd Disponivel";
             // 
             // btnPaginas
             // 
@@ -182,7 +177,7 @@
             // GridProdutos
             // 
             this.GridProdutos.Location = new System.Drawing.Point(8, 77);
-            this.GridProdutos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GridProdutos.Margin = new System.Windows.Forms.Padding(2);
             this.GridProdutos.Name = "GridProdutos";
             this.GridProdutos.Size = new System.Drawing.Size(829, 410);
             this.GridProdutos.TabIndex = 29;
@@ -375,9 +370,9 @@
             this.tabDetalhesProduto.Controls.Add(this.txtBoxModelo);
             this.tabDetalhesProduto.Controls.Add(this.txtBoxMarca);
             this.tabDetalhesProduto.Location = new System.Drawing.Point(4, 4);
-            this.tabDetalhesProduto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabDetalhesProduto.Margin = new System.Windows.Forms.Padding(2);
             this.tabDetalhesProduto.Name = "tabDetalhesProduto";
-            this.tabDetalhesProduto.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabDetalhesProduto.Padding = new System.Windows.Forms.Padding(2);
             this.tabDetalhesProduto.Size = new System.Drawing.Size(842, 502);
             this.tabDetalhesProduto.TabIndex = 1;
             this.tabDetalhesProduto.Text = "Detalhes do Produto";
@@ -447,7 +442,7 @@
             this.txtBoxDescricao.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxDescricao.ForeColor = System.Drawing.Color.Black;
             this.txtBoxDescricao.Location = new System.Drawing.Point(170, 359);
-            this.txtBoxDescricao.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBoxDescricao.Margin = new System.Windows.Forms.Padding(2);
             this.txtBoxDescricao.Name = "txtBoxDescricao";
             this.txtBoxDescricao.ReadOnly = false;
             this.txtBoxDescricao.Size = new System.Drawing.Size(508, 81);
@@ -474,7 +469,7 @@
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Location = new System.Drawing.Point(442, 461);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(116, 34);
             this.btnCancelar.TabIndex = 19;
@@ -493,7 +488,7 @@
             this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalvar.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.btnSalvar.Location = new System.Drawing.Point(562, 462);
-            this.btnSalvar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSalvar.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnSalvar.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
@@ -653,176 +648,6 @@
             this.txtBoxMarca.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.txtBoxMarca.Timer_RGB = 300;
             // 
-            // btnEdit
-            // 
-            this.btnEdit.BackColor = System.Drawing.Color.White;
-            this.btnEdit.BorderColor = System.Drawing.Color.LightGray;
-            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEdit.EnteredBorderColor = System.Drawing.Color.Black;
-            this.btnEdit.EnteredColor = System.Drawing.Color.Gold;
-            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnEdit.Image = global::Mercadinho.Properties.Resources.icons8_edit_24;
-            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnEdit.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.btnEdit.InactiveColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(739, 82);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.PressedBorderColor = System.Drawing.Color.Goldenrod;
-            this.btnEdit.PressedColor = System.Drawing.Color.Goldenrod;
-            this.btnEdit.Size = new System.Drawing.Size(43, 31);
-            this.btnEdit.TabIndex = 46;
-            this.btnEdit.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.Color.White;
-            this.btnDelete.BorderColor = System.Drawing.Color.LightGray;
-            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDelete.EnteredBorderColor = System.Drawing.Color.Black;
-            this.btnDelete.EnteredColor = System.Drawing.Color.Brown;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnDelete.Image = global::Mercadinho.Properties.Resources.icons8_delete_24__2_;
-            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnDelete.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.btnDelete.InactiveColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(786, 82);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.PressedBorderColor = System.Drawing.Color.DarkRed;
-            this.btnDelete.PressedColor = System.Drawing.Color.DarkRed;
-            this.btnDelete.Size = new System.Drawing.Size(43, 31);
-            this.btnDelete.TabIndex = 45;
-            this.btnDelete.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // labelDescricao
-            // 
-            this.labelDescricao.AutoSize = true;
-            this.labelDescricao.BackColor = System.Drawing.Color.White;
-            this.labelDescricao.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDescricao.ForeColor = System.Drawing.Color.Black;
-            this.labelDescricao.Location = new System.Drawing.Point(487, 88);
-            this.labelDescricao.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelDescricao.Name = "labelDescricao";
-            this.labelDescricao.Size = new System.Drawing.Size(15, 19);
-            this.labelDescricao.TabIndex = 44;
-            this.labelDescricao.Text = "..";
-            // 
-            // labelPreco
-            // 
-            this.labelPreco.AutoSize = true;
-            this.labelPreco.BackColor = System.Drawing.Color.White;
-            this.labelPreco.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.labelPreco.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPreco.ForeColor = System.Drawing.Color.Black;
-            this.labelPreco.Location = new System.Drawing.Point(382, 88);
-            this.labelPreco.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelPreco.Name = "labelPreco";
-            this.labelPreco.Size = new System.Drawing.Size(65, 19);
-            this.labelPreco.TabIndex = 43;
-            this.labelPreco.Text = "R$ 55,90";
-            // 
-            // labelModelo
-            // 
-            this.labelModelo.AutoSize = true;
-            this.labelModelo.BackColor = System.Drawing.Color.White;
-            this.labelModelo.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.labelModelo.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelModelo.ForeColor = System.Drawing.Color.Black;
-            this.labelModelo.Location = new System.Drawing.Point(280, 88);
-            this.labelModelo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelModelo.Name = "labelModelo";
-            this.labelModelo.Size = new System.Drawing.Size(51, 19);
-            this.labelModelo.TabIndex = 42;
-            this.labelModelo.Text = "Bovina";
-            // 
-            // labelMarca
-            // 
-            this.labelMarca.AutoSize = true;
-            this.labelMarca.BackColor = System.Drawing.Color.White;
-            this.labelMarca.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.labelMarca.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMarca.ForeColor = System.Drawing.Color.Black;
-            this.labelMarca.Location = new System.Drawing.Point(193, 88);
-            this.labelMarca.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMarca.Name = "labelMarca";
-            this.labelMarca.Size = new System.Drawing.Size(42, 19);
-            this.labelMarca.TabIndex = 41;
-            this.labelMarca.Text = "Switf";
-            // 
-            // labelNome
-            // 
-            this.labelNome.AutoSize = true;
-            this.labelNome.BackColor = System.Drawing.Color.White;
-            this.labelNome.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.labelNome.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNome.ForeColor = System.Drawing.Color.Black;
-            this.labelNome.Location = new System.Drawing.Point(77, 88);
-            this.labelNome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelNome.Name = "labelNome";
-            this.labelNome.Size = new System.Drawing.Size(45, 19);
-            this.labelNome.TabIndex = 40;
-            this.labelNome.Text = "Carne";
-            // 
-            // labelID
-            // 
-            this.labelID.AutoSize = true;
-            this.labelID.BackColor = System.Drawing.Color.White;
-            this.labelID.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.labelID.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelID.ForeColor = System.Drawing.Color.Black;
-            this.labelID.Location = new System.Drawing.Point(17, 88);
-            this.labelID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(23, 19);
-            this.labelID.TabIndex = 39;
-            this.labelID.Text = "01";
-            // 
-            // Panel
-            // 
-            this.Panel.Alpha = 20;
-            this.Panel.BackColor = System.Drawing.Color.Transparent;
-            this.Panel.Background_WidthPen = 1F;
-            this.Panel.BackgroundPen = true;
-            this.Panel.ColorBackground = System.Drawing.Color.White;
-            this.Panel.ColorBackground_Pen = System.Drawing.Color.LightGray;
-            this.Panel.ColorLighting = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(200)))), ((int)(((byte)(238)))));
-            this.Panel.ColorPen_1 = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(200)))), ((int)(((byte)(238)))));
-            this.Panel.ColorPen_2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
-            this.Panel.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            this.Panel.Enabled = false;
-            this.Panel.Font = new System.Drawing.Font("Segoe UI Symbol", 10F);
-            this.Panel.ForeColor = System.Drawing.Color.Brown;
-            this.Panel.Lighting = false;
-            this.Panel.LinearGradientPen = false;
-            this.Panel.Location = new System.Drawing.Point(7, 77);
-            this.Panel.Margin = new System.Windows.Forms.Padding(0);
-            this.Panel.Name = "Panel";
-            this.Panel.PenWidth = 15;
-            this.Panel.RGB = false;
-            this.Panel.Rounding = true;
-            this.Panel.RoundingInt = 10;
-            this.Panel.Size = new System.Drawing.Size(829, 41);
-            this.Panel.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.Panel.TabIndex = 38;
-            this.Panel.Tag = "Cyber";
-            this.Panel.TextButton = "";
-            this.Panel.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.Panel.Timer_RGB = 300;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(628, 52);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(103, 19);
-            this.label13.TabIndex = 80;
-            this.label13.Text = "Qtd Disponivel";
-            // 
             // ProdutoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -830,7 +655,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(850, 534);
             this.Controls.Add(this.tabControlProdutos);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ProdutoView";
             this.Text = "ProdutoView";
             this.Load += new System.EventHandler(this.ProdutoView_Load);
@@ -877,15 +702,6 @@
         private ReaLTaiizor.Controls.RichTextBoxEdit txtBoxDescricao;
         private System.Windows.Forms.Label label7;
         private ReaLTaiizor.Controls.CyberTextBox txtBoxModelo;
-        private ReaLTaiizor.Controls.Button btnEdit;
-        private ReaLTaiizor.Controls.Button btnDelete;
-        private System.Windows.Forms.Label labelDescricao;
-        private System.Windows.Forms.Label labelPreco;
-        private System.Windows.Forms.Label labelModelo;
-        private System.Windows.Forms.Label labelMarca;
-        private System.Windows.Forms.Label labelNome;
-        private System.Windows.Forms.Label labelID;
-        private ReaLTaiizor.Controls.CyberTextBox Panel;
         private System.Windows.Forms.Label label13;
     }
 }
