@@ -55,7 +55,7 @@
             this.cyberTextBox1 = new ReaLTaiizor.Controls.CyberTextBox();
             this.txtBoxCliente = new ReaLTaiizor.Controls.CyberTextBox();
             this.btnPesquisarCliente = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabEscolherProdutos = new System.Windows.Forms.TabPage();
             this.labelPagina = new System.Windows.Forms.Label();
             this.labelCarrinho = new System.Windows.Forms.Label();
             this.labelProdutos = new System.Windows.Forms.Label();
@@ -90,7 +90,7 @@
             this.tabControlClientes.SuspendLayout();
             this.tabListaVendas.SuspendLayout();
             this.tabDetalhesClientes.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabEscolherProdutos.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnPaginasV
@@ -301,7 +301,7 @@
             this.tabControlClientes.Alignment = System.Windows.Forms.TabAlignment.Bottom;
             this.tabControlClientes.Controls.Add(this.tabListaVendas);
             this.tabControlClientes.Controls.Add(this.tabDetalhesClientes);
-            this.tabControlClientes.Controls.Add(this.tabPage1);
+            this.tabControlClientes.Controls.Add(this.tabEscolherProdutos);
             this.tabControlClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlClientes.Location = new System.Drawing.Point(0, 0);
             this.tabControlClientes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -550,47 +550,47 @@
             this.btnPesquisarCliente.Text = "Pesquisar";
             this.btnPesquisarCliente.UseVisualStyleBackColor = true;
             // 
-            // tabPage1
+            // tabEscolherProdutos
             // 
-            this.tabPage1.Controls.Add(this.labelPagina);
-            this.tabPage1.Controls.Add(this.labelCarrinho);
-            this.tabPage1.Controls.Add(this.labelProdutos);
-            this.tabPage1.Controls.Add(this.button5);
-            this.tabPage1.Controls.Add(this.cyberTextBox6);
-            this.tabPage1.Controls.Add(this.btnFinalizar);
-            this.tabPage1.Controls.Add(this.btn_Voltar);
-            this.tabPage1.Controls.Add(this.label25);
-            this.tabPage1.Controls.Add(this.labelTotalProdutos);
-            this.tabPage1.Controls.Add(this.label23);
-            this.tabPage1.Controls.Add(this.labelTotalVenda);
-            this.tabPage1.Controls.Add(this.label20);
-            this.tabPage1.Controls.Add(this.labelClienteNome);
-            this.tabPage1.Controls.Add(this.label18);
-            this.tabPage1.Controls.Add(this.cyberTextBox4);
-            this.tabPage1.Controls.Add(this.label17);
-            this.tabPage1.Controls.Add(this.label16);
-            this.tabPage1.Controls.Add(this.label12);
-            this.tabPage1.Controls.Add(this.GridProdutos);
-            this.tabPage1.Controls.Add(this.btnPaginasP);
-            this.tabPage1.Controls.Add(this.label10);
-            this.tabPage1.Controls.Add(this.btnVoltarP);
-            this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Controls.Add(this.btnAvancarP);
-            this.tabPage1.Controls.Add(this.txtBoxProduto);
-            this.tabPage1.Controls.Add(this.label13);
-            this.tabPage1.Controls.Add(this.btnPesquisarProduto);
-            this.tabPage1.Controls.Add(this.label14);
-            this.tabPage1.Controls.Add(this.label15);
-            this.tabPage1.Controls.Add(this.cyberTextBox2);
-            this.tabPage1.Controls.Add(this.cyberTextBox5);
-            this.tabPage1.Location = new System.Drawing.Point(4, 4);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(1131, 649);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "Escolher Produtos";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabEscolherProdutos.Controls.Add(this.labelPagina);
+            this.tabEscolherProdutos.Controls.Add(this.labelCarrinho);
+            this.tabEscolherProdutos.Controls.Add(this.labelProdutos);
+            this.tabEscolherProdutos.Controls.Add(this.button5);
+            this.tabEscolherProdutos.Controls.Add(this.cyberTextBox6);
+            this.tabEscolherProdutos.Controls.Add(this.btnFinalizar);
+            this.tabEscolherProdutos.Controls.Add(this.btn_Voltar);
+            this.tabEscolherProdutos.Controls.Add(this.label25);
+            this.tabEscolherProdutos.Controls.Add(this.labelTotalProdutos);
+            this.tabEscolherProdutos.Controls.Add(this.label23);
+            this.tabEscolherProdutos.Controls.Add(this.labelTotalVenda);
+            this.tabEscolherProdutos.Controls.Add(this.label20);
+            this.tabEscolherProdutos.Controls.Add(this.labelClienteNome);
+            this.tabEscolherProdutos.Controls.Add(this.label18);
+            this.tabEscolherProdutos.Controls.Add(this.cyberTextBox4);
+            this.tabEscolherProdutos.Controls.Add(this.label17);
+            this.tabEscolherProdutos.Controls.Add(this.label16);
+            this.tabEscolherProdutos.Controls.Add(this.label12);
+            this.tabEscolherProdutos.Controls.Add(this.GridProdutos);
+            this.tabEscolherProdutos.Controls.Add(this.btnPaginasP);
+            this.tabEscolherProdutos.Controls.Add(this.label10);
+            this.tabEscolherProdutos.Controls.Add(this.btnVoltarP);
+            this.tabEscolherProdutos.Controls.Add(this.label11);
+            this.tabEscolherProdutos.Controls.Add(this.btnAvancarP);
+            this.tabEscolherProdutos.Controls.Add(this.txtBoxProduto);
+            this.tabEscolherProdutos.Controls.Add(this.label13);
+            this.tabEscolherProdutos.Controls.Add(this.btnPesquisarProduto);
+            this.tabEscolherProdutos.Controls.Add(this.label14);
+            this.tabEscolherProdutos.Controls.Add(this.label15);
+            this.tabEscolherProdutos.Controls.Add(this.cyberTextBox2);
+            this.tabEscolherProdutos.Controls.Add(this.cyberTextBox5);
+            this.tabEscolherProdutos.Location = new System.Drawing.Point(4, 4);
+            this.tabEscolherProdutos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabEscolherProdutos.Name = "tabEscolherProdutos";
+            this.tabEscolherProdutos.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabEscolherProdutos.Size = new System.Drawing.Size(1131, 649);
+            this.tabEscolherProdutos.TabIndex = 2;
+            this.tabEscolherProdutos.Text = "Escolher Produtos";
+            this.tabEscolherProdutos.UseVisualStyleBackColor = true;
             // 
             // labelPagina
             // 
@@ -1106,8 +1106,8 @@
             this.tabListaVendas.PerformLayout();
             this.tabDetalhesClientes.ResumeLayout(false);
             this.tabDetalhesClientes.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tabEscolherProdutos.ResumeLayout(false);
+            this.tabEscolherProdutos.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1130,7 +1130,7 @@
         private System.Windows.Forms.TabPage tabListaVendas;
         private System.Windows.Forms.TabPage tabDetalhesClientes;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabEscolherProdutos;
         private System.Windows.Forms.Button btnPaginasC;
         private ReaLTaiizor.Controls.Button btnVoltarC;
         private ReaLTaiizor.Controls.Button btnAvancarC;

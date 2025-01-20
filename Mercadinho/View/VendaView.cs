@@ -77,7 +77,7 @@ namespace Mercadinho.View
 
     public void MostrarProdutos()
     {
-        tabControlClientes.SelectedTab = tabPage1;
+        tabControlClientes.SelectedTab = tabEscolherProdutos;
     }
 
         public void ExibirClientes(List<Cliente> clientes)
