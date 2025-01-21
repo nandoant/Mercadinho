@@ -13,6 +13,8 @@ namespace Mercadinho.View
 {
     public partial class VendaView : Form, IListaVendaView, ISelecaoClienteView, IVendaMainView
     {
+        #region Fields and Properties
+        private static VendaView _instance;
         private readonly VendaMainPresenter _mainPresenter;
         private Cliente _clienteSelecionado;
         private int _paginaClienteAtual = 1;
@@ -20,11 +22,19 @@ namespace Mercadinho.View
         private int _paginaAtual = 1;
         private IClienteRepository _clienteRepository = new ClienteRepository();
 
-    string ISelecaoClienteView.TextoPesquisa 
-    { 
-        get => txtBoxCliente.textBox.Text; 
-        set => txtBoxCliente.textBox.Text = value; 
-    }
+        public Cliente ClienteSelecionado 
+        { 
+            get => _clienteSelecionado;
+            set => _clienteSelecionado = value;
+        }
+        #endregion
+
+        #region Interface Implementations
+        string ISelecaoClienteView.TextoPesquisa 
+        { 
+            get => txtBoxCliente.textBox.Text; 
+            set => txtBoxCliente.textBox.Text = value; 
+        }
 
         int ISelecaoClienteView.PaginaAtual 
         { 
@@ -35,16 +45,11 @@ namespace Mercadinho.View
                 btnPaginasC.Text = value.ToString();
             }
         }
+
         public string TextoPesquisa 
         { 
             get => txtBoxVendaV.textBox.Text;
             set => txtBoxVendaV.textBox.Text = value;
-        }
-
-        public Cliente ClienteSelecionado 
-        { 
-            get => _clienteSelecionado;
-            set => _clienteSelecionado = value;
         }
 
         public int PaginaAtual
@@ -56,7 +61,9 @@ namespace Mercadinho.View
                 btnPaginasV.Text = value.ToString();
             }
         }
+        #endregion
 
+        #region Events
         public event EventHandler Pesquisar;
         public event EventHandler ProximaPagina;
         public event EventHandler PaginaAnterior;
@@ -64,34 +71,9 @@ namespace Mercadinho.View
         public event EventHandler<int> DeletarVenda;
         public event EventHandler VerProdutos;
         public event EventHandler<Cliente> OnClienteSelecionado;
+        #endregion
 
-    public void MostrarListaVendas()
-    {
-        tabControlClientes.SelectedTab = tabListaVendas;
-    }
-
-    public void MostrarSelecaoCliente()
-    {
-        tabControlClientes.SelectedTab = tabDetalhesClientes;
-    }
-
-    public void MostrarProdutos()
-    {
-        tabControlClientes.SelectedTab = tabEscolherProdutos;
-    }
-
-        public void ExibirClientes(List<Cliente> clientes)
-    {
-        GridClientes.Controls.Clear();
-        foreach (var cliente in clientes)
-        {
-            var lstCliente = new LstCliente(cliente, true);
-            lstCliente.Excluir += (s, e) => OnClienteSelecionado?.Invoke(this, cliente);
-            lstCliente.Excluir += (s, e) => labelClienteNome.Text = _clienteSelecionado.Nome;
-            GridClientes.Controls.Add(lstCliente);
-        }
-    }
-
+        #region Constructor and Initialization
         public VendaView()
         {
             InitializeComponent();
@@ -100,55 +82,13 @@ namespace Mercadinho.View
             ConfigurarClienteSelecao();
 
             _mainPresenter = new VendaMainPresenter(
-            this,
-            this,
-            this,
-            _clienteRepository,
-            new VendaRepository()
+                this,
+                this,
+                this,
+                _clienteRepository,
+                new VendaRepository()
             );
             btnPaginasC.Enabled = false;
-        }
-
-        public void AtualizarPaginacaoClientes(bool temProxima, bool temAnterior)
-        {
-            if (!temProxima)
-            {
-                btnAvancarC.InactiveColor = Color.LightGray;
-                btnAvancarC.BorderColor = Color.LightGray;
-            }
-            else 
-            {
-                btnAvancarC.InactiveColor = Color.FromArgb(32, 34, 37);
-                btnAvancarC.BorderColor = Color.FromArgb(32, 34, 37);
-            }
-
-            if (!temAnterior)
-            {
-                btnVoltarC.InactiveColor = Color.LightGray;
-                btnVoltarC.BorderColor = Color.LightGray;
-            }
-            else
-            {
-                btnVoltarC.InactiveColor = Color.FromArgb(32, 34, 37);
-                btnVoltarC.BorderColor = Color.FromArgb(32, 34, 37);
-            }
-            
-            btnAvancarC.Enabled = temProxima;
-            btnVoltarC.Enabled = temAnterior;
-        }
-
-
-        private void ConfigurarClienteSelecao()
-        {
-            // Adiciona eventos específicos para seleção de cliente
-            btnPesquisarCliente.Click += (s, e) => Pesquisar?.Invoke(this, EventArgs.Empty);
-            btnAvancarC.Click += (s, e) => ProximaPagina?.Invoke(this, EventArgs.Empty);
-            btnVoltarC.Click += (s, e) => PaginaAnterior?.Invoke(this, EventArgs.Empty);
-            txtBoxCliente.textBox.KeyDown += (s, e) => 
-            { 
-                if (e.KeyCode == Keys.Enter) 
-                    Pesquisar?.Invoke(this, EventArgs.Empty); 
-            };
         }
 
         private void ConfigurarFormulario()
@@ -169,7 +109,48 @@ namespace Mercadinho.View
                     Pesquisar?.Invoke(this, EventArgs.Empty); 
             };
             GridVendas.Controls.OfType<LstVenda>().ToList().ForEach(lst => 
-            lst.VerProdutos += (s, e) => VerProdutos?.Invoke(s, e));
+                lst.VerProdutos += (s, e) => VerProdutos?.Invoke(s, e));
+        }
+
+        private void ConfigurarClienteSelecao()
+        {
+            btnPesquisarCliente.Click += (s, e) => Pesquisar?.Invoke(this, EventArgs.Empty);
+            btnAvancarC.Click += (s, e) => ProximaPagina?.Invoke(this, EventArgs.Empty);
+            btnVoltarC.Click += (s, e) => PaginaAnterior?.Invoke(this, EventArgs.Empty);
+            txtBoxCliente.textBox.KeyDown += (s, e) => 
+            { 
+                if (e.KeyCode == Keys.Enter) 
+                    Pesquisar?.Invoke(this, EventArgs.Empty); 
+            };
+        }
+        #endregion
+
+        #region Core Methods
+        public void MostrarListaVendas()
+        {
+            tabControlClientes.SelectedTab = tabListaVendas;
+        }
+
+        public void MostrarSelecaoCliente()
+        {
+            tabControlClientes.SelectedTab = tabDetalhesClientes;
+        }
+
+        public void MostrarProdutos()
+        {
+            tabControlClientes.SelectedTab = tabEscolherProdutos;
+        }
+
+        public void ExibirClientes(List<Cliente> clientes)
+        {
+            GridClientes.Controls.Clear();
+            foreach (var cliente in clientes)
+            {
+                var lstCliente = new LstCliente(cliente, true);
+                lstCliente.Excluir += (s, e) => OnClienteSelecionado?.Invoke(this, cliente);
+                lstCliente.Excluir += (s, e) => labelClienteNome.Text = _clienteSelecionado.Nome;
+                GridClientes.Controls.Add(lstCliente);
+            }
         }
 
         public void ExibirVendas(List<Venda> vendas)
@@ -185,9 +166,29 @@ namespace Mercadinho.View
                 );
 
                 lstVenda.Deletar += (s, e) => DeletarVenda?.Invoke(this, venda.Id);
-                lstVenda.VerProdutos += (s, e) => VerProdutos?.Invoke(lstVenda, e); // Add this line
+                lstVenda.VerProdutos += (s, e) => VerProdutos?.Invoke(lstVenda, e);
                 GridVendas.Controls.Add(lstVenda);
             }
+        }
+        #endregion
+
+        #region Utility Methods
+        public static VendaView GetInstance(Form parentContainer)
+        {
+            if (_instance == null || _instance.IsDisposed)
+            {
+                _instance = new VendaView();
+                _instance.MdiParent = parentContainer;
+                _instance.FormBorderStyle = FormBorderStyle.None;
+                _instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (_instance.WindowState == FormWindowState.Minimized)
+                    _instance.WindowState = FormWindowState.Normal;
+                _instance.BringToFront();
+            }
+            return _instance;
         }
 
         private string GetClienteName(int clienteId)
@@ -231,23 +232,47 @@ namespace Mercadinho.View
             btnVoltarV.Enabled = temPaginaAnterior;
         }
 
-        private static VendaView _instance;
-        public static VendaView GetInstance(Form parentContainer)
+        public void AtualizarPaginacaoClientes(bool temProxima, bool temAnterior)
         {
-            if (_instance == null || _instance.IsDisposed)
+            if (!temProxima)
             {
-                _instance = new VendaView();
-                _instance.MdiParent = parentContainer;
-                _instance.FormBorderStyle = FormBorderStyle.None;
-                _instance.Dock = DockStyle.Fill;
+                btnAvancarC.InactiveColor = Color.LightGray;
+                btnAvancarC.BorderColor = Color.LightGray;
+            }
+            else 
+            {
+                btnAvancarC.InactiveColor = Color.FromArgb(32, 34, 37);
+                btnAvancarC.BorderColor = Color.FromArgb(32, 34, 37);
+            }
+
+            if (!temAnterior)
+            {
+                btnVoltarC.InactiveColor = Color.LightGray;
+                btnVoltarC.BorderColor = Color.LightGray;
             }
             else
             {
-                if (_instance.WindowState == FormWindowState.Minimized)
-                    _instance.WindowState = FormWindowState.Normal;
-                _instance.BringToFront();
+                btnVoltarC.InactiveColor = Color.FromArgb(32, 34, 37);
+                btnVoltarC.BorderColor = Color.FromArgb(32, 34, 37);
             }
-            return _instance;
+            
+            btnAvancarC.Enabled = temProxima;
+            btnVoltarC.Enabled = temAnterior;
         }
+        #endregion
+
+        #region Finalizar Venda
+        
+
+        #endregion
+
+        #region Empty Event Handlers
+        private void GridVendas_Paint(object sender, PaintEventArgs e) { }
+        private void label2_Click(object sender, EventArgs e) { }
+        private void label1_Click(object sender, EventArgs e) { }
+        private void label3_Click(object sender, EventArgs e) { }
+        private void label5_Click(object sender, EventArgs e) { }
+        private void label4_Click(object sender, EventArgs e) { }
+        #endregion
     }
 }

@@ -152,6 +152,7 @@
             this.GridVendas.Name = "GridVendas";
             this.GridVendas.Size = new System.Drawing.Size(1105, 532);
             this.GridVendas.TabIndex = 29;
+            this.GridVendas.Paint += new System.Windows.Forms.PaintEventHandler(this.GridVendas_Paint);
             // 
             // label4
             // 
@@ -165,6 +166,7 @@
             this.label4.TabIndex = 17;
             this.label4.Text = "Total";
             this.label4.UseCompatibleTextRendering = true;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -177,6 +179,7 @@
             this.label3.Size = new System.Drawing.Size(46, 23);
             this.label3.TabIndex = 16;
             this.label3.Text = "Data";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -189,6 +192,7 @@
             this.label2.Size = new System.Drawing.Size(140, 23);
             this.label2.TabIndex = 15;
             this.label2.Text = "Nome do Cliente";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -201,6 +205,7 @@
             this.label1.Size = new System.Drawing.Size(27, 23);
             this.label1.TabIndex = 14;
             this.label1.Text = "ID";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // cyberTextBox3
             // 
@@ -345,6 +350,7 @@
             this.label5.Size = new System.Drawing.Size(79, 23);
             this.label5.TabIndex = 33;
             this.label5.Text = "Produtos";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // tabDetalhesClientes
             // 

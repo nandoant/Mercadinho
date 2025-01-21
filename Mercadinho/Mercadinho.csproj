@@ -143,6 +143,12 @@
     <Compile Include="GRIDs\LstVenda.Designer.cs">
       <DependentUpon>LstVenda.cs</DependentUpon>
     </Compile>
+    <Compile Include="GRIDs\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GRIDs\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Cliente.cs" />
     <Compile Include="Model\Produto.cs" />
     <Compile Include="Model\Venda.cs" />
@@ -208,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GRIDs\LstVenda.resx">
       <DependentUpon>LstVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GRIDs\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
