@@ -95,10 +95,9 @@
             // 
             // btnPaginasV
             // 
-            this.btnPaginasV.Location = new System.Drawing.Point(59, 9);
-            this.btnPaginasV.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPaginasV.Location = new System.Drawing.Point(44, 7);
             this.btnPaginasV.Name = "btnPaginasV";
-            this.btnPaginasV.Size = new System.Drawing.Size(39, 39);
+            this.btnPaginasV.Size = new System.Drawing.Size(29, 32);
             this.btnPaginasV.TabIndex = 32;
             this.btnPaginasV.Text = "1";
             this.btnPaginasV.UseVisualStyleBackColor = true;
@@ -114,12 +113,11 @@
             this.btnVoltarV.Image = null;
             this.btnVoltarV.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVoltarV.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.btnVoltarV.Location = new System.Drawing.Point(12, 9);
-            this.btnVoltarV.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVoltarV.Location = new System.Drawing.Point(9, 7);
             this.btnVoltarV.Name = "btnVoltarV";
             this.btnVoltarV.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnVoltarV.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btnVoltarV.Size = new System.Drawing.Size(37, 38);
+            this.btnVoltarV.Size = new System.Drawing.Size(28, 31);
             this.btnVoltarV.TabIndex = 31;
             this.btnVoltarV.Text = "<";
             this.btnVoltarV.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -135,22 +133,21 @@
             this.btnAvancarV.Image = null;
             this.btnAvancarV.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAvancarV.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.btnAvancarV.Location = new System.Drawing.Point(105, 9);
-            this.btnAvancarV.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAvancarV.Location = new System.Drawing.Point(79, 7);
             this.btnAvancarV.Name = "btnAvancarV";
             this.btnAvancarV.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnAvancarV.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btnAvancarV.Size = new System.Drawing.Size(37, 38);
+            this.btnAvancarV.Size = new System.Drawing.Size(28, 31);
             this.btnAvancarV.TabIndex = 30;
             this.btnAvancarV.Text = ">";
             this.btnAvancarV.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
             // GridVendas
             // 
-            this.GridVendas.Location = new System.Drawing.Point(11, 95);
-            this.GridVendas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.GridVendas.Location = new System.Drawing.Point(8, 77);
+            this.GridVendas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GridVendas.Name = "GridVendas";
-            this.GridVendas.Size = new System.Drawing.Size(1105, 532);
+            this.GridVendas.Size = new System.Drawing.Size(829, 432);
             this.GridVendas.TabIndex = 29;
             this.GridVendas.Paint += new System.Windows.Forms.PaintEventHandler(this.GridVendas_Paint);
             // 
@@ -160,9 +157,10 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(957, 64);
+            this.label4.Location = new System.Drawing.Point(718, 52);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 28);
+            this.label4.Size = new System.Drawing.Size(37, 23);
             this.label4.TabIndex = 17;
             this.label4.Text = "Total";
             this.label4.UseCompatibleTextRendering = true;
@@ -174,9 +172,10 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(693, 63);
+            this.label3.Location = new System.Drawing.Point(520, 51);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 23);
+            this.label3.Size = new System.Drawing.Size(38, 19);
             this.label3.TabIndex = 16;
             this.label3.Text = "Data";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -187,9 +186,10 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(147, 65);
+            this.label2.Location = new System.Drawing.Point(110, 53);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 23);
+            this.label2.Size = new System.Drawing.Size(115, 19);
             this.label2.TabIndex = 15;
             this.label2.Text = "Nome do Cliente";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -200,9 +200,10 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(21, 63);
+            this.label1.Location = new System.Drawing.Point(16, 51);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(27, 23);
+            this.label1.Size = new System.Drawing.Size(23, 19);
             this.label1.TabIndex = 14;
             this.label1.Text = "ID";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -220,18 +221,17 @@
             this.cyberTextBox3.ColorPen_2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
             this.cyberTextBox3.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             this.cyberTextBox3.Enabled = false;
-            this.cyberTextBox3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.cyberTextBox3.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
             this.cyberTextBox3.ForeColor = System.Drawing.Color.Black;
             this.cyberTextBox3.Lighting = false;
             this.cyberTextBox3.LinearGradientPen = false;
-            this.cyberTextBox3.Location = new System.Drawing.Point(11, 55);
-            this.cyberTextBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.cyberTextBox3.Location = new System.Drawing.Point(8, 45);
             this.cyberTextBox3.Name = "cyberTextBox3";
             this.cyberTextBox3.PenWidth = 15;
             this.cyberTextBox3.RGB = false;
             this.cyberTextBox3.Rounding = true;
             this.cyberTextBox3.RoundingInt = 10;
-            this.cyberTextBox3.Size = new System.Drawing.Size(1105, 39);
+            this.cyberTextBox3.Size = new System.Drawing.Size(829, 32);
             this.cyberTextBox3.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.cyberTextBox3.TabIndex = 13;
             this.cyberTextBox3.Tag = "Cyber";
@@ -251,18 +251,17 @@
             this.txtBoxVendaV.ColorPen_1 = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(200)))), ((int)(((byte)(238)))));
             this.txtBoxVendaV.ColorPen_2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
             this.txtBoxVendaV.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            this.txtBoxVendaV.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.txtBoxVendaV.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
             this.txtBoxVendaV.ForeColor = System.Drawing.Color.DarkGray;
             this.txtBoxVendaV.Lighting = false;
             this.txtBoxVendaV.LinearGradientPen = false;
-            this.txtBoxVendaV.Location = new System.Drawing.Point(151, 7);
-            this.txtBoxVendaV.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBoxVendaV.Location = new System.Drawing.Point(113, 6);
             this.txtBoxVendaV.Name = "txtBoxVendaV";
             this.txtBoxVendaV.PenWidth = 15;
             this.txtBoxVendaV.RGB = false;
             this.txtBoxVendaV.Rounding = true;
             this.txtBoxVendaV.RoundingInt = 17;
-            this.txtBoxVendaV.Size = new System.Drawing.Size(677, 39);
+            this.txtBoxVendaV.Size = new System.Drawing.Size(508, 32);
             this.txtBoxVendaV.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.txtBoxVendaV.TabIndex = 11;
             this.txtBoxVendaV.Tag = "Cyber";
@@ -272,10 +271,9 @@
             // 
             // btnPesquisarV
             // 
-            this.btnPesquisarV.Location = new System.Drawing.Point(837, 7);
-            this.btnPesquisarV.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPesquisarV.Location = new System.Drawing.Point(628, 6);
             this.btnPesquisarV.Name = "btnPesquisarV";
-            this.btnPesquisarV.Size = new System.Drawing.Size(113, 41);
+            this.btnPesquisarV.Size = new System.Drawing.Size(85, 33);
             this.btnPesquisarV.TabIndex = 10;
             this.btnPesquisarV.Text = "Pesquisar";
             this.btnPesquisarV.UseVisualStyleBackColor = true;
@@ -291,12 +289,11 @@
             this.btnNovaVenda.Image = null;
             this.btnNovaVenda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNovaVenda.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.btnNovaVenda.Location = new System.Drawing.Point(957, 9);
-            this.btnNovaVenda.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNovaVenda.Location = new System.Drawing.Point(718, 7);
             this.btnNovaVenda.Name = "btnNovaVenda";
             this.btnNovaVenda.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnNovaVenda.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btnNovaVenda.Size = new System.Drawing.Size(155, 38);
+            this.btnNovaVenda.Size = new System.Drawing.Size(116, 31);
             this.btnNovaVenda.TabIndex = 7;
             this.btnNovaVenda.Text = "+ Nova Venda";
             this.btnNovaVenda.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -309,10 +306,10 @@
             this.tabControlClientes.Controls.Add(this.tabEscolherProdutos);
             this.tabControlClientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlClientes.Location = new System.Drawing.Point(0, 0);
-            this.tabControlClientes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabControlClientes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabControlClientes.Name = "tabControlClientes";
             this.tabControlClientes.SelectedIndex = 0;
-            this.tabControlClientes.Size = new System.Drawing.Size(1139, 678);
+            this.tabControlClientes.Size = new System.Drawing.Size(854, 551);
             this.tabControlClientes.TabIndex = 2;
             // 
             // tabListaVendas
@@ -332,10 +329,10 @@
             this.tabListaVendas.Controls.Add(this.btnPesquisarV);
             this.tabListaVendas.Controls.Add(this.btnNovaVenda);
             this.tabListaVendas.Location = new System.Drawing.Point(4, 4);
-            this.tabListaVendas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabListaVendas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabListaVendas.Name = "tabListaVendas";
-            this.tabListaVendas.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabListaVendas.Size = new System.Drawing.Size(1131, 649);
+            this.tabListaVendas.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabListaVendas.Size = new System.Drawing.Size(846, 525);
             this.tabListaVendas.TabIndex = 0;
             this.tabListaVendas.Text = "Lista de Vendas";
             // 
@@ -345,9 +342,10 @@
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(843, 63);
+            this.label5.Location = new System.Drawing.Point(632, 51);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 23);
+            this.label5.Size = new System.Drawing.Size(65, 19);
             this.label5.TabIndex = 33;
             this.label5.Text = "Produtos";
             this.label5.Click += new System.EventHandler(this.label5_Click);
@@ -367,19 +365,18 @@
             this.tabDetalhesClientes.Controls.Add(this.txtBoxCliente);
             this.tabDetalhesClientes.Controls.Add(this.btnPesquisarCliente);
             this.tabDetalhesClientes.Location = new System.Drawing.Point(4, 4);
-            this.tabDetalhesClientes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabDetalhesClientes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabDetalhesClientes.Name = "tabDetalhesClientes";
-            this.tabDetalhesClientes.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabDetalhesClientes.Size = new System.Drawing.Size(1131, 649);
+            this.tabDetalhesClientes.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabDetalhesClientes.Size = new System.Drawing.Size(846, 525);
             this.tabDetalhesClientes.TabIndex = 1;
             this.tabDetalhesClientes.Text = "Escolher Cliente";
             // 
             // btnPaginasC
             // 
-            this.btnPaginasC.Location = new System.Drawing.Point(59, 16);
-            this.btnPaginasC.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPaginasC.Location = new System.Drawing.Point(44, 13);
             this.btnPaginasC.Name = "btnPaginasC";
-            this.btnPaginasC.Size = new System.Drawing.Size(39, 39);
+            this.btnPaginasC.Size = new System.Drawing.Size(29, 32);
             this.btnPaginasC.TabIndex = 44;
             this.btnPaginasC.Text = "1";
             this.btnPaginasC.UseVisualStyleBackColor = true;
@@ -395,12 +392,11 @@
             this.btnVoltarC.Image = null;
             this.btnVoltarC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVoltarC.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.btnVoltarC.Location = new System.Drawing.Point(11, 16);
-            this.btnVoltarC.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVoltarC.Location = new System.Drawing.Point(8, 13);
             this.btnVoltarC.Name = "btnVoltarC";
             this.btnVoltarC.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnVoltarC.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btnVoltarC.Size = new System.Drawing.Size(37, 38);
+            this.btnVoltarC.Size = new System.Drawing.Size(28, 31);
             this.btnVoltarC.TabIndex = 43;
             this.btnVoltarC.Text = "<";
             this.btnVoltarC.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -416,22 +412,21 @@
             this.btnAvancarC.Image = null;
             this.btnAvancarC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAvancarC.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.btnAvancarC.Location = new System.Drawing.Point(104, 16);
-            this.btnAvancarC.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAvancarC.Location = new System.Drawing.Point(78, 13);
             this.btnAvancarC.Name = "btnAvancarC";
             this.btnAvancarC.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnAvancarC.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btnAvancarC.Size = new System.Drawing.Size(37, 38);
+            this.btnAvancarC.Size = new System.Drawing.Size(28, 31);
             this.btnAvancarC.TabIndex = 42;
             this.btnAvancarC.Text = ">";
             this.btnAvancarC.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
             // GridClientes
             // 
-            this.GridClientes.Location = new System.Drawing.Point(11, 102);
-            this.GridClientes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.GridClientes.Location = new System.Drawing.Point(8, 83);
+            this.GridClientes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GridClientes.Name = "GridClientes";
-            this.GridClientes.Size = new System.Drawing.Size(1105, 505);
+            this.GridClientes.Size = new System.Drawing.Size(829, 410);
             this.GridClientes.TabIndex = 41;
             // 
             // label6
@@ -440,9 +435,10 @@
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(828, 69);
+            this.label6.Location = new System.Drawing.Point(621, 56);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 28);
+            this.label6.Size = new System.Drawing.Size(27, 23);
             this.label6.TabIndex = 40;
             this.label6.Text = "Cpf";
             this.label6.UseCompatibleTextRendering = true;
@@ -453,9 +449,10 @@
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(731, 70);
+            this.label7.Location = new System.Drawing.Point(548, 57);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 23);
+            this.label7.Size = new System.Drawing.Size(43, 19);
             this.label7.TabIndex = 39;
             this.label7.Text = "Idade";
             // 
@@ -465,9 +462,10 @@
             this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(147, 71);
+            this.label8.Location = new System.Drawing.Point(110, 58);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(57, 23);
+            this.label8.Size = new System.Drawing.Size(47, 19);
             this.label8.TabIndex = 38;
             this.label8.Text = "Nome";
             // 
@@ -477,9 +475,10 @@
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(20, 70);
+            this.label9.Location = new System.Drawing.Point(15, 57);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(27, 23);
+            this.label9.Size = new System.Drawing.Size(23, 19);
             this.label9.TabIndex = 37;
             this.label9.Text = "ID";
             // 
@@ -500,14 +499,13 @@
             this.cyberTextBox1.ForeColor = System.Drawing.Color.Black;
             this.cyberTextBox1.Lighting = false;
             this.cyberTextBox1.LinearGradientPen = false;
-            this.cyberTextBox1.Location = new System.Drawing.Point(11, 62);
-            this.cyberTextBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.cyberTextBox1.Location = new System.Drawing.Point(8, 50);
             this.cyberTextBox1.Name = "cyberTextBox1";
             this.cyberTextBox1.PenWidth = 15;
             this.cyberTextBox1.RGB = false;
             this.cyberTextBox1.Rounding = true;
             this.cyberTextBox1.RoundingInt = 10;
-            this.cyberTextBox1.Size = new System.Drawing.Size(1105, 39);
+            this.cyberTextBox1.Size = new System.Drawing.Size(829, 32);
             this.cyberTextBox1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.cyberTextBox1.TabIndex = 36;
             this.cyberTextBox1.Tag = "Cyber";
@@ -531,14 +529,13 @@
             this.txtBoxCliente.ForeColor = System.Drawing.Color.DarkGray;
             this.txtBoxCliente.Lighting = false;
             this.txtBoxCliente.LinearGradientPen = false;
-            this.txtBoxCliente.Location = new System.Drawing.Point(149, 14);
-            this.txtBoxCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBoxCliente.Location = new System.Drawing.Point(112, 11);
             this.txtBoxCliente.Name = "txtBoxCliente";
             this.txtBoxCliente.PenWidth = 15;
             this.txtBoxCliente.RGB = false;
             this.txtBoxCliente.Rounding = true;
             this.txtBoxCliente.RoundingInt = 17;
-            this.txtBoxCliente.Size = new System.Drawing.Size(844, 39);
+            this.txtBoxCliente.Size = new System.Drawing.Size(633, 32);
             this.txtBoxCliente.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.txtBoxCliente.TabIndex = 35;
             this.txtBoxCliente.Tag = "Cyber";
@@ -548,10 +545,9 @@
             // 
             // btnPesquisarCliente
             // 
-            this.btnPesquisarCliente.Location = new System.Drawing.Point(1003, 14);
-            this.btnPesquisarCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPesquisarCliente.Location = new System.Drawing.Point(752, 11);
             this.btnPesquisarCliente.Name = "btnPesquisarCliente";
-            this.btnPesquisarCliente.Size = new System.Drawing.Size(113, 41);
+            this.btnPesquisarCliente.Size = new System.Drawing.Size(85, 33);
             this.btnPesquisarCliente.TabIndex = 34;
             this.btnPesquisarCliente.Text = "Pesquisar";
             this.btnPesquisarCliente.UseVisualStyleBackColor = true;
@@ -590,20 +586,20 @@
             this.tabEscolherProdutos.Controls.Add(this.cyberTextBox2);
             this.tabEscolherProdutos.Controls.Add(this.cyberTextBox5);
             this.tabEscolherProdutos.Location = new System.Drawing.Point(4, 4);
-            this.tabEscolherProdutos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabEscolherProdutos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabEscolherProdutos.Name = "tabEscolherProdutos";
-            this.tabEscolherProdutos.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabEscolherProdutos.Size = new System.Drawing.Size(1131, 649);
+            this.tabEscolherProdutos.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabEscolherProdutos.Size = new System.Drawing.Size(846, 525);
             this.tabEscolherProdutos.TabIndex = 2;
             this.tabEscolherProdutos.Text = "Escolher Produtos";
             this.tabEscolherProdutos.UseVisualStyleBackColor = true;
             // 
             // GridProdutos
             // 
-            this.GridProdutos.Location = new System.Drawing.Point(11, 340);
-            this.GridProdutos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.GridProdutos.Location = new System.Drawing.Point(8, 276);
+            this.GridProdutos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GridProdutos.Name = "GridProdutos";
-            this.GridProdutos.Size = new System.Drawing.Size(1105, 258);
+            this.GridProdutos.Size = new System.Drawing.Size(829, 210);
             this.GridProdutos.TabIndex = 30;
             // 
             // labelPagina
@@ -611,9 +607,10 @@
             this.labelPagina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(240)))), ((int)(((byte)(237)))));
             this.labelPagina.Font = new System.Drawing.Font("Segoe UI Semibold", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPagina.ForeColor = System.Drawing.Color.Black;
-            this.labelPagina.Location = new System.Drawing.Point(13, 193);
+            this.labelPagina.Location = new System.Drawing.Point(10, 157);
+            this.labelPagina.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPagina.Name = "labelPagina";
-            this.labelPagina.Size = new System.Drawing.Size(208, 58);
+            this.labelPagina.Size = new System.Drawing.Size(156, 47);
             this.labelPagina.TabIndex = 78;
             this.labelPagina.Text = "Produtos";
             // 
@@ -624,10 +621,9 @@
             this.labelCarrinho.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelCarrinho.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.labelCarrinho.ForeColor = System.Drawing.Color.Black;
-            this.labelCarrinho.Location = new System.Drawing.Point(747, 124);
-            this.labelCarrinho.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCarrinho.Location = new System.Drawing.Point(560, 101);
             this.labelCarrinho.Name = "labelCarrinho";
-            this.labelCarrinho.Size = new System.Drawing.Size(69, 20);
+            this.labelCarrinho.Size = new System.Drawing.Size(52, 15);
             this.labelCarrinho.TabIndex = 77;
             this.labelCarrinho.Text = "Carrinho";
             // 
@@ -638,10 +634,9 @@
             this.labelProdutos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelProdutos.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.labelProdutos.ForeColor = System.Drawing.Color.Black;
-            this.labelProdutos.Location = new System.Drawing.Point(619, 124);
-            this.labelProdutos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelProdutos.Location = new System.Drawing.Point(464, 101);
             this.labelProdutos.Name = "labelProdutos";
-            this.labelProdutos.Size = new System.Drawing.Size(71, 20);
+            this.labelProdutos.Size = new System.Drawing.Size(55, 15);
             this.labelProdutos.TabIndex = 75;
             this.labelProdutos.Text = "Produtos";
             // 
@@ -656,12 +651,11 @@
             this.button5.Image = null;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.InactiveColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(601, 119);
-            this.button5.Margin = new System.Windows.Forms.Padding(4);
+            this.button5.Location = new System.Drawing.Point(451, 97);
             this.button5.Name = "button5";
             this.button5.PressedBorderColor = System.Drawing.Color.White;
             this.button5.PressedColor = System.Drawing.Color.White;
-            this.button5.Size = new System.Drawing.Size(113, 30);
+            this.button5.Size = new System.Drawing.Size(85, 24);
             this.button5.TabIndex = 76;
             this.button5.Text = "Finalizar";
             this.button5.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -679,18 +673,18 @@
             this.cyberTextBox6.ColorPen_2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
             this.cyberTextBox6.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             this.cyberTextBox6.Enabled = false;
-            this.cyberTextBox6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.cyberTextBox6.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Bold);
             this.cyberTextBox6.ForeColor = System.Drawing.Color.White;
             this.cyberTextBox6.Lighting = false;
             this.cyberTextBox6.LinearGradientPen = false;
-            this.cyberTextBox6.Location = new System.Drawing.Point(595, 114);
+            this.cyberTextBox6.Location = new System.Drawing.Point(446, 93);
             this.cyberTextBox6.Margin = new System.Windows.Forms.Padding(0);
             this.cyberTextBox6.Name = "cyberTextBox6";
             this.cyberTextBox6.PenWidth = 15;
             this.cyberTextBox6.RGB = false;
             this.cyberTextBox6.Rounding = true;
             this.cyberTextBox6.RoundingInt = 35;
-            this.cyberTextBox6.Size = new System.Drawing.Size(247, 38);
+            this.cyberTextBox6.Size = new System.Drawing.Size(185, 31);
             this.cyberTextBox6.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.cyberTextBox6.TabIndex = 65;
             this.cyberTextBox6.Tag = "Cyber";
@@ -709,22 +703,20 @@
             this.btnFinalizar.Image = null;
             this.btnFinalizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFinalizar.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.btnFinalizar.Location = new System.Drawing.Point(987, 114);
-            this.btnFinalizar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFinalizar.Location = new System.Drawing.Point(740, 93);
             this.btnFinalizar.Name = "btnFinalizar";
             this.btnFinalizar.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnFinalizar.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btnFinalizar.Size = new System.Drawing.Size(113, 41);
+            this.btnFinalizar.Size = new System.Drawing.Size(85, 33);
             this.btnFinalizar.TabIndex = 63;
             this.btnFinalizar.Text = "Finalizar";
             this.btnFinalizar.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
             // btn_Voltar
             // 
-            this.btn_Voltar.Location = new System.Drawing.Point(865, 114);
-            this.btn_Voltar.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Voltar.Location = new System.Drawing.Point(649, 93);
             this.btn_Voltar.Name = "btn_Voltar";
-            this.btn_Voltar.Size = new System.Drawing.Size(113, 41);
+            this.btn_Voltar.Size = new System.Drawing.Size(85, 33);
             this.btn_Voltar.TabIndex = 61;
             this.btn_Voltar.Text = "Voltar";
             this.btn_Voltar.UseVisualStyleBackColor = true;
@@ -735,9 +727,10 @@
             this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(240)))), ((int)(((byte)(237)))));
             this.label25.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(124)))), ((int)(((byte)(123)))));
-            this.label25.Location = new System.Drawing.Point(671, 82);
+            this.label25.Location = new System.Drawing.Point(503, 67);
+            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(82, 23);
+            this.label25.Size = new System.Drawing.Size(70, 19);
             this.label25.TabIndex = 59;
             this.label25.Text = "Visualizar";
             // 
@@ -746,9 +739,10 @@
             this.labelTotalProdutos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(240)))), ((int)(((byte)(237)))));
             this.labelTotalProdutos.Font = new System.Drawing.Font("Segoe UI Semibold", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTotalProdutos.ForeColor = System.Drawing.Color.Black;
-            this.labelTotalProdutos.Location = new System.Drawing.Point(397, 106);
+            this.labelTotalProdutos.Location = new System.Drawing.Point(298, 86);
+            this.labelTotalProdutos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTotalProdutos.Name = "labelTotalProdutos";
-            this.labelTotalProdutos.Size = new System.Drawing.Size(153, 46);
+            this.labelTotalProdutos.Size = new System.Drawing.Size(115, 37);
             this.labelTotalProdutos.TabIndex = 57;
             this.labelTotalProdutos.Text = "0";
             this.labelTotalProdutos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -759,9 +753,10 @@
             this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(240)))), ((int)(((byte)(237)))));
             this.label23.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(124)))), ((int)(((byte)(123)))));
-            this.label23.Location = new System.Drawing.Point(393, 82);
+            this.label23.Location = new System.Drawing.Point(295, 67);
+            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(144, 23);
+            this.label23.Size = new System.Drawing.Size(119, 19);
             this.label23.TabIndex = 56;
             this.label23.Text = "Total de Produtos";
             // 
@@ -770,9 +765,10 @@
             this.labelTotalVenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(240)))), ((int)(((byte)(237)))));
             this.labelTotalVenda.Font = new System.Drawing.Font("Segoe UI Semibold", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTotalVenda.ForeColor = System.Drawing.Color.Black;
-            this.labelTotalVenda.Location = new System.Drawing.Point(109, 106);
+            this.labelTotalVenda.Location = new System.Drawing.Point(82, 86);
+            this.labelTotalVenda.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTotalVenda.Name = "labelTotalVenda";
-            this.labelTotalVenda.Size = new System.Drawing.Size(208, 46);
+            this.labelTotalVenda.Size = new System.Drawing.Size(156, 37);
             this.labelTotalVenda.TabIndex = 55;
             this.labelTotalVenda.Text = "R$ 0";
             this.labelTotalVenda.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -783,9 +779,10 @@
             this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(240)))), ((int)(((byte)(237)))));
             this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(124)))), ((int)(((byte)(123)))));
-            this.label20.Location = new System.Drawing.Point(148, 82);
+            this.label20.Location = new System.Drawing.Point(111, 67);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(123, 23);
+            this.label20.Size = new System.Drawing.Size(101, 19);
             this.label20.TabIndex = 54;
             this.label20.Text = "Total da Venda";
             // 
@@ -795,9 +792,10 @@
             this.labelClienteNome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(240)))), ((int)(((byte)(237)))));
             this.labelClienteNome.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelClienteNome.ForeColor = System.Drawing.Color.Black;
-            this.labelClienteNome.Location = new System.Drawing.Point(112, 34);
+            this.labelClienteNome.Location = new System.Drawing.Point(84, 28);
+            this.labelClienteNome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelClienteNome.Name = "labelClienteNome";
-            this.labelClienteNome.Size = new System.Drawing.Size(125, 23);
+            this.labelClienteNome.Size = new System.Drawing.Size(106, 19);
             this.labelClienteNome.TabIndex = 53;
             this.labelClienteNome.Text = "Wilson da Silva";
             // 
@@ -807,9 +805,10 @@
             this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(240)))), ((int)(((byte)(237)))));
             this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(124)))), ((int)(((byte)(123)))));
-            this.label18.Location = new System.Drawing.Point(28, 34);
+            this.label18.Location = new System.Drawing.Point(21, 28);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(83, 23);
+            this.label18.Size = new System.Drawing.Size(67, 19);
             this.label18.TabIndex = 52;
             this.label18.Text = "Venda do";
             // 
@@ -826,18 +825,18 @@
             this.cyberTextBox4.ColorPen_2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
             this.cyberTextBox4.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             this.cyberTextBox4.Enabled = false;
-            this.cyberTextBox4.Font = new System.Drawing.Font("Segoe UI", 40F, System.Drawing.FontStyle.Bold);
+            this.cyberTextBox4.Font = new System.Drawing.Font("Segoe UI", 33F, System.Drawing.FontStyle.Bold);
             this.cyberTextBox4.ForeColor = System.Drawing.Color.White;
             this.cyberTextBox4.Lighting = false;
             this.cyberTextBox4.LinearGradientPen = false;
-            this.cyberTextBox4.Location = new System.Drawing.Point(3, 7);
+            this.cyberTextBox4.Location = new System.Drawing.Point(2, 6);
             this.cyberTextBox4.Margin = new System.Windows.Forms.Padding(0);
             this.cyberTextBox4.Name = "cyberTextBox4";
             this.cyberTextBox4.PenWidth = 15;
             this.cyberTextBox4.RGB = false;
             this.cyberTextBox4.Rounding = true;
             this.cyberTextBox4.RoundingInt = 30;
-            this.cyberTextBox4.Size = new System.Drawing.Size(1119, 162);
+            this.cyberTextBox4.Size = new System.Drawing.Size(839, 132);
             this.cyberTextBox4.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.cyberTextBox4.TabIndex = 50;
             this.cyberTextBox4.Tag = "Cyber";
@@ -851,9 +850,10 @@
             this.label17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(941, 310);
+            this.label17.Location = new System.Drawing.Point(706, 252);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(80, 23);
+            this.label17.Size = new System.Drawing.Size(67, 19);
             this.label17.TabIndex = 48;
             this.label17.Text = "Qtd Desj.";
             // 
@@ -863,9 +863,10 @@
             this.label16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(832, 310);
+            this.label16.Location = new System.Drawing.Point(624, 252);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(81, 23);
+            this.label16.Size = new System.Drawing.Size(68, 19);
             this.label16.TabIndex = 47;
             this.label16.Text = "Qtd Disp.";
             // 
@@ -875,19 +876,19 @@
             this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(373, 310);
+            this.label12.Location = new System.Drawing.Point(280, 252);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(68, 28);
+            this.label12.Size = new System.Drawing.Size(54, 23);
             this.label12.TabIndex = 40;
             this.label12.Text = "Modelo";
             this.label12.UseCompatibleTextRendering = true;
             // 
             // btnPaginasP
             // 
-            this.btnPaginasP.Location = new System.Drawing.Point(59, 255);
-            this.btnPaginasP.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPaginasP.Location = new System.Drawing.Point(44, 207);
             this.btnPaginasP.Name = "btnPaginasP";
-            this.btnPaginasP.Size = new System.Drawing.Size(39, 39);
+            this.btnPaginasP.Size = new System.Drawing.Size(29, 32);
             this.btnPaginasP.TabIndex = 46;
             this.btnPaginasP.Text = "1";
             this.btnPaginasP.UseVisualStyleBackColor = true;
@@ -898,9 +899,10 @@
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(649, 310);
+            this.label10.Location = new System.Drawing.Point(487, 252);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(83, 23);
+            this.label10.Size = new System.Drawing.Size(70, 19);
             this.label10.TabIndex = 42;
             this.label10.Text = "Descrição";
             // 
@@ -915,12 +917,11 @@
             this.btnVoltarP.Image = null;
             this.btnVoltarP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVoltarP.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.btnVoltarP.Location = new System.Drawing.Point(13, 256);
-            this.btnVoltarP.Margin = new System.Windows.Forms.Padding(4);
+            this.btnVoltarP.Location = new System.Drawing.Point(10, 208);
             this.btnVoltarP.Name = "btnVoltarP";
             this.btnVoltarP.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnVoltarP.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btnVoltarP.Size = new System.Drawing.Size(37, 38);
+            this.btnVoltarP.Size = new System.Drawing.Size(28, 31);
             this.btnVoltarP.TabIndex = 45;
             this.btnVoltarP.Text = "<";
             this.btnVoltarP.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -931,9 +932,10 @@
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(509, 310);
+            this.label11.Location = new System.Drawing.Point(382, 252);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(53, 23);
+            this.label11.Size = new System.Drawing.Size(44, 19);
             this.label11.TabIndex = 41;
             this.label11.Text = "Preço";
             // 
@@ -948,12 +950,11 @@
             this.btnAvancarP.Image = null;
             this.btnAvancarP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAvancarP.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.btnAvancarP.Location = new System.Drawing.Point(105, 256);
-            this.btnAvancarP.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAvancarP.Location = new System.Drawing.Point(79, 208);
             this.btnAvancarP.Name = "btnAvancarP";
             this.btnAvancarP.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnAvancarP.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btnAvancarP.Size = new System.Drawing.Size(37, 38);
+            this.btnAvancarP.Size = new System.Drawing.Size(28, 31);
             this.btnAvancarP.TabIndex = 44;
             this.btnAvancarP.Text = ">";
             this.btnAvancarP.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -970,18 +971,17 @@
             this.txtBoxProduto.ColorPen_1 = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(200)))), ((int)(((byte)(238)))));
             this.txtBoxProduto.ColorPen_2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
             this.txtBoxProduto.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            this.txtBoxProduto.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.txtBoxProduto.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
             this.txtBoxProduto.ForeColor = System.Drawing.Color.DarkGray;
             this.txtBoxProduto.Lighting = false;
             this.txtBoxProduto.LinearGradientPen = false;
-            this.txtBoxProduto.Location = new System.Drawing.Point(149, 256);
-            this.txtBoxProduto.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBoxProduto.Location = new System.Drawing.Point(112, 208);
             this.txtBoxProduto.Name = "txtBoxProduto";
             this.txtBoxProduto.PenWidth = 15;
             this.txtBoxProduto.RGB = false;
             this.txtBoxProduto.Rounding = true;
             this.txtBoxProduto.RoundingInt = 17;
-            this.txtBoxProduto.Size = new System.Drawing.Size(845, 39);
+            this.txtBoxProduto.Size = new System.Drawing.Size(634, 32);
             this.txtBoxProduto.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.txtBoxProduto.TabIndex = 35;
             this.txtBoxProduto.Tag = "Cyber";
@@ -995,18 +995,18 @@
             this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(257, 310);
+            this.label13.Location = new System.Drawing.Point(193, 252);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(58, 23);
+            this.label13.Size = new System.Drawing.Size(48, 19);
             this.label13.TabIndex = 39;
             this.label13.Text = "Marca";
             // 
             // btnPesquisarProduto
             // 
-            this.btnPesquisarProduto.Location = new System.Drawing.Point(1003, 256);
-            this.btnPesquisarProduto.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPesquisarProduto.Location = new System.Drawing.Point(752, 208);
             this.btnPesquisarProduto.Name = "btnPesquisarProduto";
-            this.btnPesquisarProduto.Size = new System.Drawing.Size(113, 41);
+            this.btnPesquisarProduto.Size = new System.Drawing.Size(85, 33);
             this.btnPesquisarProduto.TabIndex = 34;
             this.btnPesquisarProduto.Text = "Pesquisar";
             this.btnPesquisarProduto.UseVisualStyleBackColor = true;
@@ -1017,9 +1017,10 @@
             this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(101, 310);
+            this.label14.Location = new System.Drawing.Point(76, 252);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(57, 23);
+            this.label14.Size = new System.Drawing.Size(47, 19);
             this.label14.TabIndex = 38;
             this.label14.Text = "Nome";
             // 
@@ -1029,9 +1030,10 @@
             this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(23, 310);
+            this.label15.Location = new System.Drawing.Point(17, 252);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(27, 23);
+            this.label15.Size = new System.Drawing.Size(23, 19);
             this.label15.TabIndex = 37;
             this.label15.Text = "ID";
             // 
@@ -1048,18 +1050,17 @@
             this.cyberTextBox2.ColorPen_2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
             this.cyberTextBox2.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             this.cyberTextBox2.Enabled = false;
-            this.cyberTextBox2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            this.cyberTextBox2.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
             this.cyberTextBox2.ForeColor = System.Drawing.Color.Black;
             this.cyberTextBox2.Lighting = false;
             this.cyberTextBox2.LinearGradientPen = false;
-            this.cyberTextBox2.Location = new System.Drawing.Point(11, 302);
-            this.cyberTextBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.cyberTextBox2.Location = new System.Drawing.Point(8, 245);
             this.cyberTextBox2.Name = "cyberTextBox2";
             this.cyberTextBox2.PenWidth = 15;
             this.cyberTextBox2.RGB = false;
             this.cyberTextBox2.Rounding = true;
             this.cyberTextBox2.RoundingInt = 10;
-            this.cyberTextBox2.Size = new System.Drawing.Size(1105, 39);
+            this.cyberTextBox2.Size = new System.Drawing.Size(829, 32);
             this.cyberTextBox2.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.cyberTextBox2.TabIndex = 36;
             this.cyberTextBox2.Tag = "Cyber";
@@ -1080,18 +1081,18 @@
             this.cyberTextBox5.ColorPen_2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
             this.cyberTextBox5.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             this.cyberTextBox5.Enabled = false;
-            this.cyberTextBox5.Font = new System.Drawing.Font("Segoe UI", 108F, System.Drawing.FontStyle.Bold);
+            this.cyberTextBox5.Font = new System.Drawing.Font("Segoe UI", 87F, System.Drawing.FontStyle.Bold);
             this.cyberTextBox5.ForeColor = System.Drawing.Color.White;
             this.cyberTextBox5.Lighting = false;
             this.cyberTextBox5.LinearGradientPen = false;
-            this.cyberTextBox5.Location = new System.Drawing.Point(3, 181);
+            this.cyberTextBox5.Location = new System.Drawing.Point(2, 147);
             this.cyberTextBox5.Margin = new System.Windows.Forms.Padding(0);
             this.cyberTextBox5.Name = "cyberTextBox5";
             this.cyberTextBox5.PenWidth = 15;
             this.cyberTextBox5.RGB = false;
             this.cyberTextBox5.Rounding = true;
             this.cyberTextBox5.RoundingInt = 10;
-            this.cyberTextBox5.Size = new System.Drawing.Size(1119, 432);
+            this.cyberTextBox5.Size = new System.Drawing.Size(839, 351);
             this.cyberTextBox5.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.cyberTextBox5.TabIndex = 51;
             this.cyberTextBox5.Tag = "Cyber";
@@ -1101,11 +1102,11 @@
             // 
             // VendaView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1139, 678);
+            this.ClientSize = new System.Drawing.Size(854, 551);
             this.Controls.Add(this.tabControlClientes);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "VendaView";
             this.Text = "VendaView";
             this.tabControlClientes.ResumeLayout(false);
