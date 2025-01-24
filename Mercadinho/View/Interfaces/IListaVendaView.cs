@@ -18,6 +18,7 @@ namespace Mercadinho.View.Interfaces
         event EventHandler NovaVenda;
         event EventHandler<int> DeletarVenda;
         event EventHandler VerProdutos;
+        event EventHandler VendaFinalizada;
 
         void ExibirVendas(List<Venda> vendas);
         void AtualizarPaginacao(bool temProxima, bool temAnterior);

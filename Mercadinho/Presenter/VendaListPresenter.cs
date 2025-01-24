@@ -45,6 +45,7 @@ namespace Mercadinho.Presenter
             view.DeletarVenda += HandleDeletarVenda;
             view.NovaVenda += HandleNovaVenda;
             view.VerProdutos += HandleVerProdutos;
+            view.VendaFinalizada += (s, e) => CarregarVendas();
         }
 
         private void HandleNovaVenda(object sender, EventArgs e)

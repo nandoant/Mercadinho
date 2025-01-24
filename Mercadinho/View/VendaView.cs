@@ -27,9 +27,11 @@ namespace Mercadinho.View
         private int _paginaProdutoAtual = 1;
         private const int ITENS_POR_PAGINA = 5;
         private IEnumerable<Produto> _produtosAtuais;
-        private List<LstProduto> _carrinho = new List<LstProduto>();
+        private Dictionary<int, LstProduto> _carrinho = new Dictionary<int, LstProduto>();
         private bool _isCarrinhoView = false;
         private List<Produto> _produtosEmMemoria;
+        private VendaRepository _vendaRepository = new VendaRepository();
+        private VendaProdutoRepository _vendaProdutoRepository = new VendaProdutoRepository();
 
         #endregion
 
@@ -81,6 +83,7 @@ namespace Mercadinho.View
         public event EventHandler<int> DeletarVenda;
         public event EventHandler VerProdutos;
         public event EventHandler<Cliente> OnClienteSelecionado;
+        public event EventHandler VendaFinalizada;
         #endregion
 
         #region Constructor and Initialization
@@ -211,8 +214,12 @@ namespace Mercadinho.View
             foreach (var cliente in clientes)
             {
                 var lstCliente = new LstCliente(cliente, true);
-                lstCliente.Excluir += (s, e) => OnClienteSelecionado?.Invoke(this, cliente);
-                lstCliente.Excluir += (s, e) => labelClienteNome.Text = _clienteSelecionado.Nome;
+                lstCliente.Excluir += (s, e) => 
+                {
+                    ResetarCarrinho(); // Reseta o carrinho
+                    OnClienteSelecionado?.Invoke(this, cliente);
+                    labelClienteNome.Text = cliente.Nome;
+                };
                 GridClientes.Controls.Add(lstCliente);
             }
         }
@@ -343,45 +350,103 @@ namespace Mercadinho.View
                 Descricao = produto.Descricao,
                 Marca = produto.Marca,
                 Modelo = produto.Modelo,
-                QuantidadeEmEstoque = 1
-            }, true);
+                QuantidadeEmEstoque = produto.QuantidadeDisponivel
+            }, false); //
 
+            lst.QuantidadeCliente = produto.QuantidadeCliente;
             lst.Excluir += (s, e) => RemoverDoCarrinho(produto);
             return lst;
         }
 
         private void FinalizarVenda()
         {
-            foreach (var produto in _produtosEmMemoria)
+            // Validações
+            if (_clienteSelecionado == null)
             {
-                _produtoRepository.Atualizar(produto); // Atualiza o banco
+                MessageBox.Show("Selecione um cliente antes de finalizar a venda.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            // Limpa o carrinho e reinicia o estado
-            _carrinho.Clear();
-            _produtosEmMemoria = _produtoRepository.Listar().ToList(); // Recarrega os dados
-            ExibirProdutos();
-            MessageBox.Show("Venda finalizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (_carrinho.Count == 0)
+            {
+                MessageBox.Show("Adicione produtos ao carrinho antes de finalizar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Cria a venda
+                var venda = new Venda
+                {
+                    IdCliente = _clienteSelecionado.Id,
+                    DataCompra = DateTime.Now,
+                    Produtos = new List<Produto>() // Opcional, apenas para compatibilidade
+                };
+
+                // Insere a venda no banco e obtém o ID gerado
+                int vendaId = _vendaRepository.Inserir(venda);
+
+                // Prepara os itens da vendaProduto
+                var itensVenda = _carrinho.Values.Select(item => 
+                    new VendaProduto(
+                        vendaId,
+                        item.Id,
+                        item.QuantidadeCliente,
+                        item.preco
+                    )).ToList();
+
+                // Insere os itens no banco
+                _vendaProdutoRepository.AdicionarItens(vendaId, itensVenda);
+
+                // Atualiza estoque no banco
+                foreach (var produto in _produtosEmMemoria)
+                {
+                    _produtoRepository.Atualizar(produto);
+                }
+
+                // Limpa o carrinho e recarrega dados
+                _carrinho.Clear();
+                _produtosEmMemoria = _produtoRepository.Listar().ToList();
+                _clienteSelecionado = null;
+                labelClienteNome.Text = "Nenhum cliente selecionado";
+
+                ExibirProdutos();
+                MessageBox.Show("Venda finalizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                tabControlClientes.SelectedTab = tabListaVendas;
+                
+                // Disparar o evento para atualizar a lista
+                VendaFinalizada?.Invoke(this, EventArgs.Empty);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao finalizar venda: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         #endregion
 
         #region Cart Operations
-        private void AdicionarAoCarrinho(LstProduto produto)
+        private void AdicionarAoCarrinho(LstProduto lstProduto)
         {
-            var produtoEmMemoria = _produtosEmMemoria.FirstOrDefault(p => p.Id == produto.Id); // Corrigido
-            if (produtoEmMemoria != null)
-            {
-                produtoEmMemoria.QuantidadeEmEstoque -= produto.QuantidadeCliente; // Corrigido
-            }
-            if (!ValidarQuantidade(produto)) return;
+            var produtoEmMemoria = _produtosEmMemoria.FirstOrDefault(p => p.Id == lstProduto.Id);
+            if (produtoEmMemoria == null) return;
 
-            for (int i = 0; i < produto.QuantidadeCliente; i++)
+            if (_carrinho.TryGetValue(lstProduto.Id, out var itemExistente))
             {
-                _carrinho.Add(produto);
+                itemExistente.QuantidadeCliente += lstProduto.QuantidadeCliente;
+                // Atualiza a quantidade disponível no LstProduto do carrinho
+                itemExistente.QuantidadeDisponivel = produtoEmMemoria.QuantidadeEmEstoque - itemExistente.QuantidadeCliente;
+            }
+            else
+            {
+                // Define a quantidade disponível correta ao adicionar ao carrinho
+                lstProduto.QuantidadeDisponivel = produtoEmMemoria.QuantidadeEmEstoque - lstProduto.QuantidadeCliente;
+                _carrinho.Add(lstProduto.Id, lstProduto);
             }
 
-            AtualizarEstoqueProduto(produto);
+            produtoEmMemoria.QuantidadeEmEstoque -= lstProduto.QuantidadeCliente;
+            
             AtualizarLabelsCarrinho();
-            MostrarMensagemAdicao(produto);
+            MostrarMensagemAdicao(lstProduto);
         }
 
         private bool ValidarQuantidade(LstProduto produto)
@@ -416,14 +481,18 @@ namespace Mercadinho.View
 
         private void RemoverDoCarrinho(LstProduto produto)
         {
-            var produtoEmMemoria = _produtosEmMemoria.FirstOrDefault(p => p.Id == produto.Id); // Corrigido
-            if (produtoEmMemoria != null)
+            if (_carrinho.ContainsKey(produto.Id))
             {
-                produtoEmMemoria.QuantidadeEmEstoque += 1; // Corrigido
+                var produtoEmMemoria = _produtosEmMemoria.FirstOrDefault(p => p.Id == produto.Id);
+                if (produtoEmMemoria != null)
+                {
+                    produtoEmMemoria.QuantidadeEmEstoque += _carrinho[produto.Id].QuantidadeCliente;
+                    // Atualiza a quantidade disponível no LstProduto do carrinho
+                    produto.QuantidadeDisponivel = produtoEmMemoria.QuantidadeEmEstoque;
+                }
+                _carrinho.Remove(produto.Id);
+                AtualizarExibicao();
             }
-            _carrinho.Remove(produto);
-            RestaurarEstoqueProduto(produto);
-            AtualizarExibicao();
         }
 
         private void RestaurarEstoqueProduto(LstProduto produto)
@@ -446,7 +515,7 @@ namespace Mercadinho.View
             GridProdutos.Controls.Clear();
             var carrinhoFiltrado = FiltrarCarrinho(termoPesquisa);
             
-            foreach (var produto in carrinhoFiltrado)
+            foreach (var produto in carrinhoFiltrado) // Removido .Values
             {
                 var lstProduto = CriarItemCarrinho(produto);
                 GridProdutos.Controls.Add(lstProduto);
@@ -454,13 +523,33 @@ namespace Mercadinho.View
             
             AtualizarLabelsCarrinho();
         }
+        private void ResetarCarrinho()
+        {
+            // Restaurar estoque dos produtos no carrinho
+            foreach (var item in _carrinho.Values)
+            {
+                var produto = _produtosEmMemoria.FirstOrDefault(p => p.Id == item.Id);
+                if (produto != null)
+                {
+                    produto.QuantidadeEmEstoque += item.QuantidadeCliente;
+                }
+            }
+            
+            _carrinho.Clear(); // Limpa o carrinho
+            AtualizarLabelsCarrinho(); // Atualiza totais
+            
+            if (_isCarrinhoView)
+                ExibirCarrinhoComFiltro(""); // Atualiza a exibição se estiver na view do carrinho
+            else
+                ExibirProdutos(); // Atualiza a lista de produtos
+        }
 
         private IEnumerable<LstProduto> FiltrarCarrinho(string termo)
         {
             if (string.IsNullOrWhiteSpace(termo))
-                return _carrinho;
+                return _carrinho.Values; // Retorna os valores, não o dicionário
 
-            return _carrinho.Where(p =>
+            return _carrinho.Values.Where(p =>
                 p.Nome.IndexOf(termo, StringComparison.OrdinalIgnoreCase) >= 0 ||
                 p.Id.ToString() == termo
             );
@@ -533,13 +622,16 @@ namespace Mercadinho.View
 
         private void AtualizarLabelsCarrinho()
         {
-            labelTotalProdutos.Text = _carrinho.Count.ToString();
+            int totalItens = _carrinho.Values.Sum(item => item.QuantidadeCliente);
+            labelTotalProdutos.Text = totalItens.ToString();
             CalcularTotal();
         }
 
         private void CalcularTotal()
         {
-            var total = _carrinho.Count > 0 ? _carrinho.Sum(item => item.preco) : 0;
+            decimal total = _carrinho.Values.Sum(item => 
+                (decimal)(item.preco * item.QuantidadeCliente) // Preço * Quantidade
+            );
             labelTotalVenda.Text = $"R$ {total:F2}";
         }
         #endregion

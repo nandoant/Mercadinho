@@ -43,23 +43,33 @@ namespace Mercadinho.GRIDs
     public LstProduto(Produto produto, bool isVenda)
     {
         InitializeComponent();
+        
         _produto = produto;
-
-        // Initialize all labels
-            Id = produto.Id;
-            Nome = produto.Nome;
-            Descricao = produto.Descricao;
-            Preco = produto.PrecoUnitario;
-            Marca = produto.Marca;
-            Modelo = produto.Modelo;
-            QuantidadeDisponivel = produto.QuantidadeEmEstoque;
-        txtBoxQtdCleinte.Text = "0";
-
         btnEdit.Dispose();
-        btnDelete.Image = Properties.Resources.icons8_arrow_24;
+        // Initialize all labels
+        Id = produto.Id;
+        Nome = produto.Nome;
+        Descricao = produto.Descricao;
+        Preco = produto.PrecoUnitario;
+        Marca = produto.Marca;
+        Modelo = produto.Modelo;
+        if(isVenda)
+        {
+            QuantidadeDisponivel = produto.QuantidadeEmEstoque;
+            txtBoxQtdCleinte.Text = "0";
+
+            
+            btnDelete.Image = Properties.Resources.icons8_arrow_24;
+        }
+        else 
+        {
+            txtBoxQtdCleinte.ReadOnly = true;
+            labelQtdDispo.Dispose();
+        }
         btnDelete.Click += deletarItem;
         btnDelete.Click += (sender, e) => Excluir?.Invoke(this, e);
     }
+
 
     // Update properties to use _produto
     public string nome => _produto.Nome;
