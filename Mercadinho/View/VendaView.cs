@@ -80,6 +80,7 @@ namespace Mercadinho.View
             ConfigurarFormulario();
             AssociarEventos();
             ConfigurarClienteSelecao();
+            btnPaginasP.Enabled = false;
 
             _mainPresenter = new VendaMainPresenter(
                 this,
@@ -89,6 +90,31 @@ namespace Mercadinho.View
                 new VendaRepository()
             );
             btnPaginasC.Enabled = false;
+
+                btnAvancarP.Click += (s, e) => {
+        _paginaProdutoAtual++;
+        exibirProdutos();
+    };
+
+    btnVoltarP.Click += (s, e) => {
+        _paginaProdutoAtual--;
+        exibirProdutos();
+    };
+
+btnPesquisarProduto.Click += (s, e) => {
+    _paginaProdutoAtual = 1;
+    exibirProdutos();
+};
+
+txtBoxProduto.textBox.KeyDown += (s, e) => {
+    if (e.KeyCode == Keys.Enter)
+    {
+        _paginaProdutoAtual = 1;
+        exibirProdutos();
+    }
+};
+            _produtosAtuais = _produtoRepository.Listar();
+            exibirProdutos();
         }
 
         private void ConfigurarFormulario()
@@ -261,12 +287,132 @@ namespace Mercadinho.View
         }
         #endregion
 
-        #region Finalizar Venda
-        
+#region Finalizar Venda
+private readonly ProdutoRepository _produtoRepository = new ProdutoRepository();
+private int _paginaProdutoAtual = 1;
+private const int ITENS_POR_PAGINA = 5;
+private IEnumerable<Produto> _produtosAtuais;
+private List<LstProduto> _carrinho = new List<LstProduto>(); // Lista para o carrinho
 
-        #endregion
+private IEnumerable<Produto> ObterProdutosPaginados()
+{
+    var termoPesquisa = txtBoxProduto.textBox.Text.Trim();
+    
+    // Se o texto for vazio ou igual ao placeholder, mostra todos os produtos
+    if (string.IsNullOrEmpty(termoPesquisa) || 
+        termoPesquisa.Equals("Nome ou ID do produto", StringComparison.OrdinalIgnoreCase))
+    {
+        _produtosAtuais = _produtoRepository.Listar();
+    }
+    else 
+    {
+        // Caso contrário, realiza a pesquisa
+        _produtosAtuais = _produtoRepository.ObterPorvalor(termoPesquisa);
+    }
 
-        #region Empty Event Handlers
+    return _produtosAtuais
+        .Skip((_paginaProdutoAtual - 1) * ITENS_POR_PAGINA)
+        .Take(ITENS_POR_PAGINA);
+}
+
+private void AdicionarAoCarrinho(LstProduto produto)
+{
+    // Valida quantidade digitada
+    if (!int.TryParse("" + produto.QuantidadeCliente, out int quantidadeSolicitada) || quantidadeSolicitada <= 0)
+    {
+        MessageBox.Show("Por favor, insira uma quantidade válida maior que zero.", "Quantidade Inválida",
+            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        return;
+    }
+
+    // Valida estoque disponível
+    if (quantidadeSolicitada > produto.quantidadeDisponivel)
+    {
+        MessageBox.Show($"Quantidade solicitada maior que disponível em estoque ({produto.quantidadeDisponivel}).", 
+            "Estoque Insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        return;
+    }
+
+    // Adiciona ao carrinho a quantidade especificada
+    for (int i = 0; i < quantidadeSolicitada; i++)
+    {
+        _carrinho.Add(produto);
+    }
+
+    // Atualiza interface
+    AtualizarLabelsCarrinho();
+    MessageBox.Show($"{quantidadeSolicitada}x {produto.Nome} adicionado(s) ao carrinho!", "Sucesso",
+        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+    produto.QuantidadeCliente = 0;
+    produto.QuantidadeDisponivel -= quantidadeSolicitada;
+        }
+
+public void exibirProdutos()
+{
+    GridProdutos.Controls.Clear();
+
+    var produtos = ObterProdutosPaginados();
+    foreach (var produto in produtos)
+    {
+        var lstProduto = new LstProduto(produto, true);
+        lstProduto.Excluir += (s, e) =>
+        {
+            if (s is LstProduto produtoClicado)
+            {
+                AdicionarAoCarrinho(produtoClicado);
+            }
+        };
+
+        GridProdutos.Controls.Add(lstProduto);
+    }
+
+    btnPaginasP.Text = _paginaProdutoAtual.ToString();
+    AtualizarBotoesPaginacao();
+}
+
+private void AtualizarBotoesPaginacao()
+{
+    var totalPaginas = Math.Ceiling(_produtosAtuais.Count() / (double)ITENS_POR_PAGINA);
+    
+    btnAvancarP.Enabled = _paginaProdutoAtual < totalPaginas;
+    btnVoltarP.Enabled = _paginaProdutoAtual > 1;
+
+    btnAvancarP.InactiveColor = btnAvancarP.Enabled 
+        ? Color.FromArgb(32, 34, 37) 
+        : Color.LightGray;
+    
+    btnVoltarP.InactiveColor = btnVoltarP.Enabled 
+        ? Color.FromArgb(32, 34, 37) 
+        : Color.LightGray;
+
+    btnAvancarP.BorderColor = btnAvancarP.InactiveColor;
+    btnVoltarP.BorderColor = btnVoltarP.InactiveColor;
+}
+
+private void AtualizarLabelsCarrinho()
+{
+    labelTotalProdutos.Text = _carrinho.Count.ToString();
+    CalcularTotal();
+}
+
+private void CalcularTotal()
+{
+    if (_carrinho.Count > 0)
+    {
+        double total = _carrinho.Sum(item => item.preco);
+        labelTotalVenda.Text = $"R$ {total:F2}";
+        labelTotalProdutos.Text = _carrinho.Count.ToString();
+    }
+    else
+    {
+        labelTotalVenda.Text = "R$ 0,00";
+        labelTotalProdutos.Text = "0";
+    }
+}
+#endregion
+
+            #region Empty Event Handlers
         private void GridVendas_Paint(object sender, PaintEventArgs e) { }
         private void label2_Click(object sender, EventArgs e) { }
         private void label1_Click(object sender, EventArgs e) { }

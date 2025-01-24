@@ -56,6 +56,7 @@
             this.txtBoxCliente = new ReaLTaiizor.Controls.CyberTextBox();
             this.btnPesquisarCliente = new System.Windows.Forms.Button();
             this.tabEscolherProdutos = new System.Windows.Forms.TabPage();
+            this.GridProdutos = new System.Windows.Forms.FlowLayoutPanel();
             this.labelPagina = new System.Windows.Forms.Label();
             this.labelCarrinho = new System.Windows.Forms.Label();
             this.labelProdutos = new System.Windows.Forms.Label();
@@ -74,7 +75,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.GridProdutos = new System.Windows.Forms.FlowLayoutPanel();
             this.btnPaginasP = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.btnVoltarP = new ReaLTaiizor.Controls.Button();
@@ -558,6 +558,7 @@
             // 
             // tabEscolherProdutos
             // 
+            this.tabEscolherProdutos.Controls.Add(this.GridProdutos);
             this.tabEscolherProdutos.Controls.Add(this.labelPagina);
             this.tabEscolherProdutos.Controls.Add(this.labelCarrinho);
             this.tabEscolherProdutos.Controls.Add(this.labelProdutos);
@@ -576,7 +577,6 @@
             this.tabEscolherProdutos.Controls.Add(this.label17);
             this.tabEscolherProdutos.Controls.Add(this.label16);
             this.tabEscolherProdutos.Controls.Add(this.label12);
-            this.tabEscolherProdutos.Controls.Add(this.GridProdutos);
             this.tabEscolherProdutos.Controls.Add(this.btnPaginasP);
             this.tabEscolherProdutos.Controls.Add(this.label10);
             this.tabEscolherProdutos.Controls.Add(this.btnVoltarP);
@@ -597,6 +597,14 @@
             this.tabEscolherProdutos.TabIndex = 2;
             this.tabEscolherProdutos.Text = "Escolher Produtos";
             this.tabEscolherProdutos.UseVisualStyleBackColor = true;
+            // 
+            // GridProdutos
+            // 
+            this.GridProdutos.Location = new System.Drawing.Point(11, 340);
+            this.GridProdutos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.GridProdutos.Name = "GridProdutos";
+            this.GridProdutos.Size = new System.Drawing.Size(1105, 258);
+            this.GridProdutos.TabIndex = 30;
             // 
             // labelPagina
             // 
@@ -742,7 +750,7 @@
             this.labelTotalProdutos.Name = "labelTotalProdutos";
             this.labelTotalProdutos.Size = new System.Drawing.Size(153, 46);
             this.labelTotalProdutos.TabIndex = 57;
-            this.labelTotalProdutos.Text = "15";
+            this.labelTotalProdutos.Text = "0";
             this.labelTotalProdutos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label23
@@ -766,7 +774,8 @@
             this.labelTotalVenda.Name = "labelTotalVenda";
             this.labelTotalVenda.Size = new System.Drawing.Size(208, 46);
             this.labelTotalVenda.TabIndex = 55;
-            this.labelTotalVenda.Text = "R$ 1 500,00";
+            this.labelTotalVenda.Text = "R$ 0";
+            this.labelTotalVenda.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label20
             // 
@@ -872,14 +881,6 @@
             this.label12.TabIndex = 40;
             this.label12.Text = "Modelo";
             this.label12.UseCompatibleTextRendering = true;
-            // 
-            // GridProdutos
-            // 
-            this.GridProdutos.Location = new System.Drawing.Point(12, 340);
-            this.GridProdutos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.GridProdutos.Name = "GridProdutos";
-            this.GridProdutos.Size = new System.Drawing.Size(1105, 258);
-            this.GridProdutos.TabIndex = 43;
             // 
             // btnPaginasP
             // 
@@ -1151,7 +1152,6 @@
         private System.Windows.Forms.Button btnPaginasP;
         private ReaLTaiizor.Controls.Button btnVoltarP;
         private ReaLTaiizor.Controls.Button btnAvancarP;
-        private System.Windows.Forms.FlowLayoutPanel GridProdutos;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
@@ -1179,5 +1179,6 @@
         private System.Windows.Forms.Label labelCarrinho;
         private ReaLTaiizor.Controls.Button button5;
         private System.Windows.Forms.Label labelPagina;
+        private System.Windows.Forms.FlowLayoutPanel GridProdutos;
     }
 }

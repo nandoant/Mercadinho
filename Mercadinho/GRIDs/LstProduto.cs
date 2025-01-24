@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Mercadinho.GRIDs
 {
     public partial class LstProduto : UserControl, ILstProduto
     {
+        private Produto _produto;
         public event EventHandler Editar;
         public event EventHandler Excluir;
 
@@ -38,9 +40,12 @@ namespace Mercadinho.GRIDs
             txtBoxQtdCleinte.Dispose();
         }
 
-        public LstProduto(Produto produto, Boolean isVenda)
-        {
-            InitializeComponent();
+    public LstProduto(Produto produto, bool isVenda)
+    {
+        InitializeComponent();
+        _produto = produto;
+
+        // Initialize all labels
             Id = produto.Id;
             Nome = produto.Nome;
             Descricao = produto.Descricao;
@@ -48,13 +53,19 @@ namespace Mercadinho.GRIDs
             Marca = produto.Marca;
             Modelo = produto.Modelo;
             QuantidadeDisponivel = produto.QuantidadeEmEstoque;
+        txtBoxQtdCleinte.Text = "0";
 
-            btnEdit.Dispose();
-            btnDelete.Image = Properties.Resources.icons8_arrow_24;
-            btnDelete.Click += deletarItem;
-            btnDelete.Click += (sender, e) => Excluir?.Invoke(this, e);
-        }
+        btnEdit.Dispose();
+        btnDelete.Image = Properties.Resources.icons8_arrow_24;
+        btnDelete.Click += deletarItem;
+        btnDelete.Click += (sender, e) => Excluir?.Invoke(this, e);
+    }
 
+    // Update properties to use _produto
+    public string nome => _produto.Nome;
+    public double preco => _produto.PrecoUnitario;
+
+    public int quantidadeDisponivel => _produto.QuantidadeEmEstoque;
         public int Id
         {
             get { return int.Parse(labelID.Text); }
@@ -85,16 +96,27 @@ namespace Mercadinho.GRIDs
         }
         public double Preco
         {
-            get 
+            get
             {
-                string value = labelID.Text = labelPreco.Text.Replace("R$ ", "");
-                return Double.Parse(value); 
+                try
+                {
+                    if (string.IsNullOrEmpty(labelPreco.Text))
+                        return 0;
+
+                    string value = labelPreco.Text
+                        .Replace("R$", "")
+                        .Trim();
+
+                    return Convert.ToDouble(value);
+                }
+                catch
+                {
+                    return 0;
+                }
             }
-            set 
-            { 
-                string preco = "R$ " + value; 
-                labelPreco.Text = preco.Length > 9 ? preco.Substring(0, 6) + "..." : preco;
-                dropDownText.SetToolTip(labelPreco, preco);
+            set
+            {
+                labelPreco.Text = $"R$ {value:F2}";
             }
         }
 
@@ -130,7 +152,8 @@ namespace Mercadinho.GRIDs
 
         public int QuantidadeDisponivel
         {
-            get { return int.Parse(labelQtdDispo.Text); }
+            get {
+                return int.Parse(labelQtdDispo.Text.Trim()); }
             set 
             { 
                 labelQtdDispo.Text = value.ToString();
@@ -139,7 +162,7 @@ namespace Mercadinho.GRIDs
         }
 
         //Codigo gerado pelo designer
-        private void deletarItem(object sender, EventArgs e){ this.Dispose(); }
+        private void deletarItem(object sender, EventArgs e){ }
 
         private void LstProduto_Load(object sender, EventArgs e){ }
 
