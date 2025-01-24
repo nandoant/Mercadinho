@@ -141,6 +141,10 @@ namespace Mercadinho.View
                 if (e.KeyCode == Keys.Enter) Pesquisar?.Invoke(this, EventArgs.Empty); 
             };
 
+            btn_Voltar.Click += (s, e) => MostrarSelecaoCliente();
+
+            buttonVoltar.Click += (s, e) => MostrarListaVendas();
+
             // Eventos da grid
             GridVendas.Controls.OfType<LstVenda>().ToList().ForEach(lst => 
                 lst.VerProdutos += (s, e) => VerProdutos?.Invoke(s, e));

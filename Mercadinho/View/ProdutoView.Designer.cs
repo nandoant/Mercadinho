@@ -70,16 +70,13 @@
             // tabControlProdutos
             // 
             this.tabControlProdutos.Alignment = System.Windows.Forms.TabAlignment.Bottom;
-            this.tabControlProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlProdutos.Controls.Add(this.tabListaProdutos);
             this.tabControlProdutos.Controls.Add(this.tabDetalhesProduto);
             this.tabControlProdutos.Location = new System.Drawing.Point(0, 0);
-            this.tabControlProdutos.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControlProdutos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControlProdutos.Name = "tabControlProdutos";
             this.tabControlProdutos.SelectedIndex = 0;
-            this.tabControlProdutos.Size = new System.Drawing.Size(850, 528);
+            this.tabControlProdutos.Size = new System.Drawing.Size(1133, 650);
             this.tabControlProdutos.TabIndex = 0;
             // 
             // tabListaProdutos
@@ -101,10 +98,10 @@
             this.tabListaProdutos.Controls.Add(this.btnPesquisar);
             this.tabListaProdutos.Controls.Add(this.btnNovoProduto);
             this.tabListaProdutos.Location = new System.Drawing.Point(4, 4);
-            this.tabListaProdutos.Margin = new System.Windows.Forms.Padding(2);
+            this.tabListaProdutos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabListaProdutos.Name = "tabListaProdutos";
-            this.tabListaProdutos.Padding = new System.Windows.Forms.Padding(2);
-            this.tabListaProdutos.Size = new System.Drawing.Size(842, 502);
+            this.tabListaProdutos.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabListaProdutos.Size = new System.Drawing.Size(1125, 621);
             this.tabListaProdutos.TabIndex = 0;
             this.tabListaProdutos.Text = "Lista de Produtos";
             this.tabListaProdutos.Click += new System.EventHandler(this.tabListaProdutos_Click);
@@ -115,18 +112,18 @@
             this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(628, 52);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Location = new System.Drawing.Point(837, 64);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(103, 19);
+            this.label13.Size = new System.Drawing.Size(123, 23);
             this.label13.TabIndex = 80;
             this.label13.Text = "Qtd Disponivel";
             // 
             // btnPaginas
             // 
-            this.btnPaginas.Location = new System.Drawing.Point(44, 7);
+            this.btnPaginas.Location = new System.Drawing.Point(59, 9);
+            this.btnPaginas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPaginas.Name = "btnPaginas";
-            this.btnPaginas.Size = new System.Drawing.Size(29, 32);
+            this.btnPaginas.Size = new System.Drawing.Size(39, 39);
             this.btnPaginas.TabIndex = 32;
             this.btnPaginas.Text = "1";
             this.btnPaginas.UseVisualStyleBackColor = true;
@@ -143,11 +140,12 @@
             this.btnVoltar.Image = null;
             this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVoltar.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.btnVoltar.Location = new System.Drawing.Point(9, 7);
+            this.btnVoltar.Location = new System.Drawing.Point(12, 9);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnVoltar.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btnVoltar.Size = new System.Drawing.Size(28, 31);
+            this.btnVoltar.Size = new System.Drawing.Size(37, 38);
             this.btnVoltar.TabIndex = 31;
             this.btnVoltar.Text = "<";
             this.btnVoltar.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -164,11 +162,12 @@
             this.btnAvancar.Image = null;
             this.btnAvancar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAvancar.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.btnAvancar.Location = new System.Drawing.Point(79, 7);
+            this.btnAvancar.Location = new System.Drawing.Point(105, 9);
+            this.btnAvancar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAvancar.Name = "btnAvancar";
             this.btnAvancar.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnAvancar.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btnAvancar.Size = new System.Drawing.Size(28, 31);
+            this.btnAvancar.Size = new System.Drawing.Size(37, 38);
             this.btnAvancar.TabIndex = 30;
             this.btnAvancar.Text = ">";
             this.btnAvancar.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -176,10 +175,10 @@
             // 
             // GridProdutos
             // 
-            this.GridProdutos.Location = new System.Drawing.Point(8, 77);
-            this.GridProdutos.Margin = new System.Windows.Forms.Padding(2);
+            this.GridProdutos.Location = new System.Drawing.Point(11, 95);
+            this.GridProdutos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GridProdutos.Name = "GridProdutos";
-            this.GridProdutos.Size = new System.Drawing.Size(829, 410);
+            this.GridProdutos.Size = new System.Drawing.Size(1105, 505);
             this.GridProdutos.TabIndex = 29;
             this.GridProdutos.Paint += new System.Windows.Forms.PaintEventHandler(this.GridProdutos_Paint);
             // 
@@ -189,10 +188,9 @@
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(486, 52);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(648, 64);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 19);
+            this.label6.Size = new System.Drawing.Size(83, 23);
             this.label6.TabIndex = 19;
             this.label6.Text = "Descrição";
             // 
@@ -202,10 +200,9 @@
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(381, 52);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(508, 64);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 19);
+            this.label5.Size = new System.Drawing.Size(53, 23);
             this.label5.TabIndex = 18;
             this.label5.Text = "Preço";
             // 
@@ -215,10 +212,9 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(279, 52);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(372, 64);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 23);
+            this.label4.Size = new System.Drawing.Size(68, 28);
             this.label4.TabIndex = 17;
             this.label4.Text = "Modelo";
             this.label4.UseCompatibleTextRendering = true;
@@ -229,10 +225,9 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(192, 52);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(256, 64);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 19);
+            this.label3.Size = new System.Drawing.Size(58, 23);
             this.label3.TabIndex = 16;
             this.label3.Text = "Marca";
             // 
@@ -242,10 +237,9 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(76, 52);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(101, 64);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 19);
+            this.label2.Size = new System.Drawing.Size(57, 23);
             this.label2.TabIndex = 15;
             this.label2.Text = "Nome";
             // 
@@ -255,10 +249,9 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(16, 52);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(21, 64);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(23, 19);
+            this.label1.Size = new System.Drawing.Size(27, 23);
             this.label1.TabIndex = 14;
             this.label1.Text = "ID";
             // 
@@ -275,17 +268,18 @@
             this.cyberTextBox3.ColorPen_2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
             this.cyberTextBox3.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             this.cyberTextBox3.Enabled = false;
-            this.cyberTextBox3.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
+            this.cyberTextBox3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.cyberTextBox3.ForeColor = System.Drawing.Color.Black;
             this.cyberTextBox3.Lighting = false;
             this.cyberTextBox3.LinearGradientPen = false;
-            this.cyberTextBox3.Location = new System.Drawing.Point(8, 45);
+            this.cyberTextBox3.Location = new System.Drawing.Point(11, 55);
+            this.cyberTextBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cyberTextBox3.Name = "cyberTextBox3";
             this.cyberTextBox3.PenWidth = 15;
             this.cyberTextBox3.RGB = false;
             this.cyberTextBox3.Rounding = true;
             this.cyberTextBox3.RoundingInt = 10;
-            this.cyberTextBox3.Size = new System.Drawing.Size(829, 32);
+            this.cyberTextBox3.Size = new System.Drawing.Size(1105, 39);
             this.cyberTextBox3.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.cyberTextBox3.TabIndex = 13;
             this.cyberTextBox3.Tag = "Cyber";
@@ -305,17 +299,18 @@
             this.txtBoxPesquisa.ColorPen_1 = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(200)))), ((int)(((byte)(238)))));
             this.txtBoxPesquisa.ColorPen_2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
             this.txtBoxPesquisa.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            this.txtBoxPesquisa.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
+            this.txtBoxPesquisa.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.txtBoxPesquisa.ForeColor = System.Drawing.Color.DarkGray;
             this.txtBoxPesquisa.Lighting = false;
             this.txtBoxPesquisa.LinearGradientPen = false;
-            this.txtBoxPesquisa.Location = new System.Drawing.Point(113, 6);
+            this.txtBoxPesquisa.Location = new System.Drawing.Point(151, 7);
+            this.txtBoxPesquisa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxPesquisa.Name = "txtBoxPesquisa";
             this.txtBoxPesquisa.PenWidth = 15;
             this.txtBoxPesquisa.RGB = false;
             this.txtBoxPesquisa.Rounding = true;
             this.txtBoxPesquisa.RoundingInt = 17;
-            this.txtBoxPesquisa.Size = new System.Drawing.Size(508, 32);
+            this.txtBoxPesquisa.Size = new System.Drawing.Size(677, 39);
             this.txtBoxPesquisa.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.txtBoxPesquisa.TabIndex = 11;
             this.txtBoxPesquisa.Tag = "Cyber";
@@ -325,9 +320,10 @@
             // 
             // btnPesquisar
             // 
-            this.btnPesquisar.Location = new System.Drawing.Point(628, 6);
+            this.btnPesquisar.Location = new System.Drawing.Point(837, 7);
+            this.btnPesquisar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(85, 33);
+            this.btnPesquisar.Size = new System.Drawing.Size(113, 41);
             this.btnPesquisar.TabIndex = 10;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
@@ -343,11 +339,12 @@
             this.btnNovoProduto.Image = null;
             this.btnNovoProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNovoProduto.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.btnNovoProduto.Location = new System.Drawing.Point(718, 7);
+            this.btnNovoProduto.Location = new System.Drawing.Point(957, 9);
+            this.btnNovoProduto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNovoProduto.Name = "btnNovoProduto";
             this.btnNovoProduto.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnNovoProduto.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btnNovoProduto.Size = new System.Drawing.Size(116, 31);
+            this.btnNovoProduto.Size = new System.Drawing.Size(155, 38);
             this.btnNovoProduto.TabIndex = 7;
             this.btnNovoProduto.Text = "+ Novo Produto";
             this.btnNovoProduto.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -370,10 +367,10 @@
             this.tabDetalhesProduto.Controls.Add(this.txtBoxModelo);
             this.tabDetalhesProduto.Controls.Add(this.txtBoxMarca);
             this.tabDetalhesProduto.Location = new System.Drawing.Point(4, 4);
-            this.tabDetalhesProduto.Margin = new System.Windows.Forms.Padding(2);
+            this.tabDetalhesProduto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabDetalhesProduto.Name = "tabDetalhesProduto";
-            this.tabDetalhesProduto.Padding = new System.Windows.Forms.Padding(2);
-            this.tabDetalhesProduto.Size = new System.Drawing.Size(842, 502);
+            this.tabDetalhesProduto.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabDetalhesProduto.Size = new System.Drawing.Size(1125, 621);
             this.tabDetalhesProduto.TabIndex = 1;
             this.tabDetalhesProduto.Text = "Detalhes do Produto";
             // 
@@ -381,10 +378,9 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(170, 11);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Location = new System.Drawing.Point(227, 14);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(26, 19);
+            this.label12.Size = new System.Drawing.Size(31, 23);
             this.label12.TabIndex = 26;
             this.label12.Text = "ID:";
             // 
@@ -392,10 +388,9 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(170, 76);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Location = new System.Drawing.Point(227, 94);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(49, 19);
+            this.label11.Size = new System.Drawing.Size(61, 23);
             this.label11.TabIndex = 25;
             this.label11.Text = "Nome:";
             // 
@@ -403,10 +398,9 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(166, 141);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Location = new System.Drawing.Point(221, 174);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(43, 19);
+            this.label10.Size = new System.Drawing.Size(53, 23);
             this.label10.TabIndex = 24;
             this.label10.Text = "Preço";
             // 
@@ -414,10 +408,9 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(166, 206);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Location = new System.Drawing.Point(221, 254);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(50, 19);
+            this.label9.Size = new System.Drawing.Size(61, 23);
             this.label9.TabIndex = 23;
             this.label9.Text = "Marca:";
             // 
@@ -425,10 +418,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(170, 338);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(227, 416);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 19);
+            this.label8.Size = new System.Drawing.Size(87, 23);
             this.label8.TabIndex = 22;
             this.label8.Text = "Descrição:";
             // 
@@ -441,11 +433,11 @@
             this.txtBoxDescricao.EdgeColor = System.Drawing.Color.White;
             this.txtBoxDescricao.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxDescricao.ForeColor = System.Drawing.Color.Black;
-            this.txtBoxDescricao.Location = new System.Drawing.Point(170, 359);
-            this.txtBoxDescricao.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBoxDescricao.Location = new System.Drawing.Point(227, 442);
+            this.txtBoxDescricao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBoxDescricao.Name = "txtBoxDescricao";
             this.txtBoxDescricao.ReadOnly = false;
-            this.txtBoxDescricao.Size = new System.Drawing.Size(508, 81);
+            this.txtBoxDescricao.Size = new System.Drawing.Size(677, 100);
             this.txtBoxDescricao.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.txtBoxDescricao.TabIndex = 21;
             this.txtBoxDescricao.Text = "Descrição";
@@ -458,20 +450,19 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(166, 271);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(221, 334);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 19);
+            this.label7.Size = new System.Drawing.Size(72, 23);
             this.label7.TabIndex = 20;
             this.label7.Text = "Modelo:";
             // 
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(442, 461);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancelar.Location = new System.Drawing.Point(589, 567);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(116, 34);
+            this.btnCancelar.Size = new System.Drawing.Size(155, 42);
             this.btnCancelar.TabIndex = 19;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -487,12 +478,12 @@
             this.btnSalvar.Image = null;
             this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalvar.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.btnSalvar.Location = new System.Drawing.Point(562, 462);
-            this.btnSalvar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSalvar.Location = new System.Drawing.Point(749, 569);
+            this.btnSalvar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnSalvar.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btnSalvar.Size = new System.Drawing.Size(116, 31);
+            this.btnSalvar.Size = new System.Drawing.Size(155, 38);
             this.btnSalvar.TabIndex = 18;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -513,13 +504,14 @@
             this.txtBoxID.ForeColor = System.Drawing.Color.Black;
             this.txtBoxID.Lighting = false;
             this.txtBoxID.LinearGradientPen = false;
-            this.txtBoxID.Location = new System.Drawing.Point(170, 33);
+            this.txtBoxID.Location = new System.Drawing.Point(227, 41);
+            this.txtBoxID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxID.Name = "txtBoxID";
             this.txtBoxID.PenWidth = 15;
             this.txtBoxID.RGB = false;
             this.txtBoxID.Rounding = true;
             this.txtBoxID.RoundingInt = 17;
-            this.txtBoxID.Size = new System.Drawing.Size(508, 32);
+            this.txtBoxID.Size = new System.Drawing.Size(677, 39);
             this.txtBoxID.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.txtBoxID.TabIndex = 17;
             this.txtBoxID.Tag = "Cyber";
@@ -543,13 +535,14 @@
             this.txtBoxNome.ForeColor = System.Drawing.Color.Black;
             this.txtBoxNome.Lighting = false;
             this.txtBoxNome.LinearGradientPen = false;
-            this.txtBoxNome.Location = new System.Drawing.Point(170, 98);
+            this.txtBoxNome.Location = new System.Drawing.Point(227, 121);
+            this.txtBoxNome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxNome.Name = "txtBoxNome";
             this.txtBoxNome.PenWidth = 15;
             this.txtBoxNome.RGB = false;
             this.txtBoxNome.Rounding = true;
             this.txtBoxNome.RoundingInt = 17;
-            this.txtBoxNome.Size = new System.Drawing.Size(508, 32);
+            this.txtBoxNome.Size = new System.Drawing.Size(677, 39);
             this.txtBoxNome.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.txtBoxNome.TabIndex = 16;
             this.txtBoxNome.Tag = "Cyber";
@@ -573,13 +566,14 @@
             this.txtBoxPreco.ForeColor = System.Drawing.Color.Black;
             this.txtBoxPreco.Lighting = false;
             this.txtBoxPreco.LinearGradientPen = false;
-            this.txtBoxPreco.Location = new System.Drawing.Point(170, 163);
+            this.txtBoxPreco.Location = new System.Drawing.Point(227, 201);
+            this.txtBoxPreco.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxPreco.Name = "txtBoxPreco";
             this.txtBoxPreco.PenWidth = 15;
             this.txtBoxPreco.RGB = false;
             this.txtBoxPreco.Rounding = true;
             this.txtBoxPreco.RoundingInt = 17;
-            this.txtBoxPreco.Size = new System.Drawing.Size(508, 32);
+            this.txtBoxPreco.Size = new System.Drawing.Size(677, 39);
             this.txtBoxPreco.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.txtBoxPreco.TabIndex = 15;
             this.txtBoxPreco.Tag = "Cyber";
@@ -603,14 +597,15 @@
             this.txtBoxModelo.ForeColor = System.Drawing.Color.Black;
             this.txtBoxModelo.Lighting = false;
             this.txtBoxModelo.LinearGradientPen = false;
-            this.txtBoxModelo.Location = new System.Drawing.Point(170, 293);
+            this.txtBoxModelo.Location = new System.Drawing.Point(227, 361);
+            this.txtBoxModelo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxModelo.Name = "txtBoxModelo";
             this.txtBoxModelo.PenWidth = 15;
             this.txtBoxModelo.RGB = false;
             this.txtBoxModelo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtBoxModelo.Rounding = true;
             this.txtBoxModelo.RoundingInt = 17;
-            this.txtBoxModelo.Size = new System.Drawing.Size(508, 32);
+            this.txtBoxModelo.Size = new System.Drawing.Size(677, 39);
             this.txtBoxModelo.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.txtBoxModelo.TabIndex = 13;
             this.txtBoxModelo.Tag = "Cyber";
@@ -634,13 +629,14 @@
             this.txtBoxMarca.ForeColor = System.Drawing.Color.Black;
             this.txtBoxMarca.Lighting = false;
             this.txtBoxMarca.LinearGradientPen = false;
-            this.txtBoxMarca.Location = new System.Drawing.Point(170, 228);
+            this.txtBoxMarca.Location = new System.Drawing.Point(227, 281);
+            this.txtBoxMarca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBoxMarca.Name = "txtBoxMarca";
             this.txtBoxMarca.PenWidth = 15;
             this.txtBoxMarca.RGB = false;
             this.txtBoxMarca.Rounding = true;
             this.txtBoxMarca.RoundingInt = 17;
-            this.txtBoxMarca.Size = new System.Drawing.Size(508, 32);
+            this.txtBoxMarca.Size = new System.Drawing.Size(677, 39);
             this.txtBoxMarca.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.txtBoxMarca.TabIndex = 12;
             this.txtBoxMarca.Tag = "Cyber";
@@ -650,12 +646,12 @@
             // 
             // ProdutoView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(850, 534);
+            this.ClientSize = new System.Drawing.Size(1133, 628);
             this.Controls.Add(this.tabControlProdutos);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ProdutoView";
             this.Text = "ProdutoView";
             this.Load += new System.EventHandler(this.ProdutoView_Load);
