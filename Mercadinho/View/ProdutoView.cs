@@ -134,6 +134,7 @@ namespace Mercadinho.View
             txtBoxDescricao.Text = "";
             txtBoxMarca.textBox.Text = "";
             txtBoxModelo.textBox.Text = "";
+            txtBoxQuantidade.textBox.Text = "";
         }
 
         public void PreencherCampos(Produto produto)
@@ -145,11 +146,13 @@ namespace Mercadinho.View
             txtBoxDescricao.Text = produto.Descricao;
             txtBoxMarca.textBox.Text = produto.Marca;
             txtBoxModelo.textBox.Text = produto.Modelo;
+            txtBoxQuantidade.textBox.Text = produto.QuantidadeEmEstoque.ToString();
         }
 
         public Produto ObterProdutoDoFormulario()
         {
             double preco = ConverterPrecoEmDouble(txtBoxPreco.textBox.Text.Trim());
+            int quantidade = ConverterQuantidadeEmInt(txtBoxQuantidade.textBox.Text.Trim());
             return new Produto
             {
                 Id = string.IsNullOrEmpty(txtBoxID.textBox.Text) ? 0 : int.Parse(txtBoxID.textBox.Text),
@@ -157,7 +160,8 @@ namespace Mercadinho.View
                 PrecoUnitario = preco,
                 Descricao = txtBoxDescricao.Text,
                 Marca = txtBoxMarca.textBox.Text,
-                Modelo = txtBoxModelo.textBox.Text
+                Modelo = txtBoxModelo.textBox.Text,
+                QuantidadeEmEstoque = quantidade
             };
         }
 
@@ -202,6 +206,19 @@ namespace Mercadinho.View
             return _instance;
         }
 
+        private int ConverterQuantidadeEmInt(string quantidade)
+        {
+            if (!int.TryParse(quantidade, out int qtd))
+            {
+                throw new Exception("Quantidade deve ser um número inteiro");
+            }
+            if (qtd < 0)
+            {
+                throw new Exception("Quantidade não pode ser negativa");
+            }
+            return qtd;
+        }
+
         // Codigo gerado pelo Designer
         private void ProdutoView_Load(object sender, EventArgs e) { }
         private void tabListaProdutos_Click(object sender, EventArgs e) { }
@@ -214,6 +231,14 @@ namespace Mercadinho.View
 
         private void button4_Click(object sender, EventArgs e) { }
 
+        private void label14_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void cyberTextBox1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

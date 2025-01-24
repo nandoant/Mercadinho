@@ -62,6 +62,8 @@
             this.txtBoxModelo = new ReaLTaiizor.Controls.CyberTextBox();
             this.txtBoxMarca = new ReaLTaiizor.Controls.CyberTextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtBoxQuantidade = new ReaLTaiizor.Controls.CyberTextBox();
             this.tabControlProdutos.SuspendLayout();
             this.tabListaProdutos.SuspendLayout();
             this.tabDetalhesProduto.SuspendLayout();
@@ -352,6 +354,8 @@
             // tabDetalhesProduto
             // 
             this.tabDetalhesProduto.BackColor = System.Drawing.Color.White;
+            this.tabDetalhesProduto.Controls.Add(this.label14);
+            this.tabDetalhesProduto.Controls.Add(this.txtBoxQuantidade);
             this.tabDetalhesProduto.Controls.Add(this.label12);
             this.tabDetalhesProduto.Controls.Add(this.label11);
             this.tabDetalhesProduto.Controls.Add(this.label10);
@@ -605,7 +609,7 @@
             this.txtBoxModelo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtBoxModelo.Rounding = true;
             this.txtBoxModelo.RoundingInt = 17;
-            this.txtBoxModelo.Size = new System.Drawing.Size(677, 39);
+            this.txtBoxModelo.Size = new System.Drawing.Size(393, 39);
             this.txtBoxModelo.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.txtBoxModelo.TabIndex = 13;
             this.txtBoxModelo.Tag = "Cyber";
@@ -644,12 +648,56 @@
             this.txtBoxMarca.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.txtBoxMarca.Timer_RGB = 300;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(624, 334);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(104, 23);
+            this.label14.TabIndex = 28;
+            this.label14.Text = "Quantidade:";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
+            // 
+            // txtBoxQuantidade
+            // 
+            this.txtBoxQuantidade.Alpha = 20;
+            this.txtBoxQuantidade.BackColor = System.Drawing.Color.Transparent;
+            this.txtBoxQuantidade.Background_WidthPen = 1F;
+            this.txtBoxQuantidade.BackgroundPen = true;
+            this.txtBoxQuantidade.ColorBackground = System.Drawing.Color.White;
+            this.txtBoxQuantidade.ColorBackground_Pen = System.Drawing.Color.LightGray;
+            this.txtBoxQuantidade.ColorLighting = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(200)))), ((int)(((byte)(238)))));
+            this.txtBoxQuantidade.ColorPen_1 = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(200)))), ((int)(((byte)(238)))));
+            this.txtBoxQuantidade.ColorPen_2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
+            this.txtBoxQuantidade.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            this.txtBoxQuantidade.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.txtBoxQuantidade.ForeColor = System.Drawing.Color.Black;
+            this.txtBoxQuantidade.Lighting = false;
+            this.txtBoxQuantidade.LinearGradientPen = false;
+            this.txtBoxQuantidade.Location = new System.Drawing.Point(628, 361);
+            this.txtBoxQuantidade.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBoxQuantidade.Name = "txtBoxQuantidade";
+            this.txtBoxQuantidade.PenWidth = 15;
+            this.txtBoxQuantidade.RGB = false;
+            this.txtBoxQuantidade.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtBoxQuantidade.Rounding = true;
+            this.txtBoxQuantidade.RoundingInt = 17;
+            this.txtBoxQuantidade.Size = new System.Drawing.Size(276, 39);
+            this.txtBoxQuantidade.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.txtBoxQuantidade.TabIndex = 27;
+            this.txtBoxQuantidade.Tag = "Cyber";
+            this.txtBoxQuantidade.TextButton = "Quantidade";
+            this.txtBoxQuantidade.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.txtBoxQuantidade.Timer_RGB = 300;
+            this.txtBoxQuantidade.Load += new System.EventHandler(this.cyberTextBox1_Load);
+            // 
             // ProdutoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1133, 628);
+            this.ClientSize = new System.Drawing.Size(1133, 645);
             this.Controls.Add(this.tabControlProdutos);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ProdutoView";
@@ -699,5 +747,7 @@
         private System.Windows.Forms.Label label7;
         private ReaLTaiizor.Controls.CyberTextBox txtBoxModelo;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private ReaLTaiizor.Controls.CyberTextBox txtBoxQuantidade;
     }
 }
