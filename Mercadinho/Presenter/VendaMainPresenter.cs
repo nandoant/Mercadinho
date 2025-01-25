@@ -10,11 +10,11 @@ namespace Mercadinho.Presenter
 {
     public class VendaMainPresenter
     {
-        private readonly IVendaMainView mainView;
-        private readonly VendaListPresenter listPresenter;
-        private readonly ClienteSelecaoPresenter clientePresenter;
-        private readonly IClienteRepository clienteRepo;
-        private readonly IVendaRepository vendaRepo;
+        private IVendaMainView mainView;
+        private VendaListPresenter listPresenter;
+        private ClienteSelecaoPresenter clientePresenter;
+        private IClienteRepository clienteRepo;
+        private IVendaRepository vendaRepo;
         private bool isNovaVenda;
 
         public VendaMainPresenter(

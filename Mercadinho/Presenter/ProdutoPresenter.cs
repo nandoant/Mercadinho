@@ -14,8 +14,8 @@ namespace Mercadinho.Presenter
 {
     public class ProdutoPresenter
     {
-        private readonly IProdutoRepository repository;
-        private readonly IProdutoView view;
+        private IProdutoRepository repository;
+        private IProdutoView view;
         private List<Produto> produtos;
         private const int ItensPorPagina = 10;
 

@@ -8,9 +8,9 @@ using Mercadinho.View.Interfaces;
 
 public class ClienteSelecaoPresenter
 {
-    private readonly IClienteRepository clienteRepo;
-    private readonly ISelecaoClienteView view;
-    private readonly IVendaMainView mainView;
+    private IClienteRepository clienteRepo;
+    private ISelecaoClienteView view;
+    private IVendaMainView mainView;
     private List<Cliente> clientes;
     private const int ItensPorPagina = 10;
 

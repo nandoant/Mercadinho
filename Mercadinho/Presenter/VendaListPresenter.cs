@@ -13,11 +13,11 @@ namespace Mercadinho.Presenter
 {
     public class VendaListPresenter
     {
-        private readonly IVendaRepository vendaRepo;
-        private readonly IClienteRepository clienteRepo;
-        private readonly IProdutoRepository produtoRepo;
-        private readonly IVendaProdutoRepository vendaProdutoRepo;
-        private readonly IListaVendaView view;
+        private IVendaRepository vendaRepo;
+        private IClienteRepository clienteRepo;
+        private IProdutoRepository produtoRepo;
+        private IVendaProdutoRepository vendaProdutoRepo;
+        private IListaVendaView view;
         private List<Venda> vendas;
         private const int ItensPorPagina = 10;
         public event EventHandler NovaVendaClick;
