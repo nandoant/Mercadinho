@@ -10,14 +10,16 @@ namespace Mercadinho.Presenter
 {
     public class ClientePresenter
     {
-        private readonly IClienteRepository repository;
-        private readonly IClienteView view;
+        private IClienteRepository repository;
+        private IClienteView view;
+        private IVendaRepository vendaRepository;
         private List<Cliente> clientes;
         private const int ItensPorPagina = 10;
 
-        public ClientePresenter(IClienteRepository repository, IClienteView view)
+        public ClientePresenter(IClienteRepository repository, IClienteView view, IVendaRepository vendaRepository)
         {
             this.repository = repository;
+            this.vendaRepository = vendaRepository;
             this.view = view;
 
             ConfigurarEventos();
@@ -80,13 +82,21 @@ namespace Mercadinho.Presenter
         {
             try
             {
+                var vendasCliente = vendaRepository.ObterPorCliente(clienteId);
+                if (vendasCliente.Any())
+                {
+                    MessageBox.Show("Não é possível excluir o cliente pois existem vendas vinculadas a ele.", 
+                                    "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return; // Não recarrega a lista aqui!
+                }
+
                 repository.Remover(clienteId);
-                CarregarClientes();
+                CarregarClientes(); // Recarrega APÓS a exclusão
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao excluir cliente: {ex.Message}", "Erro", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

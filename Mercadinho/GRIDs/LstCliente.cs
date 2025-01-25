@@ -59,7 +59,6 @@ namespace Mercadinho.GRIDs
             Cpf = cliente.Cpf;
             btnDelete.Click += delegate
             {
-                this.Dispose();
                 Excluir?.Invoke(this, EventArgs.Empty);
             };
             btnEdit.Click += (sender, e) => Editar?.Invoke(this, e);

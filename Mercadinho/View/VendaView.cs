@@ -191,6 +191,7 @@ namespace Mercadinho.View
                 {
                     AlternarVisualizacao();
                     labelPagina.Text = "Carrinho";
+                    label16.Visible = false;
                 }
             };
 
@@ -200,6 +201,7 @@ namespace Mercadinho.View
                 {
                     AlternarVisualizacao();
                     labelPagina.Text = "Produtos";
+                    label16.Visible = true;
                 }
             };
         }
@@ -207,7 +209,11 @@ namespace Mercadinho.View
 
         #region Navigation Methods
         public void MostrarListaVendas() => tabControlClientes.SelectedTab = tabListaVendas;
-        public void MostrarSelecaoCliente() => tabControlClientes.SelectedTab = tabDetalhesClientes;
+        public void MostrarSelecaoCliente()
+        {
+            tabControlClientes.SelectedTab = tabDetalhesClientes;
+            _clienteSelecaoPresenter.RecarregarClientes(); // Recarrega a lista de clientes
+        }
         public void MostrarProdutos() => tabControlClientes.SelectedTab = tabEscolherProdutos;
         #endregion
 
@@ -431,18 +437,30 @@ namespace Mercadinho.View
         #region Cart Operations
         private void AdicionarAoCarrinho(LstProduto lstProduto)
         {
+            // Valida a quantidade antes de prosseguir
+            if (!ValidarQuantidade(lstProduto))
+                return;
+
             var produtoEmMemoria = _produtosEmMemoria.FirstOrDefault(p => p.Id == lstProduto.Id);
             if (produtoEmMemoria == null) return;
 
             if (_carrinho.TryGetValue(lstProduto.Id, out var itemExistente))
             {
-                itemExistente.QuantidadeCliente += lstProduto.QuantidadeCliente;
-                // Atualiza a quantidade disponível no LstProduto do carrinho
-                itemExistente.QuantidadeDisponivel = produtoEmMemoria.QuantidadeEmEstoque - itemExistente.QuantidadeCliente;
+                int novaQuantidadeTotal = itemExistente.QuantidadeCliente + lstProduto.QuantidadeCliente;
+                
+                // Verifica se a soma excede o estoque
+                if (novaQuantidadeTotal > produtoEmMemoria.QuantidadeEmEstoque)
+                {
+                    MessageBox.Show($"Quantidade total ({novaQuantidadeTotal}) excede o estoque disponível ({produtoEmMemoria.QuantidadeEmEstoque}).",
+                        "Estoque Insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                
+                itemExistente.QuantidadeCliente = novaQuantidadeTotal;
+                itemExistente.QuantidadeDisponivel = produtoEmMemoria.QuantidadeEmEstoque - novaQuantidadeTotal;
             }
             else
             {
-                // Define a quantidade disponível correta ao adicionar ao carrinho
                 lstProduto.QuantidadeDisponivel = produtoEmMemoria.QuantidadeEmEstoque - lstProduto.QuantidadeCliente;
                 _carrinho.Add(lstProduto.Id, lstProduto);
             }
@@ -462,9 +480,15 @@ namespace Mercadinho.View
                 return false;
             }
 
-            if (produto.QuantidadeCliente > produto.quantidadeDisponivel)
+            var produtoEmMemoria = _produtosEmMemoria.FirstOrDefault(p => p.Id == produto.Id);
+            if (produtoEmMemoria == null) return false;
+
+            int quantidadeNoCarrinho = _carrinho.TryGetValue(produto.Id, out var item) ? item.QuantidadeCliente : 0;
+            int quantidadeTotal = quantidadeNoCarrinho + produto.QuantidadeCliente;
+
+            if (quantidadeTotal > produtoEmMemoria.QuantidadeEmEstoque)
             {
-                MessageBox.Show($"Quantidade solicitada maior que disponível em estoque ({produto.quantidadeDisponivel}).",
+                MessageBox.Show($"Quantidade solicitada ({quantidadeTotal}) maior que disponível em estoque ({produtoEmMemoria.QuantidadeEmEstoque}).",
                     "Estoque Insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }

@@ -44,6 +44,7 @@
             this.tabListaVendas = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
             this.tabDetalhesClientes = new System.Windows.Forms.TabPage();
+            this.buttonVoltar = new System.Windows.Forms.Button();
             this.btnPaginasC = new System.Windows.Forms.Button();
             this.btnVoltarC = new ReaLTaiizor.Controls.Button();
             this.btnAvancarC = new ReaLTaiizor.Controls.Button();
@@ -87,7 +88,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.cyberTextBox2 = new ReaLTaiizor.Controls.CyberTextBox();
             this.cyberTextBox5 = new ReaLTaiizor.Controls.CyberTextBox();
-            this.buttonVoltar = new System.Windows.Forms.Button();
             this.tabControlClientes.SuspendLayout();
             this.tabListaVendas.SuspendLayout();
             this.tabDetalhesClientes.SuspendLayout();
@@ -97,7 +97,7 @@
             // btnPaginasV
             // 
             this.btnPaginasV.Location = new System.Drawing.Point(59, 9);
-            this.btnPaginasV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPaginasV.Margin = new System.Windows.Forms.Padding(4);
             this.btnPaginasV.Name = "btnPaginasV";
             this.btnPaginasV.Size = new System.Drawing.Size(39, 39);
             this.btnPaginasV.TabIndex = 32;
@@ -116,7 +116,7 @@
             this.btnVoltarV.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVoltarV.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.btnVoltarV.Location = new System.Drawing.Point(12, 9);
-            this.btnVoltarV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnVoltarV.Margin = new System.Windows.Forms.Padding(4);
             this.btnVoltarV.Name = "btnVoltarV";
             this.btnVoltarV.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnVoltarV.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
@@ -137,7 +137,7 @@
             this.btnAvancarV.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAvancarV.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.btnAvancarV.Location = new System.Drawing.Point(105, 9);
-            this.btnAvancarV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAvancarV.Margin = new System.Windows.Forms.Padding(4);
             this.btnAvancarV.Name = "btnAvancarV";
             this.btnAvancarV.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnAvancarV.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
@@ -226,7 +226,7 @@
             this.cyberTextBox3.Lighting = false;
             this.cyberTextBox3.LinearGradientPen = false;
             this.cyberTextBox3.Location = new System.Drawing.Point(11, 55);
-            this.cyberTextBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cyberTextBox3.Margin = new System.Windows.Forms.Padding(4);
             this.cyberTextBox3.Name = "cyberTextBox3";
             this.cyberTextBox3.PenWidth = 15;
             this.cyberTextBox3.RGB = false;
@@ -257,7 +257,7 @@
             this.txtBoxVendaV.Lighting = false;
             this.txtBoxVendaV.LinearGradientPen = false;
             this.txtBoxVendaV.Location = new System.Drawing.Point(151, 7);
-            this.txtBoxVendaV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBoxVendaV.Margin = new System.Windows.Forms.Padding(4);
             this.txtBoxVendaV.Name = "txtBoxVendaV";
             this.txtBoxVendaV.PenWidth = 15;
             this.txtBoxVendaV.RGB = false;
@@ -274,7 +274,7 @@
             // btnPesquisarV
             // 
             this.btnPesquisarV.Location = new System.Drawing.Point(837, 7);
-            this.btnPesquisarV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPesquisarV.Margin = new System.Windows.Forms.Padding(4);
             this.btnPesquisarV.Name = "btnPesquisarV";
             this.btnPesquisarV.Size = new System.Drawing.Size(113, 41);
             this.btnPesquisarV.TabIndex = 10;
@@ -293,7 +293,7 @@
             this.btnNovaVenda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNovaVenda.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.btnNovaVenda.Location = new System.Drawing.Point(957, 9);
-            this.btnNovaVenda.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNovaVenda.Margin = new System.Windows.Forms.Padding(4);
             this.btnNovaVenda.Name = "btnNovaVenda";
             this.btnNovaVenda.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnNovaVenda.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
@@ -375,10 +375,20 @@
             this.tabDetalhesClientes.TabIndex = 1;
             this.tabDetalhesClientes.Text = "Escolher Cliente";
             // 
+            // buttonVoltar
+            // 
+            this.buttonVoltar.Location = new System.Drawing.Point(11, 14);
+            this.buttonVoltar.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonVoltar.Name = "buttonVoltar";
+            this.buttonVoltar.Size = new System.Drawing.Size(104, 41);
+            this.buttonVoltar.TabIndex = 45;
+            this.buttonVoltar.Text = "Voltar";
+            this.buttonVoltar.UseVisualStyleBackColor = true;
+            // 
             // btnPaginasC
             // 
             this.btnPaginasC.Location = new System.Drawing.Point(171, 16);
-            this.btnPaginasC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPaginasC.Margin = new System.Windows.Forms.Padding(4);
             this.btnPaginasC.Name = "btnPaginasC";
             this.btnPaginasC.Size = new System.Drawing.Size(39, 39);
             this.btnPaginasC.TabIndex = 44;
@@ -397,7 +407,7 @@
             this.btnVoltarC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVoltarC.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.btnVoltarC.Location = new System.Drawing.Point(123, 16);
-            this.btnVoltarC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnVoltarC.Margin = new System.Windows.Forms.Padding(4);
             this.btnVoltarC.Name = "btnVoltarC";
             this.btnVoltarC.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnVoltarC.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
@@ -418,7 +428,7 @@
             this.btnAvancarC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAvancarC.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.btnAvancarC.Location = new System.Drawing.Point(216, 16);
-            this.btnAvancarC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAvancarC.Margin = new System.Windows.Forms.Padding(4);
             this.btnAvancarC.Name = "btnAvancarC";
             this.btnAvancarC.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnAvancarC.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
@@ -502,7 +512,7 @@
             this.cyberTextBox1.Lighting = false;
             this.cyberTextBox1.LinearGradientPen = false;
             this.cyberTextBox1.Location = new System.Drawing.Point(11, 62);
-            this.cyberTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cyberTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.cyberTextBox1.Name = "cyberTextBox1";
             this.cyberTextBox1.PenWidth = 15;
             this.cyberTextBox1.RGB = false;
@@ -533,7 +543,7 @@
             this.txtBoxCliente.Lighting = false;
             this.txtBoxCliente.LinearGradientPen = false;
             this.txtBoxCliente.Location = new System.Drawing.Point(262, 14);
-            this.txtBoxCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBoxCliente.Margin = new System.Windows.Forms.Padding(4);
             this.txtBoxCliente.Name = "txtBoxCliente";
             this.txtBoxCliente.PenWidth = 15;
             this.txtBoxCliente.RGB = false;
@@ -550,7 +560,7 @@
             // btnPesquisarCliente
             // 
             this.btnPesquisarCliente.Location = new System.Drawing.Point(1003, 14);
-            this.btnPesquisarCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPesquisarCliente.Margin = new System.Windows.Forms.Padding(4);
             this.btnPesquisarCliente.Name = "btnPesquisarCliente";
             this.btnPesquisarCliente.Size = new System.Drawing.Size(113, 41);
             this.btnPesquisarCliente.TabIndex = 34;
@@ -658,7 +668,7 @@
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.InactiveColor = System.Drawing.Color.White;
             this.button5.Location = new System.Drawing.Point(601, 119);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
             this.button5.PressedBorderColor = System.Drawing.Color.White;
             this.button5.PressedColor = System.Drawing.Color.White;
@@ -711,7 +721,7 @@
             this.btnFinalizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFinalizar.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.btnFinalizar.Location = new System.Drawing.Point(987, 114);
-            this.btnFinalizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFinalizar.Margin = new System.Windows.Forms.Padding(4);
             this.btnFinalizar.Name = "btnFinalizar";
             this.btnFinalizar.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnFinalizar.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
@@ -723,7 +733,7 @@
             // btn_Voltar
             // 
             this.btn_Voltar.Location = new System.Drawing.Point(865, 114);
-            this.btn_Voltar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Voltar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Voltar.Name = "btn_Voltar";
             this.btn_Voltar.Size = new System.Drawing.Size(113, 41);
             this.btn_Voltar.TabIndex = 61;
@@ -886,7 +896,7 @@
             // btnPaginasP
             // 
             this.btnPaginasP.Location = new System.Drawing.Point(59, 255);
-            this.btnPaginasP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPaginasP.Margin = new System.Windows.Forms.Padding(4);
             this.btnPaginasP.Name = "btnPaginasP";
             this.btnPaginasP.Size = new System.Drawing.Size(39, 39);
             this.btnPaginasP.TabIndex = 46;
@@ -917,7 +927,7 @@
             this.btnVoltarP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVoltarP.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.btnVoltarP.Location = new System.Drawing.Point(13, 256);
-            this.btnVoltarP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnVoltarP.Margin = new System.Windows.Forms.Padding(4);
             this.btnVoltarP.Name = "btnVoltarP";
             this.btnVoltarP.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnVoltarP.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
@@ -950,7 +960,7 @@
             this.btnAvancarP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAvancarP.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.btnAvancarP.Location = new System.Drawing.Point(105, 256);
-            this.btnAvancarP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAvancarP.Margin = new System.Windows.Forms.Padding(4);
             this.btnAvancarP.Name = "btnAvancarP";
             this.btnAvancarP.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btnAvancarP.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
@@ -976,7 +986,7 @@
             this.txtBoxProduto.Lighting = false;
             this.txtBoxProduto.LinearGradientPen = false;
             this.txtBoxProduto.Location = new System.Drawing.Point(149, 256);
-            this.txtBoxProduto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBoxProduto.Margin = new System.Windows.Forms.Padding(4);
             this.txtBoxProduto.Name = "txtBoxProduto";
             this.txtBoxProduto.PenWidth = 15;
             this.txtBoxProduto.RGB = false;
@@ -1005,7 +1015,7 @@
             // btnPesquisarProduto
             // 
             this.btnPesquisarProduto.Location = new System.Drawing.Point(1003, 256);
-            this.btnPesquisarProduto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPesquisarProduto.Margin = new System.Windows.Forms.Padding(4);
             this.btnPesquisarProduto.Name = "btnPesquisarProduto";
             this.btnPesquisarProduto.Size = new System.Drawing.Size(113, 41);
             this.btnPesquisarProduto.TabIndex = 34;
@@ -1054,7 +1064,7 @@
             this.cyberTextBox2.Lighting = false;
             this.cyberTextBox2.LinearGradientPen = false;
             this.cyberTextBox2.Location = new System.Drawing.Point(11, 302);
-            this.cyberTextBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cyberTextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.cyberTextBox2.Name = "cyberTextBox2";
             this.cyberTextBox2.PenWidth = 15;
             this.cyberTextBox2.RGB = false;
@@ -1100,21 +1110,11 @@
             this.cyberTextBox5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.cyberTextBox5.Timer_RGB = 300;
             // 
-            // buttonVoltar
-            // 
-            this.buttonVoltar.Location = new System.Drawing.Point(11, 14);
-            this.buttonVoltar.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonVoltar.Name = "buttonVoltar";
-            this.buttonVoltar.Size = new System.Drawing.Size(104, 41);
-            this.buttonVoltar.TabIndex = 45;
-            this.buttonVoltar.Text = "Voltar";
-            this.buttonVoltar.UseVisualStyleBackColor = true;
-            // 
             // VendaView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1139, 657);
+            this.ClientSize = new System.Drawing.Size(1139, 672);
             this.Controls.Add(this.tabControlClientes);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "VendaView";

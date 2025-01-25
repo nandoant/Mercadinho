@@ -25,7 +25,7 @@ namespace Mercadinho.Presenter
         {
             IClienteView clienteView = ClienteView.GetInstance((Form)view);
             IClienteRepository clienteRepository = new ClienteRepository();
-            new ClientePresenter(clienteRepository, clienteView);
+            new ClientePresenter(clienteRepository, clienteView, new VendaRepository());
         }
 
         private void MostrarViewProdutos()

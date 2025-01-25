@@ -142,7 +142,7 @@ namespace Mercadinho.View
             txtBoxID.Enabled = false;
             txtBoxID.textBox.Text = produto.Id.ToString();
             txtBoxNome.textBox.Text = produto.Nome;
-            txtBoxPreco.textBox.Text = produto.PrecoUnitario.ToString();
+            txtBoxPreco.textBox.Text = produto.PrecoUnitario.ToString("0.00").Replace(".", ",");
             txtBoxDescricao.Text = produto.Descricao;
             txtBoxMarca.textBox.Text = produto.Marca;
             txtBoxModelo.textBox.Text = produto.Modelo;
@@ -165,26 +165,46 @@ namespace Mercadinho.View
             };
         }
 
-        private double ConverterPrecoEmDouble(String preco)
+        private double ConverterPrecoEmDouble(string preco)
         {
+            // Normaliza separadores decimais
             preco = preco.Replace(".", ",");
-            if (preco.Count(x => x == ',') > 1)
+
+            // Verifica formato inválido com múltiplas vírgulas
+            if (preco.Count(c => c == ',') > 1)
             {
-                throw new Exception("Preço do produto deve ter no máximo uma vírgula ou ponto");
+                throw new Exception("Use apenas um separador decimal");
             }
-            if (preco.Length - preco.IndexOf(',') > 3)
+
+            // Separa partes inteira e decimal
+            string[] partes = preco.Split(',');
+            string parteInteira = partes[0];
+            string parteDecimal = partes.Length > 1 ? partes[1] : "00";
+
+            // Completa ou limita casas decimais
+            if (parteDecimal.Length > 2)
             {
-                throw new Exception("Preço deve ter no máximo duas casas decimais");
+                throw new Exception("Máximo de duas casas decimais");
             }
-            if (double.TryParse(preco, out double doublePreco) == false)
+            else if (parteDecimal.Length < 2)
             {
-                throw new Exception("Preço do produto deve ser um número");
+                parteDecimal = parteDecimal.PadRight(2, '0');
             }
-            if (doublePreco <= 0)
+
+            // Reconstrói o valor formatado
+            string valorFormatado = $"{parteInteira},{parteDecimal}";
+
+            if (!double.TryParse(valorFormatado, out double resultado))
             {
-                throw new Exception("Preço do produto deve ser maior que zero");
+                throw new Exception("Valor numérico inválido");
             }
-            return doublePreco;
+
+            if (resultado <= 0)
+            {
+                throw new Exception("O preço deve ser maior que zero");
+            }
+
+            return resultado;
         }
 
         private static ProdutoView _instance;

@@ -8,6 +8,7 @@ using Mercadinho.GRIDs;
 using Mercadinho.Model;
 using Mercadinho.Repository;
 using Mercadinho.View;
+using MySql.Data.MySqlClient;
 
 namespace Mercadinho.Presenter
 {
@@ -86,10 +87,15 @@ namespace Mercadinho.Presenter
                 repository.Remover(produtoId);
                 CarregarProdutos();
             }
+            catch (MySqlException ex) when (ex.Number == 1451) // Código de erro para restrição de FK
+            {
+                MessageBox.Show("Não é possível excluir este produto pois ele está vinculado a uma ou mais vendas.", 
+                    "Erro de integridade", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao excluir produto: {ex.Message}", "Erro", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao excluir produto: {ex.Message}", 
+                    "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

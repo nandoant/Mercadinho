@@ -28,6 +28,10 @@ public class ClienteSelecaoPresenter
         CarregarClientes();
     }
 
+    public void RecarregarClientes()
+    {
+        CarregarClientes();
+    }
     private void ConfigurarEventos()
     {
         view.Pesquisar += HandlePesquisar;
