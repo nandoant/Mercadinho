@@ -17,9 +17,9 @@ namespace Mercadinho.View
         private static VendaView _instance;
         private ClienteSelecaoPresenter _clienteSelecaoPresenter; 
 
-        private readonly VendaMainPresenter _mainPresenter;
-        private readonly ProdutoRepository _produtoRepository = new ProdutoRepository();
-        private readonly IClienteRepository _clienteRepository = new ClienteRepository();
+        private  VendaMainPresenter _mainPresenter;
+        private  ProdutoRepository _produtoRepository = new ProdutoRepository();
+        private  IClienteRepository _clienteRepository = new ClienteRepository();
         
         private Cliente _clienteSelecionado;
         private int _paginaClienteAtual = 1;
@@ -124,7 +124,7 @@ namespace Mercadinho.View
 
         private void AssociarEventos()
         {
-            // Eventos gerais
+            
             btnPesquisarV.Click += (s, e) => Pesquisar?.Invoke(this, EventArgs.Empty);
             btnNovaVenda.Click += (s, e) => 
             {
@@ -132,11 +132,11 @@ namespace Mercadinho.View
                 MostrarSelecaoCliente(); 
             };
             
-            // Eventos de paginação
+            
             btnAvancarV.Click += (s, e) => ProximaPagina?.Invoke(this, EventArgs.Empty);
             btnVoltarV.Click += (s, e) => PaginaAnterior?.Invoke(this, EventArgs.Empty);
             
-            // Eventos de pesquisa
+            
             txtBoxVendaV.textBox.KeyDown += (s, e) => 
             { 
                 if (e.KeyCode == Keys.Enter) Pesquisar?.Invoke(this, EventArgs.Empty); 
@@ -146,7 +146,7 @@ namespace Mercadinho.View
 
             buttonVoltar.Click += (s, e) => MostrarListaVendas();
 
-            // Eventos da grid
+            
             GridVendas.Controls.OfType<LstVenda>().ToList().ForEach(lst => 
                 lst.VerProdutos += (s, e) => VerProdutos?.Invoke(s, e));
         }
@@ -164,7 +164,7 @@ namespace Mercadinho.View
 
         private void InicializarProdutos()
         {
-            _produtosEmMemoria = _produtoRepository.Listar().ToList(); // Carrega em memória
+            _produtosEmMemoria = _produtoRepository.Listar().ToList();
             _produtosAtuais = _produtosEmMemoria;
             ConfigurarEventosProdutos();
             ExibirProdutos();
@@ -205,9 +205,9 @@ namespace Mercadinho.View
                 if (e.KeyCode == Keys.Enter)
                 {
                     if (_isCarrinhoView)
-                        ExibirCarrinhoComFiltro(txtBoxProduto.textBox.Text.Trim()); // Novo método para carrinho
+                        ExibirCarrinhoComFiltro(txtBoxProduto.textBox.Text.Trim());
                     else
-                        ExibirProdutos(); // Mantém a lógica original para produtos
+                        ExibirProdutos(); 
                 }
             };
 
@@ -238,7 +238,7 @@ namespace Mercadinho.View
         public void MostrarSelecaoCliente()
         {
             tabControlClientes.SelectedTab = tabDetalhesClientes;
-            _clienteSelecaoPresenter.RecarregarClientes(); // Recarrega a lista de clientes
+            _clienteSelecaoPresenter.RecarregarClientes();
         }
         public void MostrarProdutos() => tabControlClientes.SelectedTab = tabEscolherProdutos;
         #endregion
@@ -252,7 +252,7 @@ namespace Mercadinho.View
                 var lstCliente = new LstCliente(cliente, true);
                 lstCliente.Excluir += (s, e) => 
                 {
-                    ResetarCarrinho(); // Reseta o carrinho
+                    ResetarCarrinho(); 
                     OnClienteSelecionado?.Invoke(this, cliente);
                     labelClienteNome.Text = cliente.Nome;
                 };
@@ -301,7 +301,7 @@ namespace Mercadinho.View
             
             if (!string.IsNullOrEmpty(termoPesquisa) && !termoPesquisa.Equals("Nome ou ID do produto", StringComparison.OrdinalIgnoreCase))
             {
-                // Filtra na lista em memória
+                
                 _produtosAtuais = _produtosEmMemoria
                     .Where(p => p.Nome.IndexOf(termoPesquisa, StringComparison.OrdinalIgnoreCase) >= 0 || 
                                 p.Id.ToString() == termoPesquisa)
@@ -309,7 +309,7 @@ namespace Mercadinho.View
             }
             else
             {
-                _produtosAtuais = _produtosEmMemoria; // Usa a lista completa
+                _produtosAtuais = _produtosEmMemoria; 
             }
 
             return _produtosAtuais
@@ -399,7 +399,7 @@ namespace Mercadinho.View
                 Marca = produto.Marca,
                 Modelo = produto.Modelo,
                 QuantidadeEmEstoque = produto.QuantidadeDisponivel
-            }, false); //
+            }, false); 
 
             lst.QuantidadeCliente = produto.QuantidadeCliente;
             lst.Excluir += (s, e) => RemoverDoCarrinho(produto);
@@ -722,7 +722,7 @@ namespace Mercadinho.View
         private void CalcularTotal()
         {
             decimal total = _carrinho.Values.Sum(item => 
-                (decimal)(item.preco * item.QuantidadeCliente) // Preço * Quantidade
+                (decimal)(item.preco * item.QuantidadeCliente) 
             );
             labelTotalVenda.Text = $"R$ {total:F2}";
         }
