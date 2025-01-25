@@ -32,6 +32,7 @@ namespace Mercadinho.View
         private List<Produto> _produtosEmMemoria;
         private VendaRepository _vendaRepository = new VendaRepository();
         private VendaProdutoRepository _vendaProdutoRepository = new VendaProdutoRepository();
+        private int _paginaCarrinhoAtual = 1;
 
         #endregion
 
@@ -171,8 +172,33 @@ namespace Mercadinho.View
 
         private void ConfigurarEventosProdutos()
         {
-            btnAvancarP.Click += (s, e) => { _paginaProdutoAtual++; ExibirProdutos(); };
-            btnVoltarP.Click += (s, e) => { _paginaProdutoAtual--; ExibirProdutos(); };
+            btnAvancarP.Click += (s, e) => 
+            { 
+                if (_isCarrinhoView)
+                {
+                    _paginaCarrinhoAtual++;
+                    ExibirCarrinhoComFiltro(txtBoxProduto.textBox.Text.Trim());
+                }
+                else
+                {
+                    _paginaProdutoAtual++;
+                    ExibirProdutos();
+                }
+            };
+            
+            btnVoltarP.Click += (s, e) => 
+            { 
+                if (_isCarrinhoView)
+                {
+                    _paginaCarrinhoAtual--;
+                    ExibirCarrinhoComFiltro(txtBoxProduto.textBox.Text.Trim());
+                }
+                else
+                {
+                    _paginaProdutoAtual--;
+                    ExibirProdutos();
+                }
+            };
             btnPesquisarProduto.Click += (s, e) => { _paginaProdutoAtual = 1; ExibirProdutos(); };
             txtBoxProduto.textBox.KeyDown += (s, e) => 
             { 
@@ -315,18 +341,30 @@ namespace Mercadinho.View
         {
             _isCarrinhoView = !_isCarrinhoView;
             
-            txtBoxProduto.textBox.Text = "";
+            if (_isCarrinhoView)
+                _paginaCarrinhoAtual = 1;
+            else
+                _paginaProdutoAtual = 1;
+            
+            txtBoxProduto.textBox.Text = ""; 
             
             if (_isCarrinhoView)
             {
-                ExibirCarrinhoComFiltro("");
+                ExibirCarrinhoComFiltro(""); 
                 AjustarUIparaCarrinho();
             }
             else
             {
-                ExibirProdutos();
+                ExibirProdutos(); 
                 AjustarUIparaProdutos();
             }
+            
+            
+            labelPagina.Text = _isCarrinhoView ? "Carrinho" : "Produtos";
+            label16.Visible = !_isCarrinhoView;
+            
+            
+            AtualizarUIProdutos();
         }
 
         private void AjustarUIparaCarrinho()
@@ -503,7 +541,7 @@ namespace Mercadinho.View
 
         private void MostrarMensagemAdicao(LstProduto produto)
         {
-            MessageBox.Show($"{produto.QuantidadeCliente}x {produto.Nome} adicionado(s) ao carrinho!", "Sucesso",
+            MessageBox.Show($"Produto adicionado(s) ao carrinho!", "Sucesso",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -529,7 +567,7 @@ namespace Mercadinho.View
             if (produtoOriginal != null)
             {
                 produtoOriginal.QuantidadeEmEstoque += 1;
-                produto.QuantidadeDisponivel += 1; // Atualiza o LstProduto
+                produto.QuantidadeDisponivel += 1; 
             }
         }
 
@@ -541,15 +579,35 @@ namespace Mercadinho.View
         private void ExibirCarrinhoComFiltro(string termoPesquisa)
         {
             GridProdutos.Controls.Clear();
-            var carrinhoFiltrado = FiltrarCarrinho(termoPesquisa);
+            var carrinhoFiltrado = FiltrarCarrinho(termoPesquisa).ToList();
             
-            foreach (var produto in carrinhoFiltrado) // Removido .Values
+            var itensPagina = carrinhoFiltrado
+                .Skip((_paginaCarrinhoAtual - 1) * ITENS_POR_PAGINA)
+                .Take(ITENS_POR_PAGINA);
+            
+            foreach (var produto in itensPagina)
             {
                 var lstProduto = CriarItemCarrinho(produto);
                 GridProdutos.Controls.Add(lstProduto);
             }
             
             AtualizarLabelsCarrinho();
+            AtualizarUIPaginacaoCarrinho(carrinhoFiltrado.Count);
+        }
+
+        private void AtualizarUIPaginacaoCarrinho(int totalItens)
+        {
+            int totalPaginas = (int)Math.Ceiling(totalItens / (double)ITENS_POR_PAGINA);
+            
+            btnAvancarP.Enabled = _paginaCarrinhoAtual < totalPaginas;
+            btnVoltarP.Enabled = _paginaCarrinhoAtual > 1;
+            
+            btnPaginasP.Text = _isCarrinhoView 
+                ? _paginaCarrinhoAtual.ToString() 
+                : _paginaProdutoAtual.ToString();
+            
+            AtualizarCoresBotoes(btnAvancarP, btnAvancarP.Enabled);
+            AtualizarCoresBotoes(btnVoltarP, btnVoltarP.Enabled);
         }
         private void ResetarCarrinho()
         {
@@ -627,8 +685,14 @@ namespace Mercadinho.View
 
         private void AtualizarUIProdutos()
         {
-            btnPaginasP.Text = _paginaProdutoAtual.ToString();
-            AtualizarBotoesPaginacao();
+            btnPaginasP.Text = _isCarrinhoView 
+                ? _paginaCarrinhoAtual.ToString() 
+                : _paginaProdutoAtual.ToString();
+            
+            if (!_isCarrinhoView)
+            {
+                AtualizarBotoesPaginacao();
+            }
         }
 
         private void AtualizarBotoesPaginacao()
