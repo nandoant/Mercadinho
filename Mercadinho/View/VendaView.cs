@@ -417,7 +417,7 @@ namespace Mercadinho.View
 
         private void FinalizarVenda()
         {
-            // Validações
+            // Validações iniciais
             if (_clienteSelecionado == null)
             {
                 MessageBox.Show("Selecione um cliente antes de finalizar a venda.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -432,19 +432,30 @@ namespace Mercadinho.View
 
             try
             {
-                // Cria a venda
+                // 1. Atualizar estoque no banco de dados
+                foreach (var itemCarrinho in _carrinho.Values)
+                {
+                    var produtoNoBanco = _produtoRepository.ObterPorId(itemCarrinho.Id);
+                    if (produtoNoBanco != null)
+                    {
+                        // Subtrai a quantidade vendida do estoque real
+                        produtoNoBanco.QuantidadeEmEstoque -= itemCarrinho.QuantidadeCliente;
+                        _produtoRepository.Atualizar(produtoNoBanco); // Persiste no banco
+                    }
+                }
+
+                // 2. Criar registro da venda
                 var venda = new Venda
                 {
                     IdCliente = _clienteSelecionado.Id,
                     DataCompra = DateTime.Now,
-                    Produtos = new List<Produto>() // Opcional, apenas para compatibilidade
+                    ValorTotal = (decimal)_carrinho.Values.Sum(item => item.preco * item.QuantidadeCliente)
                 };
 
-                // Insere a venda no banco e obtém o ID gerado
-                int vendaId = _vendaRepository.Inserir(venda);
+                int vendaId = _vendaRepository.Inserir(venda); // Insere no banco
 
-                // Prepara os itens da vendaProduto
-                var itensVenda = _carrinho.Values.Select(item => 
+                // 3. Registrar itens da venda
+                var itensVenda = _carrinho.Values.Select(item =>
                     new VendaProduto(
                         vendaId,
                         item.Id,
@@ -452,26 +463,19 @@ namespace Mercadinho.View
                         item.preco
                     )).ToList();
 
-                // Insere os itens no banco
                 _vendaProdutoRepository.AdicionarItens(vendaId, itensVenda);
 
-                // Atualiza estoque no banco
-                foreach (var produto in _produtosEmMemoria)
-                {
-                    _produtoRepository.Atualizar(produto);
-                }
-
-                // Limpa o carrinho e recarrega dados
+                // 4. Atualizar estado local
                 _carrinho.Clear();
-                _produtosEmMemoria = _produtoRepository.Listar().ToList();
-                _clienteSelecionado = null;
+                _produtosEmMemoria = _produtoRepository.Listar().ToList(); // Recarrega dados frescos
                 labelClienteNome.Text = "Nenhum cliente selecionado";
 
+                // 5. Atualizar UI
                 ExibirProdutos();
+                AtualizarLabelsCarrinho();
                 MessageBox.Show("Venda finalizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tabControlClientes.SelectedTab = tabListaVendas;
-                
-                // Disparar o evento para atualizar a lista
+
                 VendaFinalizada?.Invoke(this, EventArgs.Empty);
             }
             catch (Exception ex)
@@ -550,15 +554,14 @@ namespace Mercadinho.View
         {
             if (_carrinho.ContainsKey(produto.Id))
             {
-                var produtoEmMemoria = _produtosEmMemoria.FirstOrDefault(p => p.Id == produto.Id);
-                if (produtoEmMemoria != null)
-                {
-                    produtoEmMemoria.QuantidadeEmEstoque += _carrinho[produto.Id].QuantidadeCliente;
-                    // Atualiza a quantidade disponível no LstProduto do carrinho
-                    produto.QuantidadeDisponivel = produtoEmMemoria.QuantidadeEmEstoque;
-                }
                 _carrinho.Remove(produto.Id);
-                AtualizarExibicao();
+
+                if (_isCarrinhoView)
+                    ExibirCarrinhoComFiltro(txtBoxProduto.textBox.Text.Trim());
+                else
+                    ExibirProdutos();
+
+                AtualizarLabelsCarrinho();
             }
         }
 

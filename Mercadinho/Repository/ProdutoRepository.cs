@@ -177,5 +177,39 @@ namespace Mercadinho.Repository
                 }
             }
         }
+        public Produto ObterPorId(int id)
+        {
+            string query = "SELECT Id, Nome, Preco, Descricao, Marca, Modelo, Quantidade FROM Produto WHERE Id = @Id;";
+            Produto produto = null;
+
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            produto = new Produto
+                            {
+                                Id = reader.GetInt32("Id"),
+                                Nome = reader.GetString("Nome"),
+                                PrecoUnitario = reader.GetDouble("Preco"),
+                                Descricao = reader.GetString("Descricao"),
+                                Marca = reader.GetString("Marca"),
+                                Modelo = reader.GetString("Modelo"),
+                                QuantidadeEmEstoque = reader.GetInt32("Quantidade")
+                            };
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            return produto;
+        }
+
+
     }
 }

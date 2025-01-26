@@ -12,6 +12,7 @@ namespace Mercadinho.Repository
         void Adicionar(Produto produto);
         void Atualizar(Produto produto);
         void Remover(int id);
+        Produto ObterPorId(int id);
         IEnumerable<Produto> Listar();
         IEnumerable<Produto> ObterPorvalor(string valor);
     }
