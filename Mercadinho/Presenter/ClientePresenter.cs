@@ -151,6 +151,11 @@ namespace Mercadinho.Presenter
                 throw new Exception("Idade deve ser maior que zero");
             }
 
+            if (cliente.Idade > 190)
+            {
+                throw new Exception("Idade deve ser menor que 190");
+            }
+
             if (string.IsNullOrEmpty(cliente.Cpf.Trim()))
             {
                 throw new Exception("CPF do cliente é obrigatório");
