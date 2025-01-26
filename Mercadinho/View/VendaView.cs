@@ -213,7 +213,7 @@ namespace Mercadinho.View
 
             labelCarrinho.Click += (sender, e) => 
             {
-                if (!_isCarrinhoView) // Só alterna se já não estiver no carrinho
+                if (!_isCarrinhoView) 
                 {
                     AlternarVisualizacao();
                     labelPagina.Text = "Carrinho";
@@ -223,7 +223,7 @@ namespace Mercadinho.View
 
             labelProdutos.Click += (sender, e) => 
             {
-                if (_isCarrinhoView) // Só alterna se já estiver no carrinho
+                if (_isCarrinhoView) 
                 {
                     AlternarVisualizacao();
                     labelPagina.Text = "Produtos";
@@ -503,7 +503,7 @@ namespace Mercadinho.View
                 _carrinho.Add(lstProduto.Id, lstProduto);
             }
 
-            // Atualiza a exibição dos produtos para refletir o novo estoque disponível
+            
             ExibirProdutos();
             AtualizarLabelsCarrinho();
             MostrarMensagemAdicao(lstProduto);
@@ -521,7 +521,7 @@ namespace Mercadinho.View
             var produtoEmMemoria = _produtosEmMemoria.FirstOrDefault(p => p.Id == produto.Id);
             if (produtoEmMemoria == null) return false;
 
-            // Obtém a quantidade já reservada no carrinho
+            // Obtém a quantidade JÁ reservada no carrinho, ok ?
             int quantidadeNoCarrinho = _carrinho.TryGetValue(produto.Id, out var item) ? item.QuantidadeCliente : 0;
 
             // Calcula o estoque disponível REAL (estoque original - quantidade no carrinho)
@@ -615,7 +615,6 @@ namespace Mercadinho.View
         }
         private void ResetarCarrinho()
         {
-            // Restaurar estoque dos produtos no carrinho
             foreach (var item in _carrinho.Values)
             {
                 var produto = _produtosEmMemoria.FirstOrDefault(p => p.Id == item.Id);
@@ -625,19 +624,19 @@ namespace Mercadinho.View
                 }
             }
             
-            _carrinho.Clear(); // Limpa o carrinho
-            AtualizarLabelsCarrinho(); // Atualiza totais
+            _carrinho.Clear();
+            AtualizarLabelsCarrinho();
             
             if (_isCarrinhoView)
-                ExibirCarrinhoComFiltro(""); // Atualiza a exibição se estiver na view do carrinho
+                ExibirCarrinhoComFiltro("");
             else
-                ExibirProdutos(); // Atualiza a lista de produtos
+                ExibirProdutos(); 
         }
 
         private IEnumerable<LstProduto> FiltrarCarrinho(string termo)
         {
             if (string.IsNullOrWhiteSpace(termo))
-                return _carrinho.Values; // Retorna os valores, não o dicionário
+                return _carrinho.Values;
 
             return _carrinho.Values.Where(p =>
                 p.Nome.IndexOf(termo, StringComparison.OrdinalIgnoreCase) >= 0 ||

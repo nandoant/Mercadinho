@@ -46,7 +46,6 @@ namespace Mercadinho.GRIDs
         
         _produto = produto;
         btnEdit.Dispose();
-        // Initialize all labels
         Id = produto.Id;
         Nome = produto.Nome;
         Descricao = produto.Descricao;
@@ -70,8 +69,6 @@ namespace Mercadinho.GRIDs
         btnDelete.Click += (sender, e) => Excluir?.Invoke(this, e);
     }
 
-
-    // Update properties to use _produto
     public string nome => _produto.Nome;
     public double preco => _produto.PrecoUnitario;
 
