@@ -146,6 +146,11 @@ namespace Mercadinho.Presenter
                 throw new Exception("Nome do cliente é obrigatório");
             }
 
+            if (cliente.Nome.Length > 100)
+            {
+                throw new Exception("Nome do cliente não pode exceder 100 caracteres");
+            }
+
             if (cliente.Nome.Any(char.IsDigit) || cliente.Nome.Any(ch => !char.IsLetter(ch) && !char.IsWhiteSpace(ch)))
             {
                 throw new Exception("Nome do cliente não pode conter números ou caracteres especiais");

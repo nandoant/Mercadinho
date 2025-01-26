@@ -144,26 +144,51 @@ namespace Mercadinho.Presenter
             {
                 throw new Exception("Nome do produto é obrigatório");
             }
+            if (produto.Nome.Length > 100)
+            {
+                throw new Exception("Nome do produto não pode exceder 100 caracteres");
+            }
 
             if (double.TryParse(produto.PrecoUnitario.ToString(), out double preco) == false)
             {
                 throw new Exception("Preço do produto deve ser um número");
             }
-
             if (produto.PrecoUnitario <= 0)
             {
                 throw new Exception("Preço do produto deve ser maior que zero");
+            }
+            if (produto.PrecoUnitario > 10000000000)
+            {
+                throw new Exception("Preço do produto não pode exceder 10000000000");
+            }
+
+            if(produto.QuantidadeEmEstoque > 1000000000)
+            {
+                throw new Exception("Quantidade do produto não pode exceder 1000000000");
             }
 
             if (string.IsNullOrEmpty(produto.Marca.Trim()))
             {
                 throw new Exception("Marca do produto é obrigatória");
             }
+            if (produto.Marca.Length > 50)
+            {
+                throw new Exception("Marca do produto não pode exceder 50 caracteres");
+            }
 
             if (string.IsNullOrEmpty(produto.Modelo.Trim()))
             {
                 throw new Exception("Modelo do produto é obrigatório");
-            } 
+            }
+            if (produto.Modelo.Length > 50)
+            {
+                throw new Exception("Modelo do produto não pode exceder 50 caracteres");
+            }
+
+            if (produto.Descricao.Length > 500)
+            {
+                throw new Exception("Descrição do produto não pode exceder 500 caracteres");
+            }
         }
 
         private void HandleCancelar(object sender, EventArgs e)
