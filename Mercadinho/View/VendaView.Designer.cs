@@ -781,9 +781,9 @@
             this.labelTotalVenda.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(240)))), ((int)(((byte)(237)))));
             this.labelTotalVenda.Font = new System.Drawing.Font("Segoe UI Semibold", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTotalVenda.ForeColor = System.Drawing.Color.Black;
-            this.labelTotalVenda.Location = new System.Drawing.Point(109, 106);
+            this.labelTotalVenda.Location = new System.Drawing.Point(13, 106);
             this.labelTotalVenda.Name = "labelTotalVenda";
-            this.labelTotalVenda.Size = new System.Drawing.Size(208, 46);
+            this.labelTotalVenda.Size = new System.Drawing.Size(378, 46);
             this.labelTotalVenda.TabIndex = 55;
             this.labelTotalVenda.Text = "R$ 0";
             this.labelTotalVenda.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

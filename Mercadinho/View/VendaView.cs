@@ -287,7 +287,16 @@ namespace Mercadinho.View
 
             foreach (var produto in produtos)
             {
-                var lstProduto = new LstProduto(produto, true);
+                // Verifica se o produto está no carrinho
+                int quantidadeNoCarrinho = _carrinho.TryGetValue(produto.Id, out var itemCarrinho)
+                    ? itemCarrinho.QuantidadeCliente
+                    : 0;
+
+                var lstProduto = new LstProduto(produto, true)
+                {
+                    QuantidadeDisponivel = produto.QuantidadeEmEstoque - quantidadeNoCarrinho
+                };
+
                 lstProduto.Excluir += (s, e) => AdicionarAoCarrinho((LstProduto)s);
                 GridProdutos.Controls.Add(lstProduto);
             }
@@ -475,7 +484,6 @@ namespace Mercadinho.View
         #region Cart Operations
         private void AdicionarAoCarrinho(LstProduto lstProduto)
         {
-            // Valida a quantidade antes de prosseguir
             if (!ValidarQuantidade(lstProduto))
                 return;
 
@@ -484,27 +492,15 @@ namespace Mercadinho.View
 
             if (_carrinho.TryGetValue(lstProduto.Id, out var itemExistente))
             {
-                int novaQuantidadeTotal = itemExistente.QuantidadeCliente + lstProduto.QuantidadeCliente;
-                
-                // Verifica se a soma excede o estoque
-                if (novaQuantidadeTotal > produtoEmMemoria.QuantidadeEmEstoque)
-                {
-                    MessageBox.Show($"Quantidade total ({novaQuantidadeTotal}) excede o estoque disponível ({produtoEmMemoria.QuantidadeEmEstoque}).",
-                        "Estoque Insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                
-                itemExistente.QuantidadeCliente = novaQuantidadeTotal;
-                itemExistente.QuantidadeDisponivel = produtoEmMemoria.QuantidadeEmEstoque - novaQuantidadeTotal;
+                itemExistente.QuantidadeCliente += lstProduto.QuantidadeCliente;
             }
             else
             {
-                lstProduto.QuantidadeDisponivel = produtoEmMemoria.QuantidadeEmEstoque - lstProduto.QuantidadeCliente;
                 _carrinho.Add(lstProduto.Id, lstProduto);
             }
 
-            produtoEmMemoria.QuantidadeEmEstoque -= lstProduto.QuantidadeCliente;
-            
+            // Atualiza a exibição dos produtos para refletir o novo estoque disponível
+            ExibirProdutos();
             AtualizarLabelsCarrinho();
             MostrarMensagemAdicao(lstProduto);
         }
@@ -521,15 +517,20 @@ namespace Mercadinho.View
             var produtoEmMemoria = _produtosEmMemoria.FirstOrDefault(p => p.Id == produto.Id);
             if (produtoEmMemoria == null) return false;
 
+            // Obtém a quantidade já reservada no carrinho
             int quantidadeNoCarrinho = _carrinho.TryGetValue(produto.Id, out var item) ? item.QuantidadeCliente : 0;
-            int quantidadeTotal = quantidadeNoCarrinho + produto.QuantidadeCliente;
 
-            if (quantidadeTotal > produtoEmMemoria.QuantidadeEmEstoque)
+            // Calcula o estoque disponível REAL (estoque original - quantidade no carrinho)
+            int estoqueDisponivel = produtoEmMemoria.QuantidadeEmEstoque - quantidadeNoCarrinho;
+
+            // Verifica se a quantidade desejada excede o estoque disponível
+            if (produto.QuantidadeCliente > estoqueDisponivel)
             {
-                MessageBox.Show($"Quantidade solicitada ({quantidadeTotal}) maior que disponível em estoque ({produtoEmMemoria.QuantidadeEmEstoque}).",
+                MessageBox.Show($"Quantidade solicitada ({produto.QuantidadeCliente}) excede o estoque disponível ({estoqueDisponivel}).",
                     "Estoque Insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+
             return true;
         }
 
