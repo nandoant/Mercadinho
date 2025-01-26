@@ -15,5 +15,6 @@ namespace Mercadinho.Repository
         Cliente ObterPorCpf(string cpf);
         IEnumerable<Cliente> Listar();
         IEnumerable<Cliente> ObterPorvalor(string valor);
+        Cliente ObterPorCpfExcetoId(string cpf, int id);
     }
 }

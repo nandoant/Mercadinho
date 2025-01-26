@@ -181,7 +181,11 @@ namespace Mercadinho.Presenter
                 throw new Exception("CPF deve conter apenas números");
             }
 
-            if (repository.ObterPorCpf(cliente.Cpf) != null)
+            var clienteExistente = (cliente.Id == 0)
+            ? repository.ObterPorCpf(cliente.Cpf)
+            : repository.ObterPorCpfExcetoId(cliente.Cpf, cliente.Id);
+
+            if (clienteExistente != null)
             {
                 throw new Exception("CPF já cadastrado");
             }
