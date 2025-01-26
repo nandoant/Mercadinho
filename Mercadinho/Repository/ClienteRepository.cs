@@ -136,6 +136,8 @@ namespace Mercadinho.Repository
             return clientes;
         }
 
+
+
         public void Remover(int id)
         {
             string query = "DELETE FROM Cliente WHERE Id = @Id;";
@@ -150,6 +152,34 @@ namespace Mercadinho.Repository
                     connection.Close();
                 }
             }
+        }
+        public Cliente ObterPorCpf(string cpf)
+        {
+            Cliente cliente = null;
+            string query = "SELECT Id, Nome, Idade, Cpf FROM Cliente WHERE Cpf = @Cpf;";
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Cpf", cpf);
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            cliente = new Cliente
+                            {
+                                Id = reader.GetInt32("Id"),
+                                Nome = reader.GetString("Nome"),
+                                Idade = reader.GetInt32("Idade"),
+                                Cpf = reader.GetString("Cpf")
+                            };
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            return cliente;
         }
     }
 }

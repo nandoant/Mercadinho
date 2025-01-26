@@ -12,6 +12,7 @@ namespace Mercadinho.Repository
         void Adicionar(Cliente cliente);
         void Atualizar(Cliente cliente);
         void Remover(int id);
+        Cliente ObterPorCpf(string cpf);
         IEnumerable<Cliente> Listar();
         IEnumerable<Cliente> ObterPorvalor(string valor);
     }

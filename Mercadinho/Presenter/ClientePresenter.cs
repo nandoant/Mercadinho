@@ -170,6 +170,11 @@ namespace Mercadinho.Presenter
             {
                 throw new Exception("CPF deve conter apenas números");
             }
+
+            if(repository.ObterPorCpf(cliente.Cpf) != null)
+            {
+                throw new Exception("CPF já cadastrado");
+            }
         }
 
         private void HandleCancelar(object sender, EventArgs e)
