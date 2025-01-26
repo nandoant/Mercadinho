@@ -146,6 +146,11 @@ namespace Mercadinho.Presenter
                 throw new Exception("Nome do cliente é obrigatório");
             }
 
+            if (cliente.Nome.Any(char.IsDigit) || cliente.Nome.Any(ch => !char.IsLetter(ch) && !char.IsWhiteSpace(ch)))
+            {
+                throw new Exception("Nome do cliente não pode conter números ou caracteres especiais");
+            }
+
             if (cliente.Idade <= 0)
             {
                 throw new Exception("Idade deve ser maior que zero");
@@ -171,7 +176,7 @@ namespace Mercadinho.Presenter
                 throw new Exception("CPF deve conter apenas números");
             }
 
-            if(repository.ObterPorCpf(cliente.Cpf) != null)
+            if (repository.ObterPorCpf(cliente.Cpf) != null)
             {
                 throw new Exception("CPF já cadastrado");
             }
