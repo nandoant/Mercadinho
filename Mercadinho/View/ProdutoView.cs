@@ -17,7 +17,7 @@ namespace Mercadinho.View
 {
     public partial class ProdutoView : Form, IProdutoView
     {
-        private int _pagina = 1;
+        private int pagina = 1;
 
         public string BarraDePesquisa 
         { 
@@ -27,10 +27,10 @@ namespace Mercadinho.View
 
         public int Pagina
         {
-            get => _pagina;
+            get => pagina;
             set
             {
-                _pagina = value;
+                pagina = value;
                 btnPaginas.Text = value.ToString();
             }
         }

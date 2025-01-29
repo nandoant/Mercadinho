@@ -14,7 +14,7 @@ namespace Mercadinho.GRIDs
 {
     public partial class LstProduto : UserControl, ILstProduto
     {
-        private Produto _produto;
+        private Produto produto;
         public event EventHandler Editar;
         public event EventHandler Excluir;
 
@@ -44,7 +44,7 @@ namespace Mercadinho.GRIDs
     {
         InitializeComponent();
         
-        _produto = produto;
+        this.produto = produto;
         btnEdit.Dispose();
         Id = produto.Id;
         Nome = produto.Nome;
@@ -69,10 +69,10 @@ namespace Mercadinho.GRIDs
         btnDelete.Click += (sender, e) => Excluir?.Invoke(this, e);
     }
 
-    public string nome => _produto.Nome;
-    public double preco => _produto.PrecoUnitario;
+    public string nome => produto.Nome;
+    public double preco => produto.PrecoUnitario;
 
-    public int quantidadeDisponivel => _produto.QuantidadeEmEstoque;
+    public int quantidadeDisponivel => produto.QuantidadeEmEstoque;
         public int Id
         {
             get { return int.Parse(labelID.Text); }

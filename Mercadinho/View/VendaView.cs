@@ -13,30 +13,29 @@ namespace Mercadinho.View
 {
     public partial class VendaView : Form, IListaVendaView, ISelecaoClienteView, IVendaMainView
     {
-        private static VendaView _instance;
-        private ClienteSelecaoPresenter _clienteSelecaoPresenter; 
+        private static VendaView instance;
+        private ClienteSelecaoPresenter clienteSelecaoPresenter; 
 
-        private  VendaMainPresenter _mainPresenter;
-        private  ProdutoRepository _produtoRepository = new ProdutoRepository();
-        private  IClienteRepository _clienteRepository = new ClienteRepository();
+        private  ProdutoRepository produtoRepository = new ProdutoRepository();
+        private  IClienteRepository clienteRepository = new ClienteRepository();
         
-        private Cliente _clienteSelecionado;
-        private int _paginaClienteAtual = 1;
-        private int _paginaVendaAtual = 1;
-        private int _paginaProdutoAtual = 1;
+        private Cliente clienteSelecionado;
+        private int paginaClienteAtual = 1;
+        private int paginaVendaAtual = 1;
+        private int paginaProdutoAtual = 1;
         private const int ITENS_POR_PAGINA = 5;
-        private IEnumerable<Produto> _produtosAtuais;
-        private Dictionary<int, LstProduto> _carrinho = new Dictionary<int, LstProduto>();
-        private bool _isCarrinhoView = false;
-        private List<Produto> _produtosEmMemoria;
-        private VendaRepository _vendaRepository = new VendaRepository();
-        private VendaProdutoRepository _vendaProdutoRepository = new VendaProdutoRepository();
-        private int _paginaCarrinhoAtual = 1;
+        private IEnumerable<Produto> produtosAtuais;
+        private Dictionary<int, LstProduto> carrinho = new Dictionary<int, LstProduto>();
+        private bool isCarrinhoView = false;
+        private List<Produto> produtosEmMemoria;
+        private VendaRepository vendaRepository = new VendaRepository();
+        private VendaProdutoRepository vendaProdutoRepository = new VendaProdutoRepository();
+        private int paginaCarrinhoAtual = 1;
 
         public Cliente ClienteSelecionado
         {
-            get => _clienteSelecionado;
-            set => _clienteSelecionado = value;
+            get => clienteSelecionado;
+            set => clienteSelecionado = value;
         }
 
         string ISelecaoClienteView.TextoPesquisa
@@ -47,10 +46,10 @@ namespace Mercadinho.View
 
         int ISelecaoClienteView.PaginaAtual
         {
-            get => _paginaClienteAtual;
+            get => paginaClienteAtual;
             set
             {
-                _paginaClienteAtual = value;
+                paginaClienteAtual = value;
                 btnPaginasC.Text = value.ToString();
             }
         }
@@ -63,10 +62,10 @@ namespace Mercadinho.View
 
         public int PaginaAtual
         {
-            get => _paginaVendaAtual;
+            get => paginaVendaAtual;
             set
             {
-                _paginaVendaAtual = value;
+                paginaVendaAtual = value;
                 btnPaginasV.Text = value.ToString();
             }
         }
@@ -88,16 +87,16 @@ namespace Mercadinho.View
             InicializarProdutos();
             btnPaginasP.Enabled = false;
 
-        _clienteSelecaoPresenter = new ClienteSelecaoPresenter(
+        clienteSelecaoPresenter = new ClienteSelecaoPresenter(
             this, 
             this, 
-            _clienteRepository
+            clienteRepository
         );
         btnFinalizar.Click += (s, e) => FinalizarVenda();
 
         txtBoxProduto.textBox.GotFocus += (s, e) => 
         {
-            if (_isCarrinhoView)
+            if (isCarrinhoView)
                 txtBoxProduto.textBox.Text = "Pesquisar no carrinho...";
             else
                 txtBoxProduto.textBox.Text = "Nome ou ID do produto";
@@ -155,8 +154,8 @@ namespace Mercadinho.View
 
         private void InicializarProdutos()
         {
-            _produtosEmMemoria = _produtoRepository.Listar().ToList();
-            _produtosAtuais = _produtosEmMemoria;
+            produtosEmMemoria = produtoRepository.Listar().ToList();
+            produtosAtuais = produtosEmMemoria;
             ConfigurarEventosProdutos();
             ExibirProdutos();
         }
@@ -165,37 +164,37 @@ namespace Mercadinho.View
         {
             btnAvancarP.Click += (s, e) => 
             { 
-                if (_isCarrinhoView)
+                if (isCarrinhoView)
                 {
-                    _paginaCarrinhoAtual++;
+                    paginaCarrinhoAtual++;
                     ExibirCarrinhoComFiltro(txtBoxProduto.textBox.Text.Trim());
                 }
                 else
                 {
-                    _paginaProdutoAtual++;
+                    paginaProdutoAtual++;
                     ExibirProdutos();
                 }
             };
             
             btnVoltarP.Click += (s, e) => 
             { 
-                if (_isCarrinhoView)
+                if (isCarrinhoView)
                 {
-                    _paginaCarrinhoAtual--;
+                    paginaCarrinhoAtual--;
                     ExibirCarrinhoComFiltro(txtBoxProduto.textBox.Text.Trim());
                 }
                 else
                 {
-                    _paginaProdutoAtual--;
+                    paginaProdutoAtual--;
                     ExibirProdutos();
                 }
             };
-            btnPesquisarProduto.Click += (s, e) => { _paginaProdutoAtual = 1; ExibirProdutos(); };
+            btnPesquisarProduto.Click += (s, e) => { paginaProdutoAtual = 1; ExibirProdutos(); };
             txtBoxProduto.textBox.KeyDown += (s, e) => 
             { 
                 if (e.KeyCode == Keys.Enter)
                 {
-                    if (_isCarrinhoView)
+                    if (isCarrinhoView)
                         ExibirCarrinhoComFiltro(txtBoxProduto.textBox.Text.Trim());
                     else
                         ExibirProdutos(); 
@@ -204,7 +203,7 @@ namespace Mercadinho.View
 
             labelCarrinho.Click += (sender, e) => 
             {
-                if (!_isCarrinhoView) 
+                if (!isCarrinhoView) 
                 {
                     AlternarVisualizacao();
                     labelPagina.Text = "Carrinho";
@@ -214,7 +213,7 @@ namespace Mercadinho.View
 
             labelProdutos.Click += (sender, e) => 
             {
-                if (_isCarrinhoView) 
+                if (isCarrinhoView) 
                 {
                     AlternarVisualizacao();
                     labelPagina.Text = "Produtos";
@@ -227,11 +226,11 @@ namespace Mercadinho.View
         public void MostrarListaVendas() => tabControlClientes.SelectedTab = tabListaVendas;
         public void MostrarSelecaoCliente()
         {
-            _paginaProdutoAtual = 1;
-            _carrinho.Clear();
+            paginaProdutoAtual = 1;
+            carrinho.Clear();
             ExibirProdutos();
             tabControlClientes.SelectedTab = tabDetalhesClientes;
-            _clienteSelecaoPresenter.RecarregarClientes();
+            clienteSelecaoPresenter.RecarregarClientes();
         }
         public void MostrarProdutos() => tabControlClientes.SelectedTab = tabEscolherProdutos;
 
@@ -276,7 +275,7 @@ namespace Mercadinho.View
             foreach (var produto in produtos)
             {
                 // Verifica se o produto está no carrinho
-                int quantidadeNoCarrinho = _carrinho.TryGetValue(produto.Id, out var itemCarrinho)
+                int quantidadeNoCarrinho = carrinho.TryGetValue(produto.Id, out var itemCarrinho)
                     ? itemCarrinho.QuantidadeCliente
                     : 0;
 
@@ -299,33 +298,33 @@ namespace Mercadinho.View
             if (!string.IsNullOrEmpty(termoPesquisa) && !termoPesquisa.Equals("Nome ou ID do produto", StringComparison.OrdinalIgnoreCase))
             {
                 
-                _produtosAtuais = _produtosEmMemoria
+                produtosAtuais = produtosEmMemoria
                     .Where(p => p.Nome.IndexOf(termoPesquisa, StringComparison.OrdinalIgnoreCase) >= 0 || 
                                 p.Id.ToString() == termoPesquisa)
                     .ToList();
             }
             else
             {
-                _produtosAtuais = _produtosEmMemoria; 
+                produtosAtuais = produtosEmMemoria; 
             }
 
-            return _produtosAtuais
-                .Skip((_paginaProdutoAtual - 1) * ITENS_POR_PAGINA)
+            return produtosAtuais
+                .Skip((paginaProdutoAtual - 1) * ITENS_POR_PAGINA)
                 .Take(ITENS_POR_PAGINA);
         }
 
         private void AlternarVisualizacao()
         {
-            _isCarrinhoView = !_isCarrinhoView;
+            isCarrinhoView = !isCarrinhoView;
             
-            if (_isCarrinhoView)
-                _paginaCarrinhoAtual = 1;
+            if (isCarrinhoView)
+                paginaCarrinhoAtual = 1;
             else
-                _paginaProdutoAtual = 1;
+                paginaProdutoAtual = 1;
             
             txtBoxProduto.textBox.Text = ""; 
             
-            if (_isCarrinhoView)
+            if (isCarrinhoView)
             {
                 ExibirCarrinhoComFiltro(""); 
                 AjustarUIparaCarrinho();
@@ -337,8 +336,8 @@ namespace Mercadinho.View
             }
             
             
-            labelPagina.Text = _isCarrinhoView ? "Carrinho" : "Produtos";
-            label16.Visible = !_isCarrinhoView;
+            labelPagina.Text = isCarrinhoView ? "Carrinho" : "Produtos";
+            label16.Visible = !isCarrinhoView;
             
             
             AtualizarUIProdutos();
@@ -380,13 +379,13 @@ namespace Mercadinho.View
         private void FinalizarVenda()
         {
             // Validações iniciais
-            if (_clienteSelecionado == null)
+            if (clienteSelecionado == null)
             {
                 MessageBox.Show("Selecione um cliente antes de finalizar a venda.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (_carrinho.Count == 0)
+            if (carrinho.Count == 0)
             {
                 MessageBox.Show("Adicione produtos ao carrinho antes de finalizar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -395,29 +394,29 @@ namespace Mercadinho.View
             try
             {
                 // 1. Atualizar estoque no banco de dados
-                foreach (var itemCarrinho in _carrinho.Values)
+                foreach (var itemCarrinho in carrinho.Values)
                 {
-                    var produtoNoBanco = _produtoRepository.ObterPorId(itemCarrinho.Id);
+                    var produtoNoBanco = produtoRepository.ObterPorId(itemCarrinho.Id);
                     if (produtoNoBanco != null)
                     {
                         // Subtrai a quantidade vendida do estoque real
                         produtoNoBanco.QuantidadeEmEstoque -= itemCarrinho.QuantidadeCliente;
-                        _produtoRepository.Atualizar(produtoNoBanco); // Persiste no banco
+                        produtoRepository.Atualizar(produtoNoBanco); // Persiste no banco
                     }
                 }
 
                 // 2. Criar registro da venda
                 var venda = new Venda
                 {
-                    IdCliente = _clienteSelecionado.Id,
+                    IdCliente = clienteSelecionado.Id,
                     DataCompra = DateTime.Now,
-                    ValorTotal = (decimal)_carrinho.Values.Sum(item => item.preco * item.QuantidadeCliente)
+                    ValorTotal = (decimal)carrinho.Values.Sum(item => item.preco * item.QuantidadeCliente)
                 };
 
-                int vendaId = _vendaRepository.Inserir(venda); // Insere no banco
+                int vendaId = vendaRepository.Inserir(venda); // Insere no banco
 
                 // 3. Registrar itens da venda
-                var itensVenda = _carrinho.Values.Select(item =>
+                var itensVenda = carrinho.Values.Select(item =>
                     new VendaProduto(
                         vendaId,
                         item.Id,
@@ -425,11 +424,11 @@ namespace Mercadinho.View
                         item.preco
                     )).ToList();
 
-                _vendaProdutoRepository.AdicionarItens(vendaId, itensVenda);
+                vendaProdutoRepository.AdicionarItens(vendaId, itensVenda);
 
                 // 4. Atualizar estado local
-                _carrinho.Clear();
-                _produtosEmMemoria = _produtoRepository.Listar().ToList(); // Recarrega dados frescos
+                carrinho.Clear();
+                produtosEmMemoria = produtoRepository.Listar().ToList(); // Recarrega dados frescos
                 labelClienteNome.Text = "Nenhum cliente selecionado";
 
                 // 5. Atualizar UI
@@ -450,16 +449,16 @@ namespace Mercadinho.View
             if (!ValidarQuantidade(lstProduto))
                 return;
 
-            var produtoEmMemoria = _produtosEmMemoria.FirstOrDefault(p => p.Id == lstProduto.Id);
+            var produtoEmMemoria = produtosEmMemoria.FirstOrDefault(p => p.Id == lstProduto.Id);
             if (produtoEmMemoria == null) return;
 
-            if (_carrinho.TryGetValue(lstProduto.Id, out var itemExistente))
+            if (carrinho.TryGetValue(lstProduto.Id, out var itemExistente))
             {
                 itemExistente.QuantidadeCliente += lstProduto.QuantidadeCliente;
             }
             else
             {
-                _carrinho.Add(lstProduto.Id, lstProduto);
+                carrinho.Add(lstProduto.Id, lstProduto);
             }
 
             
@@ -477,11 +476,11 @@ namespace Mercadinho.View
                 return false;
             }
 
-            var produtoEmMemoria = _produtosEmMemoria.FirstOrDefault(p => p.Id == produto.Id);
+            var produtoEmMemoria = produtosEmMemoria.FirstOrDefault(p => p.Id == produto.Id);
             if (produtoEmMemoria == null) return false;
 
             // Obtém a quantidade JÁ reservada no carrinho, ok ?
-            int quantidadeNoCarrinho = _carrinho.TryGetValue(produto.Id, out var item) ? item.QuantidadeCliente : 0;
+            int quantidadeNoCarrinho = carrinho.TryGetValue(produto.Id, out var item) ? item.QuantidadeCliente : 0;
 
             // Calcula o estoque disponível REAL (estoque original - quantidade no carrinho)
             int estoqueDisponivel = produtoEmMemoria.QuantidadeEmEstoque - quantidadeNoCarrinho;
@@ -505,11 +504,11 @@ namespace Mercadinho.View
 
         private void RemoverDoCarrinho(LstProduto produto)
         {
-            if (_carrinho.ContainsKey(produto.Id))
+            if (carrinho.ContainsKey(produto.Id))
             {
-                _carrinho.Remove(produto.Id);
+                carrinho.Remove(produto.Id);
 
-                if (_isCarrinhoView)
+                if (isCarrinhoView)
                     ExibirCarrinhoComFiltro(txtBoxProduto.textBox.Text.Trim());
                 else
                     ExibirProdutos();
@@ -523,7 +522,7 @@ namespace Mercadinho.View
             var carrinhoFiltrado = FiltrarCarrinho(termoPesquisa).ToList();
             
             var itensPagina = carrinhoFiltrado
-                .Skip((_paginaCarrinhoAtual - 1) * ITENS_POR_PAGINA)
+                .Skip((paginaCarrinhoAtual - 1) * ITENS_POR_PAGINA)
                 .Take(ITENS_POR_PAGINA);
             
             foreach (var produto in itensPagina)
@@ -540,31 +539,31 @@ namespace Mercadinho.View
         {
             int totalPaginas = (int)Math.Ceiling(totalItens / (double)ITENS_POR_PAGINA);
             
-            btnAvancarP.Enabled = _paginaCarrinhoAtual < totalPaginas;
-            btnVoltarP.Enabled = _paginaCarrinhoAtual > 1;
+            btnAvancarP.Enabled = paginaCarrinhoAtual < totalPaginas;
+            btnVoltarP.Enabled = paginaCarrinhoAtual > 1;
             
-            btnPaginasP.Text = _isCarrinhoView 
-                ? _paginaCarrinhoAtual.ToString() 
-                : _paginaProdutoAtual.ToString();
+            btnPaginasP.Text = isCarrinhoView 
+                ? paginaCarrinhoAtual.ToString() 
+                : paginaProdutoAtual.ToString();
             
             AtualizarCoresBotoes(btnAvancarP, btnAvancarP.Enabled);
             AtualizarCoresBotoes(btnVoltarP, btnVoltarP.Enabled);
         }
         private void ResetarCarrinho()
         {
-            foreach (var item in _carrinho.Values)
+            foreach (var item in carrinho.Values)
             {
-                var produto = _produtosEmMemoria.FirstOrDefault(p => p.Id == item.Id);
+                var produto = produtosEmMemoria.FirstOrDefault(p => p.Id == item.Id);
                 if (produto != null)
                 {
                     produto.QuantidadeEmEstoque += item.QuantidadeCliente;
                 }
             }
             
-            _carrinho.Clear();
+            carrinho.Clear();
             AtualizarLabelsCarrinho();
             
-            if (_isCarrinhoView)
+            if (isCarrinhoView)
                 ExibirCarrinhoComFiltro("");
             else
                 ExibirProdutos(); 
@@ -573,45 +572,45 @@ namespace Mercadinho.View
         private IEnumerable<LstProduto> FiltrarCarrinho(string termo)
         {
             if (string.IsNullOrWhiteSpace(termo))
-                return _carrinho.Values;
+                return carrinho.Values;
 
-            return _carrinho.Values.Where(p =>
+            return carrinho.Values.Where(p =>
                 p.Nome.IndexOf(termo, StringComparison.OrdinalIgnoreCase) >= 0 ||
                 p.Id.ToString() == termo
             );
         }
         public static VendaView GetInstance(Form parentContainer)
         {
-            if (_instance == null || _instance.IsDisposed)
+            if (instance == null || instance.IsDisposed)
             {
-                _instance = new VendaView { MdiParent = parentContainer };
+                instance = new VendaView { MdiParent = parentContainer };
                 ConfigurarInstancia();
             }
             else
             {
                 RestaurarInstancia();
             }
-            return _instance;
+            return instance;
         }
 
         private static void ConfigurarInstancia()
         {
-            _instance.FormBorderStyle = FormBorderStyle.None;
-            _instance.Dock = DockStyle.Fill;
+            instance.FormBorderStyle = FormBorderStyle.None;
+            instance.Dock = DockStyle.Fill;
         }
 
         private static void RestaurarInstancia()
         {
-            if (_instance.WindowState == FormWindowState.Minimized)
-                _instance.WindowState = FormWindowState.Normal;
-            _instance.BringToFront();
+            if (instance.WindowState == FormWindowState.Minimized)
+                instance.WindowState = FormWindowState.Normal;
+            instance.BringToFront();
         }
 
         private string GetClienteName(int clienteId)
         {
             try
             {
-                return _clienteRepository.ObterPorvalor(clienteId.ToString()).FirstOrDefault()?.Nome 
+                return clienteRepository.ObterPorvalor(clienteId.ToString()).FirstOrDefault()?.Nome 
                     ?? $"Cliente não encontrado ({clienteId})";
             }
             catch
@@ -622,11 +621,11 @@ namespace Mercadinho.View
 
         private void AtualizarUIProdutos()
         {
-            btnPaginasP.Text = _isCarrinhoView 
-                ? _paginaCarrinhoAtual.ToString() 
-                : _paginaProdutoAtual.ToString();
+            btnPaginasP.Text = isCarrinhoView 
+                ? paginaCarrinhoAtual.ToString() 
+                : paginaProdutoAtual.ToString();
             
-            if (!_isCarrinhoView)
+            if (!isCarrinhoView)
             {
                 AtualizarBotoesPaginacao();
             }
@@ -634,10 +633,10 @@ namespace Mercadinho.View
 
         private void AtualizarBotoesPaginacao()
         {
-            var totalPaginas = (int)Math.Ceiling(_produtosAtuais.Count() / (double)ITENS_POR_PAGINA);
+            var totalPaginas = (int)Math.Ceiling(produtosAtuais.Count() / (double)ITENS_POR_PAGINA);
             
-            btnAvancarP.Enabled = _paginaProdutoAtual < totalPaginas;
-            btnVoltarP.Enabled = _paginaProdutoAtual > 1;
+            btnAvancarP.Enabled = paginaProdutoAtual < totalPaginas;
+            btnVoltarP.Enabled = paginaProdutoAtual > 1;
 
             AtualizarCoresBotoes(btnAvancarP, btnAvancarP.Enabled);
             AtualizarCoresBotoes(btnVoltarP, btnVoltarP.Enabled);
@@ -651,14 +650,14 @@ namespace Mercadinho.View
 
         private void AtualizarLabelsCarrinho()
         {
-            int totalItens = _carrinho.Values.Sum(item => item.QuantidadeCliente);
+            int totalItens = carrinho.Values.Sum(item => item.QuantidadeCliente);
             labelTotalProdutos.Text = totalItens.ToString();
             CalcularTotal();
         }
 
         private void CalcularTotal()
         {
-            decimal total = _carrinho.Values.Sum(item => 
+            decimal total = carrinho.Values.Sum(item => 
                 (decimal)(item.preco * item.QuantidadeCliente) 
             );
             labelTotalVenda.Text = $"R$ {total:F2}";
