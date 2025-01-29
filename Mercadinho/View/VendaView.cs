@@ -13,7 +13,6 @@ namespace Mercadinho.View
 {
     public partial class VendaView : Form, IListaVendaView, ISelecaoClienteView, IVendaMainView
     {
-        #region Fields and Constants
         private static VendaView _instance;
         private ClienteSelecaoPresenter _clienteSelecaoPresenter; 
 
@@ -34,9 +33,6 @@ namespace Mercadinho.View
         private VendaProdutoRepository _vendaProdutoRepository = new VendaProdutoRepository();
         private int _paginaCarrinhoAtual = 1;
 
-        #endregion
-
-        #region Properties and Interface Implementations
         public Cliente ClienteSelecionado
         {
             get => _clienteSelecionado;
@@ -74,9 +70,7 @@ namespace Mercadinho.View
                 btnPaginasV.Text = value.ToString();
             }
         }
-        #endregion
 
-        #region Events
         public event EventHandler Pesquisar;
         public event EventHandler ProximaPagina;
         public event EventHandler PaginaAnterior;
@@ -85,9 +79,6 @@ namespace Mercadinho.View
         public event EventHandler VerProdutos;
         public event EventHandler<Cliente> OnClienteSelecionado;
         public event EventHandler VendaFinalizada;
-        #endregion
-
-        #region Constructor and Initialization
         public VendaView()
         {
             InitializeComponent();
@@ -231,19 +222,19 @@ namespace Mercadinho.View
                 }
             };
         }
-        #endregion
 
-        #region Navigation Methods
+
         public void MostrarListaVendas() => tabControlClientes.SelectedTab = tabListaVendas;
         public void MostrarSelecaoCliente()
         {
+            _paginaProdutoAtual = 1;
+            _carrinho.Clear();
+            ExibirProdutos();
             tabControlClientes.SelectedTab = tabDetalhesClientes;
             _clienteSelecaoPresenter.RecarregarClientes();
         }
         public void MostrarProdutos() => tabControlClientes.SelectedTab = tabEscolherProdutos;
-        #endregion
 
-        #region Display Methods
         public void ExibirClientes(List<Cliente> clientes)
         {
             GridClientes.Controls.Clear();
@@ -277,9 +268,6 @@ namespace Mercadinho.View
                 GridVendas.Controls.Add(lstVenda);
             }
         }
-        #endregion
-
-        #region Product Management
         private void ExibirProdutos()
         {
             GridProdutos.Controls.Clear();
@@ -324,26 +312,6 @@ namespace Mercadinho.View
             return _produtosAtuais
                 .Skip((_paginaProdutoAtual - 1) * ITENS_POR_PAGINA)
                 .Take(ITENS_POR_PAGINA);
-        }
-        #endregion
-
-        #region Shopping Cart Management
-        private void AlternarParaCarrinho(object sender, EventArgs e)
-        {
-            if (!_isCarrinhoView)
-            {
-                AlternarVisualizacao();
-                labelPagina.Text = "Carrinho";
-            }
-        }
-
-        private void AlternarParaProdutos(object sender, EventArgs e)
-        {
-            if (_isCarrinhoView)
-            {
-                AlternarVisualizacao();
-                labelPagina.Text = "Produtos";
-            }
         }
 
         private void AlternarVisualizacao()
@@ -391,12 +359,6 @@ namespace Mercadinho.View
             labelCarrinho.BackColor = Color.FromArgb(190, 192, 189);
             
         }
-
-        private void ExibirCarrinho()
-        {
-            ExibirCarrinhoComFiltro(""); 
-        }
-
         private LstProduto CriarItemCarrinho(LstProduto produto)
         {
             var lst = new LstProduto(new Produto
@@ -483,9 +445,6 @@ namespace Mercadinho.View
                 MessageBox.Show($"Erro ao finalizar venda: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        #endregion
-
-        #region Cart Operations
         private void AdicionarAoCarrinho(LstProduto lstProduto)
         {
             if (!ValidarQuantidade(lstProduto))
@@ -538,12 +497,6 @@ namespace Mercadinho.View
             return true;
         }
 
-        private void AtualizarEstoqueProduto(LstProduto produto)
-        {
-            produto.QuantidadeDisponivel -= produto.QuantidadeCliente;
-            produto.QuantidadeCliente = 0;
-        }
-
         private void MostrarMensagemAdicao(LstProduto produto)
         {
             MessageBox.Show($"Produto adicionado(s) ao carrinho!", "Sucesso",
@@ -563,22 +516,6 @@ namespace Mercadinho.View
 
                 AtualizarLabelsCarrinho();
             }
-        }
-
-        private void RestaurarEstoqueProduto(LstProduto produto)
-        {
-            var produtoOriginal = _produtosAtuais.FirstOrDefault(p => p.Id == produto.Id);
-            if (produtoOriginal != null)
-            {
-                produtoOriginal.QuantidadeEmEstoque += 1;
-                produto.QuantidadeDisponivel += 1; 
-            }
-        }
-
-        private void AtualizarExibicao()
-        {
-            if (_isCarrinhoView) ExibirCarrinho();
-            else ExibirProdutos();
         }
         private void ExibirCarrinhoComFiltro(string termoPesquisa)
         {
@@ -643,9 +580,6 @@ namespace Mercadinho.View
                 p.Id.ToString() == termo
             );
         }
-        #endregion
-
-        #region Utility Methods
         public static VendaView GetInstance(Form parentContainer)
         {
             if (_instance == null || _instance.IsDisposed)
@@ -729,9 +663,7 @@ namespace Mercadinho.View
             );
             labelTotalVenda.Text = $"R$ {total:F2}";
         }
-        #endregion
 
-        #region Pagination Configuration
         public void AtualizarPaginacao(bool temProximaPagina, bool temPaginaAnterior)
         {
             AtualizarBotaoPaginacao(btnAvancarV, temProximaPagina);
@@ -749,15 +681,13 @@ namespace Mercadinho.View
             btn.InactiveColor = habilitado ? Color.FromArgb(32, 34, 37) : Color.LightGray;
             btn.BorderColor = btn.InactiveColor;
         }
-        #endregion
 
-        #region Empty Event Handlers
         private void GridVendas_Paint(object sender, PaintEventArgs e) { }
         private void label2_Click(object sender, EventArgs e) { }
         private void label1_Click(object sender, EventArgs e) { }
         private void label3_Click(object sender, EventArgs e) { }
         private void label5_Click(object sender, EventArgs e) { }
         private void label4_Click(object sender, EventArgs e) { }
-        #endregion
+
     }
 }
