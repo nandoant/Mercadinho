@@ -1,3 +1,8 @@
+# Projeto Mercadinho
+Este projeto simula um sistema de gestão intuitivo e fácil de usar, ideal para uso interno em pequenas lojas e comércios. Desenvolvido com <strong>C#(.NET)</strong> no backend, <strong>Windows Forms</strong> no frontend e banco de dados <strong>MySQL</strong>, o sistema demonstra a aplicação da arquitetura <strong>MVP (Model-View-Presenter)</strong> em um cenário prático. <br>
+![image](https://github.com/nandoant/Mercadinho/blob/master/Mercadinho/prints/carrinho.png)
+![image](https://github.com/nandoant/Mercadinho/blob/master/Mercadinho/prints/vendas.png)
+![image](https://github.com/nandoant/Mercadinho/blob/master/Mercadinho/prints/clientes.png)
 # Como Rodar o Projeto
 
 Este guia contém os passos necessários para configurar e rodar o projeto.
